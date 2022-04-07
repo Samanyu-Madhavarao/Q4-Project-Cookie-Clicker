@@ -33,6 +33,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryBackground.paint(g);
 		colonyBackground.paint(g);
 		galaxyBackground.paint(g);
+		g.drawRect(200, 60, 375, 45);
 	}
 	
 	public Frame() {
@@ -61,6 +62,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		colonyBackground = new Background(200, 420, "colonyBackground");
 		galaxyBackground = new Background(200, 510, "galaxyBackground");
 
+			
 	}
 
 	@Override
