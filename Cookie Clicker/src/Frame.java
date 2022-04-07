@@ -26,9 +26,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	
 	
-
-	
-	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		cookieBackground.paint(g);
