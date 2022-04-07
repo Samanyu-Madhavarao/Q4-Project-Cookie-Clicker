@@ -24,6 +24,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static Background colonyBackground;
 	static Background galaxyBackground;
 	
+	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		cookieBackground.paint(g);
@@ -33,7 +34,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryBackground.paint(g);
 		colonyBackground.paint(g);
 		galaxyBackground.paint(g);
-		g.drawRect(200, 60, 375, 45);
+		g.drawRect(200, 60, 550, 90);
+		
 	}
 	
 	public Frame() {
@@ -61,7 +63,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryBackground = new Background(200, 330, "countryBackground");
 		colonyBackground = new Background(200, 420, "colonyBackground");
 		galaxyBackground = new Background(200, 510, "galaxyBackground");
-
+		
+		
 			
 	}
 
