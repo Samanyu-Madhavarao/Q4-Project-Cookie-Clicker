@@ -35,6 +35,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		colonyBackground.paint(g);
 		galaxyBackground.paint(g);
 		g.drawRect(200, 60, 550, 90);
+		g.drawRect(200, 150, 550, 90);
+		g.drawRect(200, 240, 550, 90);
+		g.drawRect(200, 330, 550, 90);
+		g.drawRect(200, 420, 550, 90);
+		g.drawRect(200, 510, 550, 90);
 		
 	}
 	
