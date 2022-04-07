@@ -16,13 +16,17 @@ import javax.swing.Timer;
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
-	static Background cookieBackground;
-	static Background farmBackground;
-	static Background mineBackground;
-	static Background factoryBackground;
-	static Background countryBackground;
-	static Background colonyBackground;
-	static Background galaxyBackground;
+	static Background cookieBackground = new Background(0,0,"cookieBackground");
+	static Background farmBackground = new Background(200, 60, "farmBackground");
+	static Background mineBackground = new Background(200, 150, "mineBackground");
+	static Background factoryBackground = new Background(200, 240, "factoryBackground");
+	static Background countryBackground = new Background(200, 330, "countryBackground");
+	static Background colonyBackground = new Background(200, 420, "colonyBackground");
+	static Background galaxyBackground = new Background(200, 510, "galaxyBackground");
+	
+	
+	
+
 	
 	
 	public void paint(Graphics g) {
@@ -40,6 +44,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.drawRect(200, 330, 550, 90);
 		g.drawRect(200, 420, 550, 90);
 		g.drawRect(200, 510, 550, 90);
+		
 		
 	}
 	
@@ -61,13 +66,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Frame f = new Frame();
-		cookieBackground = new Background(0,0,"cookieBackground");
-		farmBackground = new Background(200, 60, "farmBackground");
-		mineBackground = new Background(200, 150, "mineBackground");
-		factoryBackground = new Background(200, 240, "factoryBackground");
-		countryBackground = new Background(200, 330, "countryBackground");
-		colonyBackground = new Background(200, 420, "colonyBackground");
-		galaxyBackground = new Background(200, 510, "galaxyBackground");
 		
 		
 			
