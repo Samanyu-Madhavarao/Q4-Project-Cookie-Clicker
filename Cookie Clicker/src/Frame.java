@@ -16,13 +16,14 @@ import javax.swing.Timer;
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
-	static Background cookieBackground;
-	static Background farmBackground;
-	static Background mineBackground;
-	static Background factoryBackground;
-	static Background countryBackground;
-	static Background colonyBackground;
-	static Background galaxyBackground;
+	static Background cookieBackground = new Background(0,0,"cookieBackground");;
+	static Background farmBackground = new Background(200, 60, "farmBackground");
+	static Background mineBackground = new Background(200, 150, "mineBackground");
+	static Background factoryBackground = new Background(200, 240, "factoryBackground");
+	static Background countryBackground = new Background(200, 330, "countryBackground");
+	static Background colonyBackground = new Background(200, 420, "colonyBackground");
+	static Background galaxyBackground = new Background(200, 510, "galaxyBackground");
+	Cookie cookie = new Cookie(25, 175);
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
@@ -33,11 +34,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryBackground.paint(g);
 		colonyBackground.paint(g);
 		galaxyBackground.paint(g);
+		cookie.paint(g);
 	}
 	
 	public Frame() {
 		JFrame f = new JFrame("Cookie Clicker");
-		f.setSize(new Dimension(1000, 629));
+		f.setSize(new Dimension(1000, 630));
 		f.setBackground(Color.blue);
 		f.add(this);
 		f.setResizable(false);
@@ -47,19 +49,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		Timer t = new Timer(16, this);
 		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setVisible(true);
+		f.setVisible(true);		
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Frame f = new Frame();
-		cookieBackground = new Background(0,0,"cookieBackground");
-		farmBackground = new Background(200, 60, "farmBackground");
-		mineBackground = new Background(200, 150, "mineBackground");
-		factoryBackground = new Background(200, 240, "factoryBackground");
-		countryBackground = new Background(200, 330, "countryBackground");
-		colonyBackground = new Background(200, 420, "colonyBackground");
-		galaxyBackground = new Background(200, 510, "galaxyBackground");
+		
 
 	}
 
