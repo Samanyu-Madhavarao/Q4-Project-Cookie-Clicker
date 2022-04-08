@@ -2,10 +2,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Cookie{
 	
@@ -31,6 +31,12 @@ public class Cookie{
 		update();
 		g2.drawImage(img, tx, null);
 
+	}
+	
+	public void clicked() {
+		tx.scale(0.8, 0.8);
+		tx.scale(1.25, 1.25);
+		
 	}
 	/* update the picture variable location */
 	private void update() {

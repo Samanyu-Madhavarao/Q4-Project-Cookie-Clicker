@@ -10,6 +10,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -24,9 +26,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static Background colonyBackground = new Background(200, 420, "colonyBackground");
 	static Background galaxyBackground = new Background(200, 510, "galaxyBackground");
 	Cookie cookie = new Cookie(25, 175);
+	private int numCookies;
 	
 	public void paint(Graphics g) {
-		super.paintComponent(g);
+		super.paintComponent(g);		
 		cookieBackground.paint(g);
 		farmBackground.paint(g);
 		mineBackground.paint(g);
@@ -39,7 +42,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	public Frame() {
 		JFrame f = new JFrame("Cookie Clicker");
-		f.setSize(new Dimension(1000, 630));
+		f.setSize(new Dimension(1000, 629));
 		f.setBackground(Color.blue);
 		f.add(this);
 		f.setResizable(false);
@@ -49,7 +52,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		Timer t = new Timer(16, this);
 		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setVisible(true);		
+		f.setVisible(true);	
+		
+		numCookies = 0;
 	}
 
 	public static void main(String[] args) {
@@ -80,7 +85,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		int x = e.getX();
+		int y = e.getY();
+		if(x > 50 && x < 225 && y > 125 && y < 350) {
+			numCookies++;
+			cookie.clicked();
+		}
+		System.out.println(numCookies);
 	}
 
 	@Override
