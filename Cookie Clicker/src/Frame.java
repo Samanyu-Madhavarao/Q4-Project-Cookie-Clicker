@@ -44,7 +44,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		JFrame f = new JFrame("Cookie Clicker");
 		f.setSize(new Dimension(1000, 629));
 		f.setBackground(Color.blue);
-		f.add(this);
+		f.add(this); 
 		f.setResizable(false);
 		f.setLayout(new GridLayout(1,2));
 		f.addMouseListener(this);

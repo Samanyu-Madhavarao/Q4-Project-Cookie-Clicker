@@ -12,7 +12,7 @@ public class Cookie{
 	//add location attributes
 	private int x, y;
 	private Image img; 	
-	private AffineTransform tx;
+	private AffineTransform tx; 
 
 	public Cookie(int x, int y) {
 		this.x = x;
