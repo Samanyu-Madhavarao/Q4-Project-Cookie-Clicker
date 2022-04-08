@@ -23,8 +23,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static Background countryBackground = new Background(200, 330, "countryBackground");
 	static Background colonyBackground = new Background(200, 420, "colonyBackground");
 	static Background galaxyBackground = new Background(200, 510, "galaxyBackground");
-	
-	
+	static Background shopBackground = new Background(750, 100, "shopBackground");
+	static Background shopBackground2 = new Background(750, 330, "shopBackground");
+	static Background shopBackground3 = new Background(750, 200, "shopBackground");
+	static Background shopBackground4 = new Background(750, 460, "shopBackground");
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
@@ -35,12 +37,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryBackground.paint(g);
 		colonyBackground.paint(g);
 		galaxyBackground.paint(g);
+		shopBackground.paint(g);
+		shopBackground2.paint(g);
+		shopBackground3.paint(g);
+		shopBackground4.paint(g);
+		
+		
+		
 		g.drawRect(200, 60, 550, 90);
 		g.drawRect(200, 150, 550, 90);
 		g.drawRect(200, 240, 550, 90);
 		g.drawRect(200, 330, 550, 90);
 		g.drawRect(200, 420, 550, 90);
 		g.drawRect(200, 510, 550, 90);
+		
 		
 		
 	}
