@@ -148,8 +148,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x > 50 && x < 225 && y > 125 && y < 350) {
 			numCookies++;
 			cookie.clicked1();
-			cookie.setX(45);
-			cookie.setY(185);
 		}
 		System.out.println(numCookies);
 	}
@@ -161,8 +159,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		int y = e.getY();
 		if(x > 50 && x < 225 && y > 125 && y < 350) {
 			cookie.clicked2();
-			cookie.setX(35);
-			cookie.setY(175);
 		}
 	}
 
