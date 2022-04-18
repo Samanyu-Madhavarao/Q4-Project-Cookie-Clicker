@@ -1,3 +1,4 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -34,6 +35,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Cookie cookie = new Cookie(25, 175);
 	Milk milk = new Milk(0, 425);
 	private int numCookies;
+	private int cookiesPerSecond;
 
 	
 	public void paint(Graphics g) {
@@ -51,7 +53,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		shopBackground4.paint(g);
 		
 		
-		
+		new BasicStroke(5);
 		g.drawRect(200, 60, 550, 90);
 		g.drawRect(200, 150, 550, 90);
 		g.drawRect(200, 240, 550, 90);
@@ -123,13 +125,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		int x = e.getX();
-		int y = e.getY();
-		if(x > 50 && x < 225 && y > 125 && y < 350) {
-			numCookies++;
-			cookie.clicked();
-		}
-		System.out.println(numCookies);
+		
 	}
 
 	@Override
@@ -147,13 +143,27 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		int x = e.getX();
+		int y = e.getY();
+		if(x > 50 && x < 225 && y > 125 && y < 350) {
+			numCookies++;
+			cookie.clicked1();
+			cookie.setX(45);
+			cookie.setY(185);
+		}
+		System.out.println(numCookies);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		int x = e.getX();
+		int y = e.getY();
+		if(x > 50 && x < 225 && y > 125 && y < 350) {
+			cookie.clicked2();
+			cookie.setX(35);
+			cookie.setY(175);
+		}
 	}
 
 	@Override

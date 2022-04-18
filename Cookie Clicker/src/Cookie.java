@@ -19,7 +19,8 @@ public class Cookie{
 		this.y = y;
 		img = getImage("/imgs/MainCookie.png");
 		tx = AffineTransform.getTranslateInstance(x, y);
-		init(x, y); 				
+		init(x, y); 
+
 	}
 
 	
@@ -33,17 +34,26 @@ public class Cookie{
 
 	}
 	
-	public void clicked() {
-		tx.scale(0.8, 0.8);
-		tx.scale(1.25, 1.25);
+	public void clicked1() {
+		tx.scale(0.9, 0.9);
+
 		
 	}
+	public void clicked2() {
+		tx.scale((1/0.9), (1/0.9));
+
+	}
+
 	/* update the picture variable location */
 	private void update() {
 
 		
-		
 	}
+	
+	public int getX() {return x;}
+	public void setX(int i) {x = i;}
+	public int getY() {return y;}
+	public void setY(int i) {y = i;}
 	
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
