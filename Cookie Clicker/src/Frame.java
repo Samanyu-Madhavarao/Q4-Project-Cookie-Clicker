@@ -18,16 +18,23 @@ import javax.swing.Timer;
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
+
 	static Background cookieBackground = new Background(0,0,"cookieBackground");;
+
 	static Background farmBackground = new Background(200, 60, "farmBackground");
 	static Background mineBackground = new Background(200, 150, "mineBackground");
 	static Background factoryBackground = new Background(200, 240, "factoryBackground");
 	static Background countryBackground = new Background(200, 330, "countryBackground");
 	static Background colonyBackground = new Background(200, 420, "colonyBackground");
 	static Background galaxyBackground = new Background(200, 510, "galaxyBackground");
+	static Background shopBackground = new Background(750, 100, "shopBackground");
+	static Background shopBackground2 = new Background(750, 330, "shopBackground");
+	static Background shopBackground3 = new Background(750, 200, "shopBackground");
+	static Background shopBackground4 = new Background(750, 460, "shopBackground");
 	Cookie cookie = new Cookie(25, 175);
 	Milk milk = new Milk(0, 425);
 	private int numCookies;
+
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);		
@@ -38,6 +45,22 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryBackground.paint(g);
 		colonyBackground.paint(g);
 		galaxyBackground.paint(g);
+		shopBackground.paint(g);
+		shopBackground2.paint(g);
+		shopBackground3.paint(g);
+		shopBackground4.paint(g);
+		
+		
+		
+		g.drawRect(200, 60, 550, 90);
+		g.drawRect(200, 150, 550, 90);
+		g.drawRect(200, 240, 550, 90);
+		g.drawRect(200, 330, 550, 90);
+		g.drawRect(200, 420, 550, 90);
+		g.drawRect(200, 510, 550, 90);
+		
+		
+		
 		cookie.paint(g);
 		milk.paint(g);
 		
@@ -58,7 +81,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	public Frame() {
 		JFrame f = new JFrame("Cookie Clicker");
-		f.setSize(new Dimension(1000, 629));
+		f.setSize(new Dimension(995, 629));
 		f.setBackground(Color.blue);
 		f.add(this); 
 		f.setResizable(false);
@@ -76,7 +99,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Frame f = new Frame();
-		
 
 	}
 
