@@ -10,13 +10,17 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
-	static Background cookieBackground = new Background(0,0,"cookieBackground");
+
+	static Background cookieBackground = new Background(0,0,"cookieBackground");;
+
 	static Background farmBackground = new Background(200, 60, "farmBackground");
 	static Background mineBackground = new Background(200, 150, "mineBackground");
 	static Background factoryBackground = new Background(200, 240, "factoryBackground");
@@ -27,9 +31,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static Background shopBackground2 = new Background(750, 330, "shopBackground");
 	static Background shopBackground3 = new Background(750, 200, "shopBackground");
 	static Background shopBackground4 = new Background(750, 460, "shopBackground");
+	Cookie cookie = new Cookie(25, 175);
+	Milk milk = new Milk(0, 425);
+	private int numCookies;
+
 	
 	public void paint(Graphics g) {
-		super.paintComponent(g);
+		super.paintComponent(g);		
 		cookieBackground.paint(g);
 		farmBackground.paint(g);
 		mineBackground.paint(g);
@@ -53,13 +61,29 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		
 		
+		cookie.paint(g);
+		milk.paint(g);
+		
+		if(numCookies > 5) {
+			milk.changePicture("imgs/Milk2.gif");
+		}
+		if(numCookies > 10) {
+			milk.changePicture("imgs/Milk3.gif");
+		}
+		if(numCookies > 15) {
+			milk.changePicture("imgs/Milk4.gif");
+		}
+		
+		g.setColor(Color.CYAN);
+		g.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+		g.drawString("Cookies:" + numCookies, 27, 125);
 	}
 	
 	public Frame() {
 		JFrame f = new JFrame("Cookie Clicker");
 		f.setSize(new Dimension(995, 629));
 		f.setBackground(Color.blue);
-		f.add(this);
+		f.add(this); 
 		f.setResizable(false);
 		f.setLayout(new GridLayout(1,2));
 		f.addMouseListener(this);
@@ -67,15 +91,15 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		Timer t = new Timer(16, this);
 		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setVisible(true);
+		f.setVisible(true);	
+		
+		numCookies = 0;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Frame f = new Frame();
-		
-		
-			
+
 	}
 
 	@Override
@@ -99,7 +123,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		int x = e.getX();
+		int y = e.getY();
+		if(x > 50 && x < 225 && y > 125 && y < 350) {
+			numCookies++;
+			cookie.clicked();
+		}
+		System.out.println(numCookies);
 	}
 
 	@Override
