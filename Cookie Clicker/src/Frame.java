@@ -40,6 +40,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		galaxyBackground.paint(g);
 		cookie.paint(g);
 		milk.paint(g);
+		
+		if(numCookies > 5) {
+			milk.changePicture("imgs/Milk2.gif");
+		}
+		if(numCookies > 10) {
+			milk.changePicture("imgs/Milk3.gif");
+		}
+		if(numCookies > 15) {
+			milk.changePicture("imgs/Milk4.gif");
+		}
+		
+		g.setColor(Color.CYAN);
+		g.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+		g.drawString("Cookies:" + numCookies, 27, 125);
 	}
 	
 	public Frame() {
