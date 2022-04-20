@@ -1,3 +1,4 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -10,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,9 +20,8 @@ import javax.swing.Timer;
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
-
+	//cookie objects
 	static Background cookieBackground = new Background(0,0,"cookieBackground");;
-
 	static Background farmBackground = new Background(200, 60, "farmBackground");
 	static Background mineBackground = new Background(200, 150, "mineBackground");
 	static Background factoryBackground = new Background(200, 240, "factoryBackground");
@@ -32,10 +33,22 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static Background shopBackground3 = new Background(750, 200, "shopBackground");
 	static Background shopBackground4 = new Background(750, 460, "shopBackground");
 	static Background shopBackground5 = new Background(750, 0, "shopBackground");
-	
-	Cookie cookie = new Cookie(25, 175);
+  
+	//cookie background objects
+	Cookie cookie;
 	Milk milk = new Milk(0, 425);
+	
+	//building lists
+	ArrayList<Building> farms;
+	ArrayList<Building> mines;
+	ArrayList<Building> factories;
+	ArrayList<Building> countries;
+	ArrayList<Building> colonies;
+	ArrayList<Building> galaxies;
+	
+	//cookie trackers
 	private int numCookies;
+	private int cookiesPerSecond;
 
 	
 	public void paint(Graphics g) {
@@ -53,7 +66,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		shopBackground4.paint(g);
 		shopBackground5.paint(g); 
 		
-		
+		new BasicStroke(5);
 		g.drawRect(200, 60, 550, 90);
 		g.drawRect(200, 150, 550, 90);
 		g.drawRect(200, 240, 550, 90);
@@ -95,6 +108,15 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);	
 		
+		cookie = new Cookie(25, 175);
+		
+		farms = new ArrayList<Building>();
+		mines = new ArrayList<Building>();
+		factories = new ArrayList<Building>();
+		countries = new ArrayList<Building>();
+		colonies = new ArrayList<Building>();
+		galaxies = new ArrayList<Building>();
+		
 		numCookies = 0;
 	}
 
@@ -125,13 +147,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		int x = e.getX();
-		int y = e.getY();
-		if(x > 50 && x < 225 && y > 125 && y < 350) {
-			numCookies++;
-			cookie.clicked();
-		}
-		System.out.println(numCookies);
+		
 	}
 
 	@Override
@@ -149,13 +165,23 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		int x = e.getX();
+		int y = e.getY();
+		if(x > 50 && x < 225 && y > 125 && y < 350) {
+			numCookies++;
+			cookie.clicked1();
+		}
+		System.out.println(numCookies);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		int x = e.getX();
+		int y = e.getY();
+		if(x > 50 && x < 225 && y > 125 && y < 350) {
+			cookie.clicked2();
+		}
 	}
 
 	@Override
