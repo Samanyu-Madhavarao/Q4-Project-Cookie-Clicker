@@ -51,7 +51,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		shopBackground2.paint(g); 
 		shopBackground3.paint(g);
 		shopBackground4.paint(g);
-		shopBackground5.paint(g);
+		shopBackground5.paint(g); 
 		
 		
 		g.drawRect(200, 60, 550, 90);
