@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,9 +20,8 @@ import javax.swing.Timer;
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
-
+	//cookie objects
 	static Background cookieBackground = new Background(0,0,"cookieBackground");;
-
 	static Background farmBackground = new Background(200, 60, "farmBackground");
 	static Background mineBackground = new Background(200, 150, "mineBackground");
 	static Background factoryBackground = new Background(200, 240, "factoryBackground");
@@ -32,8 +32,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static Background shopBackground2 = new Background(750, 330, "shopBackground");
 	static Background shopBackground3 = new Background(750, 200, "shopBackground");
 	static Background shopBackground4 = new Background(750, 460, "shopBackground");
-	Cookie cookie = new Cookie(25, 175);
+	
+	//cookie background objects
+	Cookie cookie;
 	Milk milk = new Milk(0, 425);
+	
+	//building lists
+	ArrayList<Building> farms;
+	ArrayList<Building> mines;
+	ArrayList<Building> factories;
+	ArrayList<Building> countries;
+	ArrayList<Building> colonies;
+	ArrayList<Building> galaxies;
+	
+	//cookie trackers
 	private int numCookies;
 	private int cookiesPerSecond;
 
@@ -94,6 +106,15 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);	
+		
+		cookie = new Cookie(25, 175);
+		
+		farms = new ArrayList<Building>();
+		mines = new ArrayList<Building>();
+		factories = new ArrayList<Building>();
+		countries = new ArrayList<Building>();
+		colonies = new ArrayList<Building>();
+		galaxies = new ArrayList<Building>();
 		
 		numCookies = 0;
 	}

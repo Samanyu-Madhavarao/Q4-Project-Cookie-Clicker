@@ -35,17 +35,18 @@ public class Cookie{
 	}
 	
 	public void clicked1() {
-		tx.scale(0.9, 0.9);
+		tx.scale(0.95, 0.95);
 
 		
 	}
 	public void clicked2() {
-		tx.scale((1/0.9), (1/0.9));
+		tx.scale((1/0.95), (1/0.95));
 
 	}
 
 	/* update the picture variable location */
 	private void update() {
+		
 
 		
 	}

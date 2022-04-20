@@ -5,15 +5,17 @@ import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
-public class Country {
+public class Building {
+	private int x, y;
 	private Image img;
 	private AffineTransform tx;
 
-	public Country(int x, int y) {
-	
-	img = getImage("/imgs/Country.png");
-	tx = AffineTransform.getTranslateInstance(x, y);
-	init(x, y); 
+	public Building(int x, int y, String i) {
+		this.x = x;
+		this.y = y;
+		img = getImage("/imgs/"+i+".png");
+		tx = AffineTransform.getTranslateInstance(x, y);
+		init(x, y); 
 	
 
 	}
@@ -48,5 +50,4 @@ public class Country {
 		}
 		return tempImage;
 	}
-
 }
