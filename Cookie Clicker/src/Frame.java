@@ -47,7 +47,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ArrayList<Building> countries; 
 	ArrayList<Building> colonies;
 	ArrayList<Building> galaxies;
-	
+	 
 	//cookie trackers
 	private int numCookies;
 	private int cookiesPerSecond; 
