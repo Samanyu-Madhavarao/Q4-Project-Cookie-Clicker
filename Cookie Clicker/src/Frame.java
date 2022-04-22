@@ -50,7 +50,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	//cookie trackers
 	private int numCookies;
-	private int cookiesPerSecond;
+	private int cookiesPerSecond; 
 
 	
 	public void paint(Graphics g) {
