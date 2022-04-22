@@ -28,15 +28,17 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static Background countryBackground = new Background(200, 330, "countryBackground");
 	static Background colonyBackground = new Background(200, 420, "colonyBackground");
 	static Background galaxyBackground = new Background(200, 510, "galaxyBackground");
-	static Background shopBackground = new Background(750, 100, "shopBackground");
-	static Background shopBackground2 = new Background(750, 330, "shopBackground");
-	static Background shopBackground3 = new Background(750, 200, "shopBackground");
-	static Background shopBackground4 = new Background(750, 460, "shopBackground");
-	static Background shopBackground5 = new Background(750, 0, "shopBackground");
+	
   
 	//cookie background objects
 	Cookie cookie;
 	Milk milk = new Milk(0, 425);
+	
+	//shop buttons
+	ShopButtons farmShop = new ShopButtons(751, 200, "FarmShop");
+	ShopButtons mineShop = new ShopButtons(751, 300, "MineShop");
+	ShopButtons factoryShop = new ShopButtons(751, 400, "FactoryShop");
+	ShopButtons countryShop = new ShopButtons(751, 500, "CountryShop");
 	
 	//building lists
 	ArrayList<Building> farms;
@@ -60,11 +62,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryBackground.paint(g);
 		colonyBackground.paint(g);
 		galaxyBackground.paint(g);
-		shopBackground.paint(g);
-		shopBackground2.paint(g); 
-		shopBackground3.paint(g);
-		shopBackground4.paint(g);
-		shopBackground5.paint(g); 
+
 		
 		new BasicStroke(5);
 		g.drawRect(200, 60, 550, 90);
@@ -75,9 +73,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.drawRect(200, 510, 550, 90);
 		
 		
-		
 		cookie.paint(g);
 		milk.paint(g);
+		
+		farmShop.paint(g);
+		mineShop.paint(g);
+		factoryShop.paint(g);
+		countryShop.paint(g);
 		
 		if(numCookies > 5) {
 			milk.changePicture("imgs/Milk2.gif");
@@ -92,6 +94,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.setColor(Color.CYAN);
 		g.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 		g.drawString("Cookies:" + numCookies, 27, 125);
+		
+		g.setColor(Color.blue);
+		g.fillRect(750, 0, 250, 50);
+		g.setColor(Color.CYAN);
+		g.drawString("SHOP", 825, 35);
 	}
 	
 	public Frame() {
@@ -107,6 +114,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);	
+		
+		
 		
 		cookie = new Cookie(25, 175);
 		
@@ -167,7 +176,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		// TODO Auto-generated method stub
 		int x = e.getX();
 		int y = e.getY();
-		if(x > 50 && x < 225 && y > 125 && y < 350) {
+		if(x > 50 && x < 175 && y > 125 && y < 350) {
 			numCookies++;
 			cookie.clicked1();
 		}
@@ -179,7 +188,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		// TODO Auto-generated method stub
 		int x = e.getX();
 		int y = e.getY();
-		if(x > 50 && x < 225 && y > 125 && y < 350) {
+		if(x > 50 && x < 175 && y > 125 && y < 350) {
 			cookie.clicked2();
 		}
 	}
