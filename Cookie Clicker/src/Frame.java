@@ -44,7 +44,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ArrayList<Building> farms;
 	ArrayList<Building> mines;
 	ArrayList<Building> factories;
-	ArrayList<Building> countries;
+	ArrayList<Building> countries; 
 	ArrayList<Building> colonies;
 	ArrayList<Building> galaxies;
 	
