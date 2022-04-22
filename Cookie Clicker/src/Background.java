@@ -18,6 +18,15 @@ public class Background{
 		tx = AffineTransform.getTranslateInstance(x, y);
 		init(x, y); 				
 	}
+	
+	public Background(int x, int y, String i , double a, double b) {
+		img = getImage("/imgs/"+i+".png");
+		tx = AffineTransform.getTranslateInstance(x, y);
+		init(x, y); 
+	tx.scale(a,  b);
+
+	}
+	
 
 	
 	public void paint(Graphics g) {

@@ -28,8 +28,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static Background countryBackground = new Background(200, 330, "countryBackground");
 	static Background colonyBackground = new Background(200, 420, "colonyBackground");
 	static Background galaxyBackground = new Background(200, 510, "galaxyBackground");
+	static Background shopBackground = new Background(750, 0, "ShopBackground", 1, 1);
 	
-  
+	
+	static itemFrame frame1 = new itemFrame(750, 50);
+	
+
 	//cookie background objects
 	Cookie cookie;
 	Milk milk = new Milk(0, 425);
@@ -62,6 +66,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryBackground.paint(g);
 		colonyBackground.paint(g);
 		galaxyBackground.paint(g);
+
+		shopBackground.paint(g);
+		frame1.paint(g);
 
 		
 		new BasicStroke(5);
