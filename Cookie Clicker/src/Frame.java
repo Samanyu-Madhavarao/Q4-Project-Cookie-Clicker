@@ -139,6 +139,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.fillRect(750, 0, 250, 50);
 		g.setColor(Color.CYAN);
 		g.drawString("SHOP", 825, 35);
+		
+		
 	}
 	
 	public Frame() {
