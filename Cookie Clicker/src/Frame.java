@@ -39,10 +39,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Milk milk = new Milk(0, 425);
 	
 	//shop buttons
-	ShopButtons farmShop = new ShopButtons(751, 200, "FarmShop");
-	ShopButtons mineShop = new ShopButtons(751, 300, "MineShop");
-	ShopButtons factoryShop = new ShopButtons(751, 400, "FactoryShop");
-	ShopButtons countryShop = new ShopButtons(751, 500, "CountryShop");
+	ShopButtons farmShop = new ShopButtons(785, 150, "FarmShop");
+	ShopButtons mineShop = new ShopButtons(785, 225, "MineShop");
+	ShopButtons factoryShop = new ShopButtons(785, 300, "FactoryShop");
+	ShopButtons countryShop = new ShopButtons(785, 375, "CountryShop");
+	ShopButtons colonyShop = new ShopButtons(785, 450, "ColonyShop");
 	
 	//building lists
 	ArrayList<Building> farms;
@@ -51,6 +52,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ArrayList<Building> countries; 
 	ArrayList<Building> colonies;
 	ArrayList<Building> galaxies;
+	
+	//building positions
+	int farmXMin, farmXMax, farmYMin, farmYMax;
+	int mineXMin, mineXMax, mineYMin, mineYMax;
+	int factoryXMin, factoryXMax, factoryYMin, factoryYMax;
+	int countryXMin, countryXMax, countryYMin, countryYMax;
+	int colonyXMin, colonyXMax, colonyYMin, colonyYMax;
 	 
 	//cookie trackers
 	private int numCookies;
@@ -87,6 +95,31 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		mineShop.paint(g);
 		factoryShop.paint(g);
 		countryShop.paint(g);
+		colonyShop.paint(g);
+		
+		for(int i = 0; i < farms.size(); i++) {
+			farms.get(i).paint(g);
+		}
+		
+		for(int i = 0; i < mines.size(); i++) {
+			mines.get(i).paint(g);
+		}
+		
+		for(int i = 0; i < factories.size(); i++) {
+			factories.get(i).paint(g);
+		}
+		
+		for(int i = 0; i < countries.size(); i++) {
+			countries.get(i).paint(g);
+		}
+		
+		for(int i = 0; i < colonies.size(); i++) {
+			colonies.get(i).paint(g);
+		}
+		
+		for(int i = 0; i < galaxies.size(); i++) {
+			galaxies.get(i).paint(g);
+		}
 		
 		if(numCookies > 5) {
 			milk.changePicture("imgs/Milk2.gif");
@@ -134,6 +167,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		galaxies = new ArrayList<Building>();
 		
 		numCookies = 0;
+		farmXMin = 200; farmXMax = 240;
+		farmYMin = 70; farmYMax = 100;
+		mineXMin = 200; mineXMax = 240;
+		mineYMin = 150; mineYMax = 200;
+		factoryXMin = 200; factoryXMax = 240;
+		factoryYMin = 250; factoryYMax = 275;
+		countryXMin = 200; countryXMax = 240;
+		countryYMin = 325; countryYMax = 350;
 	}
 
 	public static void main(String[] args) {
@@ -187,7 +228,74 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			numCookies++;
 			cookie.clicked1();
 		}
-		System.out.println(numCookies);
+		if(x > 785 && x < 975 && y > 150 && y < 250) {
+			if(!(farmXMax >= 675 || farmXMin >= 625)) {
+				int farmX = (int) Math.floor(Math.random() * (farmXMax - farmXMin) + farmXMin);
+				int farmY = (int) Math.floor(Math.random() * (farmYMax - farmYMin) + farmYMin);
+				Building temp = new Building(farmX, farmY, "Farm");
+				farms.add(temp);
+				farmShop.clicked1();
+				farmXMin += 60; farmXMax += 60;
+				if(farmXMax >= 675 || farmXMin >= 625) {
+					farmShop.clicked2();
+				}
+			}
+		}
+		if(x > 785 && x < 975 && y > 250 && y < 350) {
+			if(!(mineXMax >= 675 || mineXMin >= 625)) {
+				int mineX = (int) Math.floor(Math.random() * (mineXMax - mineXMin) + mineXMin);
+				int mineY = (int) Math.floor(Math.random() * (mineYMax - mineYMin) + mineYMin);
+				Building temp = new Building(mineX, mineY, "Mine");
+				mines.add(temp);
+				mineShop.clicked1();
+				mineXMin += 60; mineXMax += 60;
+				if(mineXMax >= 675 || mineXMin >= 625) {
+					mineShop.clicked2();
+				}
+			}
+		}
+		if(x > 785 && x < 975 && y > 350 && y < 425) {
+			if(!(factoryXMax >= 675 || factoryXMin >= 625)) {
+				int factoryX = (int) Math.floor(Math.random() * (factoryXMax - factoryXMin) + factoryXMin);
+				int factoryY = (int) Math.floor(Math.random() * (factoryYMax - factoryYMin) + factoryYMin);
+				Building temp = new Building(factoryX, factoryY, "Factory");
+				factories.add(temp);
+				factoryShop.clicked1();
+				factoryXMin += 60; factoryXMax += 60;
+				if(factoryXMax >= 675 || factoryXMin >= 625) {
+					factoryShop.clicked2();
+				}
+			}
+		}
+		
+		if(x > 785 && x < 975 && y > 450 && y < 550) {
+			if(!(countryXMax >= 675 || countryXMin >= 625)) {
+				int countryX = (int) Math.floor(Math.random() * (countryXMax - countryXMin) + countryXMin);
+				int countryY = (int) Math.floor(Math.random() * (countryYMax - countryYMin) + countryYMin);
+				Building temp = new Building(countryX, countryY, "Country");
+				countries.add(temp);
+				countryShop.clicked1();
+				countryXMin += 60; countryXMax += 60;
+				if(countryXMax >= 675 || countryXMin >= 625) {
+					countryShop.clicked2();
+				}
+			}
+		}
+		/*
+		if(x > 785 && x < 975 && y > 150 && y < 250) {
+			if(!(farmXMax >= 675 || farmXMin >= 625)) {
+				int farmX = (int) Math.floor(Math.random() * (farmXMax - farmXMin) + farmXMin);
+				int farmY = (int) Math.floor(Math.random() * (farmYMax - farmYMin) + farmYMin);
+				Building temp = new Building(farmX, farmY, "Farm");
+				farms.add(temp);
+				farmShop.clicked1();
+				farmXMin += 60; farmXMax += 60;
+				if(farmXMax >= 675 || farmXMin >= 625) {
+					farmShop.clicked2();
+				}
+			}
+		}
+		*/
 	}
 
 	@Override
@@ -197,6 +305,26 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		int y = e.getY();
 		if(x > 50 && x < 175 && y > 125 && y < 350) {
 			cookie.clicked2();
+		}
+		if(x > 785 && x < 975 && y > 150 && y < 250) {
+			if(!(farmXMax >= 675 || farmXMin >= 625)) {
+				farmShop.clicked2();
+			}
+		}
+		if(x > 785 && x < 975 && y > 250 && y < 350) {
+			if(!(mineXMax >= 675 || mineXMin >= 625)) {
+				mineShop.clicked2();
+			}
+		}
+		if(x > 785 && x < 975 && y > 350 && y < 425) {
+			if(!(factoryXMax >= 675 || factoryXMin >= 625)) {
+				factoryShop.clicked2();
+			}
+		}
+		if(x > 785 && x < 975 && y > 450 && y < 550) {
+			if(!(countryXMax >= 675 || countryXMin >= 625)) {
+				countryShop.clicked2();
+			}
 		}
 	}
 

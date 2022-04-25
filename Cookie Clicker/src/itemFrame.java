@@ -38,7 +38,7 @@ public class itemFrame{
 	
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
-		tx.scale(1, 1);
+		tx.scale(0.75, 0.75);
 	}
 
 	private Image getImage(String path) {

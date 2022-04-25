@@ -36,9 +36,19 @@ public class ShopButtons {
 		
 	}
 	
+	public void clicked1() {
+		tx.scale(0.95, 0.95);
+
+		
+	}
+	public void clicked2() {
+		tx.scale((1/0.95), (1/0.95));
+
+	}
+	
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
-		tx.scale(2, 2);
+		tx.scale(1.5, 1.5);
 	}
 
 	private Image getImage(String path) {
