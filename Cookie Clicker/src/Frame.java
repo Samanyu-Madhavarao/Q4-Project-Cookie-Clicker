@@ -96,6 +96,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		factoryShop.paint(g);
 		countryShop.paint(g);
 		colonyShop.paint(g);
+		g.drawRect(785, 150, 180, 75);
+		g.drawRect(785, 225, 180, 75);
+		g.drawRect(785, 300, 180, 75);
+		g.drawRect(785, 375, 180, 75);
+		g.drawRect(785, 450, 180, 75);
 		
 		for(int i = 0; i < farms.size(); i++) {
 			farms.get(i).paint(g);
@@ -140,7 +145,24 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.setColor(Color.CYAN);
 		g.drawString("SHOP", 825, 35);
 		
-		
+		//Coordinates(will remove)
+		g.setColor(Color.black);
+		g.drawString("000", 0, 50);
+		g.drawString("100", 100, 50);
+		g.drawString("200", 200, 50);
+		g.drawString("300", 300, 50);
+		g.drawString("400", 400, 50);
+		g.drawString("500", 500, 50);
+		g.drawString("600", 600, 50);
+		g.drawString("700", 700, 50);
+		g.drawString("800", 800, 50);
+		g.drawString("900", 900, 50);
+		g.drawString("100", 0, 100);
+		g.drawString("200", 0, 200);
+		g.drawString("300", 0, 300);
+		g.drawString("400", 0, 400);
+		g.drawString("500", 0, 500);
+		g.drawString("600", 0, 600);
 	}
 	
 	public Frame() {
@@ -177,6 +199,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		factoryYMin = 250; factoryYMax = 275;
 		countryXMin = 200; countryXMax = 240;
 		countryYMin = 325; countryYMax = 350;
+		colonyXMin = 200; colonyXMax = 240;
+		colonyYMin = 425; colonyYMax = 455;
 	}
 
 	public static void main(String[] args) {
@@ -230,7 +254,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			numCookies++;
 			cookie.clicked1();
 		}
-		if(x > 785 && x < 975 && y > 150 && y < 250) {
+		if(x > 785 && x < 965 && y > 175 && y < 250) {
 			if(!(farmXMax >= 675 || farmXMin >= 625)) {
 				int farmX = (int) Math.floor(Math.random() * (farmXMax - farmXMin) + farmXMin);
 				int farmY = (int) Math.floor(Math.random() * (farmYMax - farmYMin) + farmYMin);
@@ -243,7 +267,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				}
 			}
 		}
-		if(x > 785 && x < 975 && y > 250 && y < 350) {
+		if(x > 785 && x < 965 && y > 250 && y < 325) {
 			if(!(mineXMax >= 675 || mineXMin >= 625)) {
 				int mineX = (int) Math.floor(Math.random() * (mineXMax - mineXMin) + mineXMin);
 				int mineY = (int) Math.floor(Math.random() * (mineYMax - mineYMin) + mineYMin);
@@ -256,7 +280,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				}
 			}
 		}
-		if(x > 785 && x < 975 && y > 350 && y < 425) {
+		if(x > 785 && x < 965 && y > 325 && y < 400) {
 			if(!(factoryXMax >= 675 || factoryXMin >= 625)) {
 				int factoryX = (int) Math.floor(Math.random() * (factoryXMax - factoryXMin) + factoryXMin);
 				int factoryY = (int) Math.floor(Math.random() * (factoryYMax - factoryYMin) + factoryYMin);
@@ -270,7 +294,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 		}
 		
-		if(x > 785 && x < 975 && y > 450 && y < 550) {
+		if(x > 785 && x < 965 && y > 400 && y < 475) {
 			if(!(countryXMax >= 675 || countryXMin >= 625)) {
 				int countryX = (int) Math.floor(Math.random() * (countryXMax - countryXMin) + countryXMin);
 				int countryY = (int) Math.floor(Math.random() * (countryYMax - countryYMin) + countryYMin);
@@ -283,21 +307,21 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				}
 			}
 		}
-		/*
-		if(x > 785 && x < 975 && y > 150 && y < 250) {
-			if(!(farmXMax >= 675 || farmXMin >= 625)) {
-				int farmX = (int) Math.floor(Math.random() * (farmXMax - farmXMin) + farmXMin);
-				int farmY = (int) Math.floor(Math.random() * (farmYMax - farmYMin) + farmYMin);
-				Building temp = new Building(farmX, farmY, "Farm");
-				farms.add(temp);
-				farmShop.clicked1();
-				farmXMin += 60; farmXMax += 60;
-				if(farmXMax >= 675 || farmXMin >= 625) {
-					farmShop.clicked2();
+		
+		if(x > 785 && x < 975 && y > 475 && y < 550) {
+			if(!(colonyXMax >= 675 || colonyXMin >= 625)) {
+				int colonyX = (int) Math.floor(Math.random() * (colonyXMax - colonyXMin) + colonyXMin);
+				int colonyY = (int) Math.floor(Math.random() * (colonyYMax - colonyYMin) + colonyYMin);
+				Building temp = new Building(colonyX, colonyY, "Colony");
+				colonies.add(temp);
+				colonyShop.clicked1();
+				colonyXMin += 75; colonyXMax += 75;
+				if(colonyXMax >= 675 || colonyXMin >= 625) {
+					colonyShop.clicked2();
 				}
 			}
 		}
-		*/
+		
 	}
 
 	@Override
@@ -305,27 +329,33 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		// TODO Auto-generated method stub
 		int x = e.getX();
 		int y = e.getY();
+		System.out.println(x + " " + y);
 		if(x > 50 && x < 175 && y > 125 && y < 350) {
 			cookie.clicked2();
 		}
-		if(x > 785 && x < 975 && y > 150 && y < 250) {
+		if(x > 785 && x < 965 && y > 175 && y < 250) {
 			if(!(farmXMax >= 675 || farmXMin >= 625)) {
 				farmShop.clicked2();
 			}
 		}
-		if(x > 785 && x < 975 && y > 250 && y < 350) {
+		if(x > 785 && x < 965 && y > 250 && y < 325) {
 			if(!(mineXMax >= 675 || mineXMin >= 625)) {
 				mineShop.clicked2();
 			}
 		}
-		if(x > 785 && x < 975 && y > 350 && y < 425) {
+		if(x > 785 && x < 965 && y > 325 && y < 400) {
 			if(!(factoryXMax >= 675 || factoryXMin >= 625)) {
 				factoryShop.clicked2();
 			}
 		}
-		if(x > 785 && x < 975 && y > 450 && y < 550) {
+		if(x > 785 && x < 965 && y > 400 && y < 475) {
 			if(!(countryXMax >= 675 || countryXMin >= 625)) {
 				countryShop.clicked2();
+			}
+		}
+		if(x > 785 && x < 965 && y > 475 && y < 550) {
+			if(!(colonyXMax >= 675 || colonyXMin >= 625)) {
+				colonyShop.clicked2();
 			}
 		}
 	}
