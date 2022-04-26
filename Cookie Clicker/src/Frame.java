@@ -31,9 +31,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static Background shopBackground = new Background(750, 0, "ShopBackground", 1, 1);
 	
 	
-	static itemFrame frame1 = new itemFrame(750, 50);
+	static itemFrame frame1 = new itemFrame(757, 50, "upgradeFrameOld");
+	static itemFrame frame2 = new itemFrame(937, 50, "frameCropped");
+	static itemFrame frame3 = new itemFrame(757, 100, "upgradeFrameOld");
+	static itemFrame frame4 = new itemFrame(937, 100, "frameCropped");
 	
-
 	//cookie background objects
 	Cookie cookie;
 	Milk milk = new Milk(0, 425);
@@ -77,7 +79,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 		shopBackground.paint(g);
 		frame1.paint(g);
-
+		frame2.paint(g);
+		frame3.paint(g);
+		frame4.paint(g);
 		
 		new BasicStroke(5);
 		g.drawRect(200, 60, 550, 90);
