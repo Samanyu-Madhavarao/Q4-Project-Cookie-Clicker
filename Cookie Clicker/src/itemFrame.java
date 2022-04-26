@@ -12,9 +12,9 @@ public class itemFrame{
 	//add location attributes
 	private Image img; 	
 	private AffineTransform tx;
-
-	public itemFrame(int x, int y) {
-		img = getImage("/imgs/upgradeFrameOld.png");
+	
+	public itemFrame(int x, int y, String i) {
+		img = getImage("/imgs/"+i+".png");
 		tx = AffineTransform.getTranslateInstance(x, y);
 		init(x, y); 				
 	}
