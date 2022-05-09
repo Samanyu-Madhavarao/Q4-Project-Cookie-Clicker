@@ -57,6 +57,21 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ShopButtons countryShop = new ShopButtons(785, countryShopY, "CountryShop");
 	ShopButtons colonyShop = new ShopButtons(785, colonyShopY, "ColonyShop");
 	ShopButtons galaxyShop = new ShopButtons(785, galaxyShopY, "GalaxyShop");
+	ShopButtons cursorUpgrade = new ShopButtons(743, 50, "Cursor_1");
+	ShopButtons cursorUpgrade2 = new ShopButtons(788, 50, "Cursor_2");
+	ShopButtons farmUpgrade = new ShopButtons(834, 50, "hoe_1");
+	ShopButtons farmUpgrade2 = new ShopButtons(877, 50, "hoe_2");
+	ShopButtons mineUpgrade = new ShopButtons(922, 50, "pickaxe_1");
+	ShopButtons mineUpgrade2 = new ShopButtons(742, 100, "pickaxe_2");
+	ShopButtons factoryUpgrade = new ShopButtons(788, 100, "gear_1");
+	ShopButtons factoryUpgrade2 = new ShopButtons(833, 100, "gear_2");
+	ShopButtons colonyUpgrade = new ShopButtons(743, 145, "robot_1");
+	ShopButtons colonyUpgrade2 = new ShopButtons(788, 145, "robot_2");
+	
+	
+	//"upgrade" buttons
+	UpgradeButtons countryUpgrade = new UpgradeButtons(892, 96, "Deed_1");
+	UpgradeButtons countryUpgrade2 = new UpgradeButtons(937, 96, "Deed_2");
 	
 	//building lists
 	ArrayList<Building> farms;
@@ -113,6 +128,21 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryShop.paint(g);
 		colonyShop.paint(g);
 		galaxyShop.paint(g);
+		cursorUpgrade.paint(g);
+		cursorUpgrade2.paint(g);
+		farmUpgrade.paint(g);
+		farmUpgrade2.paint(g);
+		mineUpgrade.paint(g);
+		mineUpgrade2.paint(g);
+		factoryUpgrade.paint(g);
+		factoryUpgrade2.paint(g);
+		colonyUpgrade.paint(g);
+		colonyUpgrade2.paint(g);
+		
+		
+		countryUpgrade.paint(g);
+		countryUpgrade2.paint(g);
+		
 		g.drawRect(785, farmShopY, 180, buttonHeight);
 		g.drawRect(785, mineShopY, 180, buttonHeight);
 		g.drawRect(785, factoryShopY, 180, buttonHeight);
