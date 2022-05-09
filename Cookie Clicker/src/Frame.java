@@ -40,12 +40,23 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Cookie cookie;
 	Milk milk = new Milk(0, 425);
 	
+	//shop positions
+	int buttonWidth = 180;
+	int buttonHeight = 50;
+	int farmShopY = 250;
+	int mineShopY = farmShopY + buttonHeight;
+	int factoryShopY = mineShopY + buttonHeight;
+	int countryShopY = factoryShopY + buttonHeight;
+	int colonyShopY = countryShopY + buttonHeight;
+	int galaxyShopY = colonyShopY + buttonHeight;
+	
 	//shop buttons
-	ShopButtons farmShop = new ShopButtons(785, 150, "FarmShop");
-	ShopButtons mineShop = new ShopButtons(785, 225, "MineShop");
-	ShopButtons factoryShop = new ShopButtons(785, 300, "FactoryShop");
-	ShopButtons countryShop = new ShopButtons(785, 375, "CountryShop");
-	ShopButtons colonyShop = new ShopButtons(785, 450, "ColonyShop");
+	ShopButtons farmShop = new ShopButtons(785, farmShopY, "FarmShop");
+	ShopButtons mineShop = new ShopButtons(785, mineShopY, "MineShop");
+	ShopButtons factoryShop = new ShopButtons(785, factoryShopY, "FactoryShop");
+	ShopButtons countryShop = new ShopButtons(785, countryShopY, "CountryShop");
+	ShopButtons colonyShop = new ShopButtons(785, colonyShopY, "ColonyShop");
+	ShopButtons galaxyShop = new ShopButtons(785, galaxyShopY, "GalaxyShop");
 	
 	//building lists
 	ArrayList<Building> farms;
@@ -61,10 +72,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	int factoryXMin, factoryXMax, factoryYMin, factoryYMax;
 	int countryXMin, countryXMax, countryYMin, countryYMax;
 	int colonyXMin, colonyXMax, colonyYMin, colonyYMax;
+	int galaxyXMin, galaxyXMax, galaxyYMin, galaxyYMax;
 	 
 	//cookie trackers
 	private int numCookies;
-	private int cookiesPerSecond; 
+	private int cps; 
 
 	
 	public void paint(Graphics g) {
@@ -100,11 +112,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		factoryShop.paint(g);
 		countryShop.paint(g);
 		colonyShop.paint(g);
-		g.drawRect(785, 150, 180, 75);
-		g.drawRect(785, 225, 180, 75);
-		g.drawRect(785, 300, 180, 75);
-		g.drawRect(785, 375, 180, 75);
-		g.drawRect(785, 450, 180, 75);
+		galaxyShop.paint(g);
+		g.drawRect(785, farmShopY, 180, buttonHeight);
+		g.drawRect(785, mineShopY, 180, buttonHeight);
+		g.drawRect(785, factoryShopY, 180, buttonHeight);
+		g.drawRect(785, countryShopY, 180, buttonHeight);
+		g.drawRect(785, colonyShopY, 180, buttonHeight);
+		g.drawRect(785, galaxyShopY, 180, buttonHeight);
 		
 		for(int i = 0; i < farms.size(); i++) {
 			farms.get(i).paint(g);
@@ -142,31 +156,15 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		g.setColor(Color.CYAN);
 		g.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
-		g.drawString("Cookies:" + numCookies, 27, 125);
+		g.drawString("Cookies:" + numCookies, 15, 125);
+		g.drawString("CPS:" + cps, 15, 160);
 		
 		g.setColor(Color.blue);
 		g.fillRect(750, 0, 250, 50);
 		g.setColor(Color.CYAN);
 		g.drawString("SHOP", 825, 35);
 		
-		//Coordinates(will remove)
-		g.setColor(Color.black);
-		g.drawString("000", 0, 50);
-		g.drawString("100", 100, 50);
-		g.drawString("200", 200, 50);
-		g.drawString("300", 300, 50);
-		g.drawString("400", 400, 50);
-		g.drawString("500", 500, 50);
-		g.drawString("600", 600, 50);
-		g.drawString("700", 700, 50);
-		g.drawString("800", 800, 50);
-		g.drawString("900", 900, 50);
-		g.drawString("100", 0, 100);
-		g.drawString("200", 0, 200);
-		g.drawString("300", 0, 300);
-		g.drawString("400", 0, 400);
-		g.drawString("500", 0, 500);
-		g.drawString("600", 0, 600);
+		//numCookies += cps;
 	}
 	
 	public Frame() {
@@ -195,6 +193,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		galaxies = new ArrayList<Building>();
 		
 		numCookies = 0;
+		cps = 0;
+		
 		farmXMin = 200; farmXMax = 240;
 		farmYMin = 70; farmYMax = 100;
 		mineXMin = 200; mineXMax = 240;
@@ -205,6 +205,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryYMin = 325; countryYMax = 350;
 		colonyXMin = 200; colonyXMax = 240;
 		colonyYMin = 425; colonyYMax = 455;
+		galaxyXMin = 200; galaxyXMax = 240;
+		galaxyYMin = 515; galaxyYMax = 550;
 	}
 
 	public static void main(String[] args) {
@@ -258,12 +260,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			numCookies++;
 			cookie.clicked1();
 		}
-		if(x > 785 && x < 965 && y > 175 && y < 250) {
+		if(x > 785 && x < 965 && y > farmShopY+25 && y < mineShopY+25) {
 			if(!(farmXMax >= 675 || farmXMin >= 625)) {
 				int farmX = (int) Math.floor(Math.random() * (farmXMax - farmXMin) + farmXMin);
 				int farmY = (int) Math.floor(Math.random() * (farmYMax - farmYMin) + farmYMin);
 				Building temp = new Building(farmX, farmY, "Farm");
 				farms.add(temp);
+				cps += 10;
 				farmShop.clicked1();
 				farmXMin += 60; farmXMax += 60;
 				if(farmXMax >= 675 || farmXMin >= 625) {
@@ -271,12 +274,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				}
 			}
 		}
-		if(x > 785 && x < 965 && y > 250 && y < 325) {
+		if(x > 785 && x < 965 && y > mineShopY+25 && y < factoryShopY+25) {
 			if(!(mineXMax >= 675 || mineXMin >= 625)) {
 				int mineX = (int) Math.floor(Math.random() * (mineXMax - mineXMin) + mineXMin);
 				int mineY = (int) Math.floor(Math.random() * (mineYMax - mineYMin) + mineYMin);
 				Building temp = new Building(mineX, mineY, "Mine");
 				mines.add(temp);
+				cps += 25;
 				mineShop.clicked1();
 				mineXMin += 60; mineXMax += 60;
 				if(mineXMax >= 675 || mineXMin >= 625) {
@@ -284,12 +288,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				}
 			}
 		}
-		if(x > 785 && x < 965 && y > 325 && y < 400) {
+		if(x > 785 && x < 965 && y > factoryShopY+25 && y < countryShopY+25) {
 			if(!(factoryXMax >= 675 || factoryXMin >= 625)) {
 				int factoryX = (int) Math.floor(Math.random() * (factoryXMax - factoryXMin) + factoryXMin);
 				int factoryY = (int) Math.floor(Math.random() * (factoryYMax - factoryYMin) + factoryYMin);
 				Building temp = new Building(factoryX, factoryY, "Factory");
 				factories.add(temp);
+				cps += 50;
 				factoryShop.clicked1();
 				factoryXMin += 60; factoryXMax += 60;
 				if(factoryXMax >= 675 || factoryXMin >= 625) {
@@ -298,12 +303,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 		}
 		
-		if(x > 785 && x < 965 && y > 400 && y < 475) {
+		if(x > 785 && x < 965 && y > countryShopY+25 && y < colonyShopY+25) {
 			if(!(countryXMax >= 675 || countryXMin >= 625)) {
 				int countryX = (int) Math.floor(Math.random() * (countryXMax - countryXMin) + countryXMin);
 				int countryY = (int) Math.floor(Math.random() * (countryYMax - countryYMin) + countryYMin);
 				Building temp = new Building(countryX, countryY, "Country");
 				countries.add(temp);
+				cps += 100;
 				countryShop.clicked1();
 				countryXMin += 60; countryXMax += 60;
 				if(countryXMax >= 675 || countryXMin >= 625) {
@@ -312,16 +318,34 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 		}
 		
-		if(x > 785 && x < 975 && y > 475 && y < 550) {
+		if(x > 785 && x < 965 && y > colonyShopY+25 && y < galaxyShopY+25) {
 			if(!(colonyXMax >= 675 || colonyXMin >= 625)) {
 				int colonyX = (int) Math.floor(Math.random() * (colonyXMax - colonyXMin) + colonyXMin);
 				int colonyY = (int) Math.floor(Math.random() * (colonyYMax - colonyYMin) + colonyYMin);
 				Building temp = new Building(colonyX, colonyY, "Colony");
 				colonies.add(temp);
+				cps += 500;
+				//numCookies -= 200;
 				colonyShop.clicked1();
 				colonyXMin += 75; colonyXMax += 75;
 				if(colonyXMax >= 675 || colonyXMin >= 625) {
 					colonyShop.clicked2();
+				}
+			}
+		}
+		
+		if(x > 785 && x < 965 && y > galaxyShopY+25 && y < galaxyShopY+buttonHeight+25) {
+			if(!(galaxyXMax >= 675 || galaxyXMin >= 625)) {
+				int galaxyX = (int) Math.floor(Math.random() * (galaxyXMax - galaxyXMin) + galaxyXMin);
+				int galaxyY = (int) Math.floor(Math.random() * (galaxyYMax - galaxyYMin) + galaxyYMin);
+				Building temp = new Building(galaxyX, galaxyY, "Galaxy");
+				galaxies.add(temp);
+				cps += 1000;
+				//numCookies -= 200;
+				galaxyShop.clicked1();
+				galaxyXMin += 75; galaxyXMax += 75;
+				if(galaxyXMin >= 675 || galaxyXMin >= 625) {
+					galaxyShop.clicked2();
 				}
 			}
 		}
@@ -337,29 +361,34 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x > 50 && x < 175 && y > 125 && y < 350) {
 			cookie.clicked2();
 		}
-		if(x > 785 && x < 965 && y > 175 && y < 250) {
+		if(x > 785 && x < 965 && y > farmShopY+25 && y < mineShopY+25) {
 			if(!(farmXMax >= 675 || farmXMin >= 625)) {
 				farmShop.clicked2();
 			}
 		}
-		if(x > 785 && x < 965 && y > 250 && y < 325) {
+		if(x > 785 && x < 965 && y > mineShopY+25 && y < factoryShopY+25) {
 			if(!(mineXMax >= 675 || mineXMin >= 625)) {
 				mineShop.clicked2();
 			}
 		}
-		if(x > 785 && x < 965 && y > 325 && y < 400) {
+		if(x > 785 && x < 965 && y > factoryShopY+25 && y < countryShopY+25) {
 			if(!(factoryXMax >= 675 || factoryXMin >= 625)) {
 				factoryShop.clicked2();
 			}
 		}
-		if(x > 785 && x < 965 && y > 400 && y < 475) {
+		if(x > 785 && x < 965 && y > countryShopY+25 && y < colonyShopY+25) {
 			if(!(countryXMax >= 675 || countryXMin >= 625)) {
 				countryShop.clicked2();
 			}
 		}
-		if(x > 785 && x < 965 && y > 475 && y < 550) {
+		if(x > 785 && x < 965 && y > colonyShopY+25 && y < galaxyShopY+25) {
 			if(!(colonyXMax >= 675 || colonyXMin >= 625)) {
 				colonyShop.clicked2();
+			}
+		}
+		if(x > 785 && x < 965 && y > galaxyShopY+25 && y < galaxyShopY+buttonHeight+25) {
+			if(!(galaxyXMax >= 675 || galaxyXMin >= 625)) {
+				galaxyShop.clicked2();
 			}
 		}
 	}
