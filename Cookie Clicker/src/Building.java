@@ -20,7 +20,7 @@ public class Building {
 
 	}
 	
-	
+	public int getX() {return x;}
 	
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
