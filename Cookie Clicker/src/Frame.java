@@ -35,7 +35,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static itemFrame frame2 = new itemFrame(937, 50, "frameCropped");
 	static itemFrame frame3 = new itemFrame(757, 100, "upgradeFrameOld");
 	static itemFrame frame4 = new itemFrame(937, 100, "frameCropped");
-	
+	static itemFrame frame5 = new itemFrame(937, 143, "frameCropped");
+	static itemFrame frame6 = new itemFrame(757, 189, "newRow");
 	//cookie background objects
 	Cookie cookie;
 	Milk milk = new Milk(0, 425);
@@ -60,6 +61,31 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ShopButtons countryShop = new ShopButtons(785, countryShopY, "CountryShop");
 	ShopButtons colonyShop = new ShopButtons(785, colonyShopY, "ColonyShop");
 	ShopButtons galaxyShop = new ShopButtons(785, galaxyShopY, "GalaxyShop");
+	ShopButtons cursorUpgrade = new ShopButtons(743, 50, "Cursor_1");
+	ShopButtons cursorUpgrade2 = new ShopButtons(788, 50, "Cursor_2");
+	ShopButtons farmUpgrade = new ShopButtons(834, 50, "hoe_1");
+	ShopButtons farmUpgrade2 = new ShopButtons(877, 50, "hoe_2");
+	ShopButtons mineUpgrade = new ShopButtons(922, 50, "pickaxe_1");
+	ShopButtons mineUpgrade2 = new ShopButtons(742, 100, "pickaxe_2");
+	ShopButtons factoryUpgrade = new ShopButtons(788, 100, "gear_1");
+	ShopButtons factoryUpgrade2 = new ShopButtons(833, 100, "gear_2");
+	ShopButtons colonyUpgrade = new ShopButtons(743, 145, "robot_1");
+	ShopButtons colonyUpgrade2 = new ShopButtons(788, 145, "robot_2");
+	
+	
+	
+	
+	//"upgrade" buttons
+	UpgradeButtons countryUpgrade = new UpgradeButtons(892, 96, "Deed_1");
+	UpgradeButtons countryUpgrade2 = new UpgradeButtons(937, 96, "Deed_2");
+	UpgradeButtons galaxyUpgrade = new UpgradeButtons(844, 145, "planet_1");
+	UpgradeButtons galaxyUpgrade2 = new UpgradeButtons(890, 145, "planet_2");
+	
+	UpgradeButtons cookieUpgrade1 = new UpgradeButtons(930, 145, "CookieUpgrade_1");
+	UpgradeButtons cookieUpgrade2 = new UpgradeButtons(754, 188, "CookieUpgrade_2");
+	UpgradeButtons cookieUpgrade3 = new UpgradeButtons(800, 188, "CookieUpgrade_3");
+	UpgradeButtons cookieUpgrade4 = new UpgradeButtons(845, 185, "CookieUpgrade_4");
+	
 	
 	//building lists
 	ArrayList<Building> farms;
@@ -107,6 +133,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		frame2.paint(g);
 		frame3.paint(g);
 		frame4.paint(g);
+		frame5.paint(g);
+		frame6.paint(g);
 		
 		new BasicStroke(5);
 		g.drawRect(200, 60, 550, 90);
@@ -126,6 +154,26 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryShop.paint(g);
 		colonyShop.paint(g);
 		galaxyShop.paint(g);
+		cursorUpgrade.paint(g);
+		cursorUpgrade2.paint(g);
+		farmUpgrade.paint(g);
+		farmUpgrade2.paint(g);
+		mineUpgrade.paint(g);
+		mineUpgrade2.paint(g);
+		factoryUpgrade.paint(g);
+		factoryUpgrade2.paint(g);
+		colonyUpgrade.paint(g);
+		colonyUpgrade2.paint(g);
+		galaxyUpgrade.paint(g);
+		galaxyUpgrade2.paint(g);
+		cookieUpgrade1.paint(g);
+		cookieUpgrade2.paint(g);
+		cookieUpgrade3.paint(g);
+		cookieUpgrade4.paint(g);
+		
+		countryUpgrade.paint(g);
+		countryUpgrade2.paint(g);
+		
 		g.drawRect(785, farmShopY, 180, buttonHeight);
 		g.drawRect(785, mineShopY, 180, buttonHeight);
 		g.drawRect(785, factoryShopY, 180, buttonHeight);

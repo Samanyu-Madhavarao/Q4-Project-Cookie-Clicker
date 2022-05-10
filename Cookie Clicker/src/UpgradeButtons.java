@@ -5,13 +5,13 @@ import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
-public class upgradeButton {
+public class UpgradeButtons {
 	
 	private int x, y;
 	private Image img;
 	private AffineTransform tx;
 
-	public upgradeButton(int x, int y, String i) {
+	public UpgradeButtons(int x, int y, String i) {
 		this.x = x;
 		this.y = y;
 		img = getImage("/imgs/"+i+".png");
@@ -48,7 +48,7 @@ public class upgradeButton {
 	
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
-		tx.scale(1.5, 1.5);
+		tx.scale(1, 1);
 	}
 
 	private Image getImage(String path) {
