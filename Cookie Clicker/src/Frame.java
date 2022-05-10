@@ -197,7 +197,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.drawString("SHOP", 825, 35);
 		
 		long elapsedTime = System.currentTimeMillis() - startTime;
-		long elapsedSeconds = elapsedTime / 500;
+		long elapsedSeconds = elapsedTime / 1000;
 		if(elapsedSeconds == 1) {
 			numCookies += (int) cps;
 			startTime = System.currentTimeMillis();
@@ -305,13 +305,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cookie.clicked1();
 		}
 		if(x > 785 && x < 965 && y > farmShopY+25 && y < mineShopY+25 && numCookies >= farmPrice) {
-				int farmX = (int) Math.floor(Math.random() * (farmXMax - farmXMin) + farmXMin);
-				int farmY = (int) Math.floor(Math.random() * (farmYMax - farmYMin) + farmYMin);
-				Building temp = new Building(farmX, farmY, "Farm");
-				farms.add(temp);
-				cps += 1;
-				farmShop.clicked1();
-				farmXMin += 60; farmXMax += 60;
+			int farmX = (int) Math.floor(Math.random() * (farmXMax - farmXMin) + farmXMin);
+			int farmY = (int) Math.floor(Math.random() * (farmYMax - farmYMin) + farmYMin);
+			Building temp = new Building(farmX, farmY, "Farm");
+			farms.add(temp);
+			cps += 1;
+			farmShop.clicked1();
+			farmXMin += 60; farmXMax += 60;
 		}
 		if(x > 785 && x < 965 && y > mineShopY+25 && y < factoryShopY+25 && numCookies >= minePrice) {
 			int mineX = (int) Math.floor(Math.random() * (mineXMax - mineXMin) + mineXMin);
