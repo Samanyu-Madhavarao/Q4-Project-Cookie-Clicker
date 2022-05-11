@@ -301,7 +301,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		galaxyCPS = 1000;
 		
 		farmPrice = 15;
-		minePrice = 100;
+		minePrice = 100; 
 		factoryPrice = 1000;
 		countryPrice = 45000;
 		colonyPrice = 125000;
