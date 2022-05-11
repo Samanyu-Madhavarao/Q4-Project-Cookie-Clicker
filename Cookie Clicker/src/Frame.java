@@ -302,7 +302,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		factoryPrice = 1000;
 		countryPrice = 45000;
 		colonyPrice = 125000;
-		galaxyPrice = 5000000;
+		galaxyPrice = 1000000;
 		
 		numCookies = 0;
 		cps = 0;
@@ -408,7 +408,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cps += countryCPS;
 			countryShop.clicked1();
 			countryXMin += 60; countryXMax += 60;
-			countryShop.clicked2();
 		}
 		
 		if(x > 785 && x < 965 && y > colonyShopY+25 && y < galaxyShopY+25 && numCookies >= colonyPrice) {
