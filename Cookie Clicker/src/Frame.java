@@ -83,7 +83,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	UpgradeButtons cookieUpgrade2 = new UpgradeButtons(754, 188, "CookieUpgrade_2");
 	UpgradeButtons cookieUpgrade3 = new UpgradeButtons(800, 188, "CookieUpgrade_3");
 	UpgradeButtons cookieUpgrade4 = new UpgradeButtons(845, 185, "CookieUpgrade_4");
-	UpgradeButtons buildingUpgrade = new UpgradeButtons(890, 191, "buildingcps");
+	UpgradeButtons buildingUpgrade = new UpgradeButtons(890, 191, "buildingcps (1)");
 	UpgradeButtons cursorUpgrade3 = new UpgradeButtons(930, 190, "10cursor");
 	
 	//building lists
