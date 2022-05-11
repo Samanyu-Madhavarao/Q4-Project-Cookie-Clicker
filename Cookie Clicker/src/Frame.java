@@ -305,7 +305,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		factoryPrice = 1000;
 		countryPrice = 45000;
 		colonyPrice = 125000;
-		galaxyPrice = 1000000;
+		galaxyPrice = 1000000; 
 		
 		numCookies = 0;
 		cps = 0;
