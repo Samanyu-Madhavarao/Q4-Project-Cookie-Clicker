@@ -184,7 +184,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		cookieUpgrade3.paint(g);
 		cookieUpgrade4.paint(g);
 		
-		countryUpgrade.paint(g);
+		countryUpgrade.paint(g); 
 		countryUpgrade2.paint(g);
 		
 		g.drawRect(785, farmShopY, 180, buttonHeight);
