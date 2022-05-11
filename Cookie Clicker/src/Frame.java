@@ -62,23 +62,26 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ShopButtons countryShop = new ShopButtons(785, countryShopY, "CountryShop");
 	ShopButtons colonyShop = new ShopButtons(785, colonyShopY, "ColonyShop");
 	ShopButtons galaxyShop = new ShopButtons(785, galaxyShopY, "GalaxyShop");
+	
+	//"upgrade" buttons
 	ShopButtons cursorUpgrade = new ShopButtons(743, 50, "Cursor_1");
 	ShopButtons cursorUpgrade2 = new ShopButtons(788, 50, "Cursor_2");
+	
 	ShopButtons farmUpgrade = new ShopButtons(834, 50, "hoe_1");
 	ShopButtons farmUpgrade2 = new ShopButtons(877, 50, "hoe_2");
+	
 	ShopButtons mineUpgrade = new ShopButtons(922, 50, "pickaxe_1");
 	ShopButtons mineUpgrade2 = new ShopButtons(742, 100, "pickaxe_2");
+	
 	ShopButtons factoryUpgrade = new ShopButtons(788, 100, "gear_1");
 	ShopButtons factoryUpgrade2 = new ShopButtons(833, 100, "gear_2");
+	
 	ShopButtons colonyUpgrade = new ShopButtons(743, 145, "robot_1");
 	ShopButtons colonyUpgrade2 = new ShopButtons(788, 145, "robot_2");
 	
-	
-	
-	
-	//"upgrade" buttons
 	UpgradeButtons countryUpgrade = new UpgradeButtons(892, 96, "Deed_1");
 	UpgradeButtons countryUpgrade2 = new UpgradeButtons(937, 96, "Deed_2");
+	
 	UpgradeButtons galaxyUpgrade = new UpgradeButtons(844, 145, "planet_1");
 	UpgradeButtons galaxyUpgrade2 = new UpgradeButtons(890, 145, "planet_2");
 	
@@ -122,7 +125,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	 
 	//cookie trackers
 	private int numCookies;
-	private double cps;
 	long startTime = System.currentTimeMillis();
 
 	//secret
@@ -250,17 +252,19 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.setColor(Color.CYAN);
 		g.setFont(new Font("Comic Sans MS", Font.BOLD, 23));
 		g.drawString("Cookies:" + numCookies, 15, 125);
-		g.drawString("CPS:" + (int) cps, 15, 160);
+		g.drawString("CPS:" + (int) updateCPS(), 15, 160);
 		
 		g.setColor(Color.blue);
 		g.fillRect(750, 0, 250, 50);
 		g.setColor(Color.CYAN);
 		g.drawString("SHOP", 825, 35);
 		
+		
+		
 		long elapsedTime = System.currentTimeMillis() - startTime;
 		long elapsedSeconds = elapsedTime / 1000;
 		if(elapsedSeconds == 1) {
-			numCookies += (int) cps;
+			numCookies += (int) updateCPS();
 			startTime = System.currentTimeMillis();
 		}
 	}
@@ -305,7 +309,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		galaxyPrice = 1000000;
 		
 		numCookies = 0;
-		cps = 0;
 		
 		farmXMin = 200; farmXMax = 240;
 		farmYMin = 70; farmYMax = 100;
@@ -319,6 +322,29 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		colonyYMin = 425; colonyYMax = 455;
 		galaxyXMin = 200; galaxyXMax = 240;
 		galaxyYMin = 515; galaxyYMax = 550;
+	}
+	
+	public int updateCPS() {
+		int cps = 0;
+		for(int i = 0; i < farms.size(); i++) {
+			cps += (farmCPS*farms.size());
+		}
+		for(int i = 0; i < mines.size(); i++) {
+			cps += (mineCPS*mines.size());
+		}
+		for(int i = 0; i < factories.size(); i++) {
+			cps += (factoryCPS*factories.size());
+		}
+		for(int i = 0; i < countries.size(); i++) {
+			cps += (countryCPS*countries.size());
+		}
+		for(int i = 0; i < colonies.size(); i++) {
+			cps += (colonyCPS*colonies.size());
+		}
+		for(int i = 0; i < galaxies.size(); i++) {
+			cps += (galaxyCPS*galaxies.size());
+		}
+		return cps;
 	}
 
 	public static void main(String[] args) {
@@ -377,7 +403,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			int farmY = (int) Math.floor(Math.random() * (farmYMax - farmYMin) + farmYMin);
 			Building temp = new Building(farmX, farmY, "Farm");
 			farms.add(temp);
-			cps += farmCPS;
 			farmShop.clicked1();
 			farmXMin += 60; farmXMax += 60;
 		}
@@ -386,7 +411,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			int mineY = (int) Math.floor(Math.random() * (mineYMax - mineYMin) + mineYMin);
 			Building temp = new Building(mineX, mineY, "Mine");
 			mines.add(temp);
-			cps += mineCPS;
 			mineShop.clicked1();
 			mineXMin += 60; mineXMax += 60;
 		}
@@ -395,7 +419,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			int factoryY = (int) Math.floor(Math.random() * (factoryYMax - factoryYMin) + factoryYMin);
 			Building temp = new Building(factoryX, factoryY, "Factory");
 			factories.add(temp);
-			cps += factoryCPS;
 			factoryShop.clicked1();
 			factoryXMin += 60; factoryXMax += 60;
 		}
@@ -405,7 +428,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			int countryY = (int) Math.floor(Math.random() * (countryYMax - countryYMin) + countryYMin);
 			Building temp = new Building(countryX, countryY, "Country");
 			countries.add(temp);
-			cps += countryCPS;
 			countryShop.clicked1();
 			countryXMin += 60; countryXMax += 60;
 		}
@@ -415,7 +437,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			int colonyY = (int) Math.floor(Math.random() * (colonyYMax - colonyYMin) + colonyYMin);
 			Building temp = new Building(colonyX, colonyY, "Colony");
 			colonies.add(temp);
-			cps += colonyCPS;
 			colonyShop.clicked1();
 			colonyXMin += 75; colonyXMax += 75;
 		}
@@ -425,10 +446,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			int galaxyY = (int) Math.floor(Math.random() * (galaxyYMax - galaxyYMin) + galaxyYMin);
 			Building temp = new Building(galaxyX, galaxyY, "Galaxy");
 			galaxies.add(temp);
-			cps += galaxyCPS;
 			galaxyShop.clicked1();
 			galaxyXMin += 75; galaxyXMax += 75;
 		}
+		
+		//if(x > cursorUpgrade.getX() && x < cursorUpgrade.getX+)
 		
 		if(x >= easterEgg.getX() && x <= easterEgg.getX()+10) {
 			if(y >= easterEgg.getY()+20 && y <= easterEgg.getY()+40) {
@@ -438,6 +460,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				}
 			}
 		}
+		
 		
 	}
 
