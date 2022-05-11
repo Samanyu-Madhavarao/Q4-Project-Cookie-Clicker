@@ -55,7 +55,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	int colonyShopY = countryShopY + buttonHeight;
 	int galaxyShopY = colonyShopY + buttonHeight;
 	
-	//shop buttons
+	//shop buttons      
 	ShopButtons farmShop = new ShopButtons(785, farmShopY, "FarmShop");
 	ShopButtons mineShop = new ShopButtons(785, mineShopY, "MineShop");
 	ShopButtons factoryShop = new ShopButtons(785, factoryShopY, "FactoryShop");
