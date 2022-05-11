@@ -305,14 +305,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		factoryPrice = 1000;
 		countryPrice = 45000;
 		colonyPrice = 125000;
-		galaxyPrice = 1;
+		galaxyPrice = 1000000;
 		
 		numCookies = 0;
 		cps = 0;
 		
 		farmXMin = 200; farmXMax = 240;
 		farmYMin = 70; farmYMax = 100;
-		mineXMin = 200; mineXMax = 240;
+		mineXMin = 200; mineXMax = 240; 
 		mineYMin = 150; mineYMax = 200;
 		factoryXMin = 200; factoryXMax = 240;
 		factoryYMin = 250; factoryYMax = 275;
