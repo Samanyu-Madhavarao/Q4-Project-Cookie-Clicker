@@ -82,7 +82,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	UpgradeButtons cookieUpgrade2 = new UpgradeButtons(754, 188, "CookieUpgrade_2");
 	UpgradeButtons cookieUpgrade3 = new UpgradeButtons(800, 188, "CookieUpgrade_3");
 	UpgradeButtons cookieUpgrade4 = new UpgradeButtons(845, 185, "CookieUpgrade_4");
-	
+	UpgradeButtons buildingUpgrade = new UpgradeButtons(890, 191, "buildingcps");
+	UpgradeButtons cursorUpgrade3 = new UpgradeButtons(930, 190, "10cursor");
 	
 	//building lists
 	ArrayList<Building> farms;
@@ -168,6 +169,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		cookieUpgrade4.paint(g);
 		countryUpgrade.paint(g);
 		countryUpgrade2.paint(g);
+		buildingUpgrade.paint(g);
+		cursorUpgrade3.paint(g);
 		
 		g.drawRect(785, farmShopY, 180, buttonHeight);
 		g.drawRect(785, mineShopY, 180, buttonHeight);
