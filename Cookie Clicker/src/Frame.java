@@ -126,7 +126,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//cookie trackers
 	private int numCookies;
 	long startTime = System.currentTimeMillis();
-
+  
 	//secret
 	Secret easterEgg = new Secret(500, 350);
 	int numSecClicked = 0;
@@ -142,7 +142,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		galaxyBackground.paint(g);
 
 		shopBackground.paint(g);
-		frame1.paint(g);
+		frame1.paint(g); 
 		frame2.paint(g);
 		frame3.paint(g);
 		frame4.paint(g);
@@ -157,7 +157,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.drawRect(200, 420, 550, 90);
 		g.drawRect(200, 510, 550, 90);
 		
-		
+
 		cookie.paint(g);
 		milk.paint(g);
 		
@@ -298,21 +298,21 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		mineCPS = 5;
 		factoryCPS = 25;
 		countryCPS = 50;
-		colonyCPS = 100;
+		colonyCPS = 100; 
 		galaxyCPS = 1000;
 		
 		farmPrice = 15;
-		minePrice = 100;
+		minePrice = 100; 
 		factoryPrice = 1000;
 		countryPrice = 45000;
 		colonyPrice = 125000;
-		galaxyPrice = 1000000;
+		galaxyPrice = 1000000; 
 		
 		numCookies = 0;
 		
 		farmXMin = 200; farmXMax = 240;
 		farmYMin = 70; farmYMax = 100;
-		mineXMin = 200; mineXMax = 240;
+		mineXMin = 200; mineXMax = 240; 
 		mineYMin = 150; mineYMax = 200;
 		factoryXMin = 200; factoryXMax = 240;
 		factoryYMin = 250; factoryYMax = 275;
