@@ -37,6 +37,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static itemFrame frame4 = new itemFrame(937, 100, "frameCropped");
 	static itemFrame frame5 = new itemFrame(937, 143, "frameCropped");
 	static itemFrame frame6 = new itemFrame(757, 189, "newRow");
+	
 	//cookie background objects
 	Cookie cookie;
 	Milk milk = new Milk(0, 425);
@@ -93,6 +94,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ArrayList<Building> colonies;
 	ArrayList<Building> galaxies;
 	
+	//building cps
+	private int farmCPS;
+	private int mineCPS;
+	private int factoryCPS;
+	private int countryCPS;
+	private int colonyCPS;
+	private int galaxyCPS;
+	
 	//building prices
 	private int farmPrice;
 	private int minePrice;
@@ -115,7 +124,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	long startTime = System.currentTimeMillis();
 
 
+
 	 
+
+	//secret
+	Secret easterEgg = new Secret(500, 350);
+	int numSecClicked = 0;
+	
+
 	public void paint(Graphics g) {
 		super.paintComponent(g);		
 		cookieBackground.paint(g);
@@ -185,6 +201,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.drawString("Price: "+countryPrice, 735, countryShopY);
 		g.drawString("Price: "+colonyPrice, 735, colonyShopY);
 		g.drawString("Price: "+galaxyPrice, 735, galaxyShopY);
+		
+		easterEgg.paint(g);
 		
 		for(int i = 0; i < farms.size(); i++) {
 			if(farms.get(i).getX() < 700) {
@@ -275,12 +293,19 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		colonies = new ArrayList<Building>();
 		galaxies = new ArrayList<Building>();
 		
+		farmCPS = 1;
+		mineCPS = 5;
+		factoryCPS = 25;
+		countryCPS = 50;
+		colonyCPS = 100;
+		galaxyCPS = 1000;
+		
 		farmPrice = 15;
 		minePrice = 100;
 		factoryPrice = 1000;
 		countryPrice = 45000;
 		colonyPrice = 125000;
-		galaxyPrice = 5000000;
+		galaxyPrice = 1;
 		
 		numCookies = 0;
 		cps = 0;
@@ -355,7 +380,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			int farmY = (int) Math.floor(Math.random() * (farmYMax - farmYMin) + farmYMin);
 			Building temp = new Building(farmX, farmY, "Farm");
 			farms.add(temp);
-			cps += 1;
+			cps += farmCPS;
 			farmShop.clicked1();
 			farmXMin += 60; farmXMax += 60;
 		}
@@ -364,7 +389,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			int mineY = (int) Math.floor(Math.random() * (mineYMax - mineYMin) + mineYMin);
 			Building temp = new Building(mineX, mineY, "Mine");
 			mines.add(temp);
-			cps += 5;
+			cps += mineCPS;
 			mineShop.clicked1();
 			mineXMin += 60; mineXMax += 60;
 		}
@@ -373,7 +398,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			int factoryY = (int) Math.floor(Math.random() * (factoryYMax - factoryYMin) + factoryYMin);
 			Building temp = new Building(factoryX, factoryY, "Factory");
 			factories.add(temp);
-			cps += 25;
+			cps += factoryCPS;
 			factoryShop.clicked1();
 			factoryXMin += 60; factoryXMax += 60;
 		}
@@ -383,10 +408,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			int countryY = (int) Math.floor(Math.random() * (countryYMax - countryYMin) + countryYMin);
 			Building temp = new Building(countryX, countryY, "Country");
 			countries.add(temp);
-			cps += 50;
+			cps += countryCPS;
 			countryShop.clicked1();
 			countryXMin += 60; countryXMax += 60;
-			countryShop.clicked2();
 		}
 		
 		if(x > 785 && x < 965 && y > colonyShopY+25 && y < galaxyShopY+25 && numCookies >= colonyPrice) {
@@ -394,7 +418,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			int colonyY = (int) Math.floor(Math.random() * (colonyYMax - colonyYMin) + colonyYMin);
 			Building temp = new Building(colonyX, colonyY, "Colony");
 			colonies.add(temp);
-			cps += 75;
+			cps += colonyCPS;
 			colonyShop.clicked1();
 			colonyXMin += 75; colonyXMax += 75;
 		}
@@ -404,9 +428,18 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			int galaxyY = (int) Math.floor(Math.random() * (galaxyYMax - galaxyYMin) + galaxyYMin);
 			Building temp = new Building(galaxyX, galaxyY, "Galaxy");
 			galaxies.add(temp);
-			cps += 125;
+			cps += galaxyCPS;
 			galaxyShop.clicked1();
 			galaxyXMin += 75; galaxyXMax += 75;
+		}
+		
+		if(x >= easterEgg.getX() && x <= easterEgg.getX()+10) {
+			if(y >= easterEgg.getY()+20 && y <= easterEgg.getY()+40) {
+				numSecClicked++;
+				if(numSecClicked >= 5) {
+					numCookies += 100000;
+				}
+			}
 		}
 		
 	}
