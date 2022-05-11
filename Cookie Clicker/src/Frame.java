@@ -98,7 +98,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	private int minePrice;
 	private int factoryPrice;
 	private int countryPrice;
-	private int colonyPrice;
+	private int colonyPrice;  //rghrahr
 	private int galaxyPrice;
 	
 	//building positions
@@ -115,7 +115,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	long startTime = System.currentTimeMillis();
 
 
-	
+	 
 	public void paint(Graphics g) {
 		super.paintComponent(g);		
 		cookieBackground.paint(g);
