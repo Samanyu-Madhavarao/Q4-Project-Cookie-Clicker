@@ -66,6 +66,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//"upgrade" buttons
 	ShopButtons cursorUpgrade = new ShopButtons(743, 50, "Cursor_1");
 	ShopButtons cursorUpgrade2 = new ShopButtons(788, 50, "Cursor_2");
+	UpgradeButtons cursorUpgrade3 = new UpgradeButtons(930, 190, "10cursor");
 	
 	ShopButtons farmUpgrade = new ShopButtons(834, 50, "hoe_1");
 	ShopButtons farmUpgrade2 = new ShopButtons(877, 50, "hoe_2");
@@ -84,12 +85,16 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	UpgradeButtons galaxyUpgrade = new UpgradeButtons(844, 145, "planet_1");
 	UpgradeButtons galaxyUpgrade2 = new UpgradeButtons(890, 145, "planet_2");
+	
 	UpgradeButtons cookieUpgrade1 = new UpgradeButtons(930, 145, "CookieUpgrade_1");
 	UpgradeButtons cookieUpgrade2 = new UpgradeButtons(754, 188, "CookieUpgrade_2");
 	UpgradeButtons cookieUpgrade3 = new UpgradeButtons(800, 188, "CookieUpgrade_3");
 	UpgradeButtons cookieUpgrade4 = new UpgradeButtons(845, 185, "CookieUpgrade_4");
+	
 	UpgradeButtons buildingUpgrade = new UpgradeButtons(890, 191, "buildingcps (1)");
-	UpgradeButtons cursorUpgrade3 = new UpgradeButtons(930, 190, "10cursor");
+	
+	boolean cursorUpgradeBool = false;
+	boolean cursorUpgrade2Bool = false;
 	
 	//building lists
 	ArrayList<Building> farms;
@@ -100,6 +105,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ArrayList<Building> galaxies;
 	
 	//building cps
+	private int cursorCPS = 0;
 	private int farmCPS;
 	private int mineCPS;
 	private int factoryCPS;
@@ -126,10 +132,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//cookie trackers
 	private int numCookies;
 	long startTime = System.currentTimeMillis();
-
-
-
-	 
 
 	//secret
 	Secret easterEgg = new Secret(500, 350);
@@ -306,6 +308,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		colonyCPS = 100; 
 		galaxyCPS = 1000;
 		
+		cursorCPS = 1;
 		farmPrice = 15;
 		minePrice = 100; 
 		factoryPrice = 1000;
@@ -400,7 +403,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		int x = e.getX();
 		int y = e.getY();
 		if(x > 50 && x < 175 && y > 125 && y < 350) {
-			numCookies++;
+			numCookies += cursorCPS;
 			cookie.clicked1();
 		}
 		if(x > 785 && x < 965 && y > farmShopY+25 && y < mineShopY+25 && numCookies >= farmPrice) {
@@ -455,7 +458,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			galaxyXMin += 75; galaxyXMax += 75;
 		}
 		
-		//if(x > cursorUpgrade.getX() && x < cursorUpgrade.getX+)
+		if(x >= 765 && x <= 801 && y >= 80 && y <= 115 && !cursorUpgradeBool && numCookies >= 7) {
+			cursorUpgradeBool = true;
+			numCookies -= 7;
+			cursorCPS *= 2;
+		}
 		
 		if(x >= easterEgg.getX() && x <= easterEgg.getX()+10) {
 			if(y >= easterEgg.getY()+20 && y <= easterEgg.getY()+40) {
