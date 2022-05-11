@@ -308,7 +308,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		galaxyPrice = 1000000; 
 		
 		numCookies = 0;
-		cps = 0;
+		cps = 0; 
 		
 		farmXMin = 200; farmXMax = 240;
 		farmYMin = 70; farmYMax = 100;
