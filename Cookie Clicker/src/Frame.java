@@ -74,17 +74,19 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ShopButtons colonyUpgrade2 = new ShopButtons(788, 145, "robot_2");
 	
 	
+	
+	
 	//"upgrade" buttons
 	UpgradeButtons countryUpgrade = new UpgradeButtons(892, 96, "Deed_1");
 	UpgradeButtons countryUpgrade2 = new UpgradeButtons(937, 96, "Deed_2");
 	UpgradeButtons galaxyUpgrade = new UpgradeButtons(844, 145, "planet_1");
 	UpgradeButtons galaxyUpgrade2 = new UpgradeButtons(890, 145, "planet_2");
+	
 	UpgradeButtons cookieUpgrade1 = new UpgradeButtons(930, 145, "CookieUpgrade_1");
 	UpgradeButtons cookieUpgrade2 = new UpgradeButtons(754, 188, "CookieUpgrade_2");
 	UpgradeButtons cookieUpgrade3 = new UpgradeButtons(800, 188, "CookieUpgrade_3");
 	UpgradeButtons cookieUpgrade4 = new UpgradeButtons(845, 185, "CookieUpgrade_4");
-	UpgradeButtons buildingUpgrade = new UpgradeButtons(890, 191, "buildingcps");
-	UpgradeButtons cursorUpgrade3 = new UpgradeButtons(930, 190, "10cursor");
+	
 	
 	//building lists
 	ArrayList<Building> farms;
@@ -107,7 +109,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	private int minePrice;
 	private int factoryPrice;
 	private int countryPrice;
-	private int colonyPrice;  //rghrahr
+	private int colonyPrice;
 	private int galaxyPrice;
 	
 	//building positions
@@ -153,6 +155,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.drawRect(200, 420, 550, 90);
 		g.drawRect(200, 510, 550, 90);
 		
+		
 		cookie.paint(g);
 		milk.paint(g);
 		
@@ -178,10 +181,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		cookieUpgrade2.paint(g);
 		cookieUpgrade3.paint(g);
 		cookieUpgrade4.paint(g);
+		
 		countryUpgrade.paint(g);
 		countryUpgrade2.paint(g);
-		buildingUpgrade.paint(g);
-		cursorUpgrade3.paint(g);
 		
 		g.drawRect(785, farmShopY, 180, buttonHeight);
 		g.drawRect(785, mineShopY, 180, buttonHeight);
