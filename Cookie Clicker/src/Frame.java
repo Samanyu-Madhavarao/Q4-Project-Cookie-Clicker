@@ -66,6 +66,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//"upgrade" buttons
 	ShopButtons cursorUpgrade = new ShopButtons(743, 50, "Cursor_1");
 	ShopButtons cursorUpgrade2 = new ShopButtons(788, 50, "Cursor_2");
+	UpgradeButtons cursorUpgrade3 = new UpgradeButtons(930, 190, "10cursor");
 	
 	ShopButtons farmUpgrade = new ShopButtons(834, 50, "hoe_1");
 	ShopButtons farmUpgrade2 = new ShopButtons(877, 50, "hoe_2");
@@ -89,9 +90,28 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	UpgradeButtons cookieUpgrade3 = new UpgradeButtons(800, 188, "CookieUpgrade_3");
 	UpgradeButtons cookieUpgrade4 = new UpgradeButtons(845, 185, "CookieUpgrade_4");
 	UpgradeButtons buildingUpgrade = new UpgradeButtons(890, 191, "buildingcps (1)");
-	UpgradeButtons cursorUpgrade3 = new UpgradeButtons(930, 190, "10cursor");
 	
-	//building lists
+	
+	boolean cursorUpgradeBool = false;
+	boolean cursorUpgrade2Bool = false;
+	boolean cursorUpgrade3Bool = false;
+	boolean farmUpgradeBool = false;
+	boolean farmUpgrade2Bool = false;
+	boolean mineUpgradeBool = false;
+	boolean mineUpgrade2Bool = false;
+	boolean factoryUpgradeBool = false;
+	boolean factoryUpgrade2Bool = false;
+	boolean colonyUpgradeBool = false;
+	boolean colonyUpgrade2Bool = false;
+	boolean countryUpgradeBool = false;
+	boolean countryUpgrade2Bool = false;
+	boolean galaxyUpgradeBool = false;
+	boolean galaxyUpgrade2Bool = false;
+	boolean cookieUpgradeBool = false;
+	boolean cookieUpgrade2Bool = false;
+	boolean cookieUpgrade3Bool = false;
+	boolean cookieUpgrade4Bool = false;
+	
 	ArrayList<Building> farms;
 	ArrayList<Building> mines;
 	ArrayList<Building> factories;
