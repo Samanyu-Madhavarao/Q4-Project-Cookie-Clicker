@@ -206,7 +206,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		for(int i = 0; i < farms.size(); i++) {
 			if(farms.get(i).getX() < 700) {
 				farms.get(i).paint(g);
-			}
+			}   
 		}
 		
 		for(int i = 0; i < mines.size(); i++) {
