@@ -75,7 +75,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	ShopButtons factoryUpgrade = new ShopButtons(788, 100, "gear_1");
 	ShopButtons factoryUpgrade2 = new ShopButtons(833, 100, "gear_2");
-	
+	 
 	ShopButtons colonyUpgrade = new ShopButtons(743, 145, "robot_1");
 	ShopButtons colonyUpgrade2 = new ShopButtons(788, 145, "robot_2");
 	
