@@ -29,6 +29,10 @@ public class ShopButtons {
 		g2.drawImage(img, tx, null);
 
 	}
+	
+	public int getX() {return x;}
+	public int getY() {return y;}
+
 	/* update the picture variable location */
 	private void update() {
 
