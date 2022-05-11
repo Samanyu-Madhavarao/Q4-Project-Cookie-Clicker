@@ -158,7 +158,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.drawRect(200, 420, 550, 90);
 		g.drawRect(200, 510, 550, 90);
 		
-		cookie.paint(g);
+		cookie.paint(g); //teateattg
 		milk.paint(g);
 		
 		farmShop.paint(g);
