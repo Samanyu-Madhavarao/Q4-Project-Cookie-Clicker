@@ -29,7 +29,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static Background colonyBackground = new Background(200, 420, "colonyBackground");
 	static Background galaxyBackground = new Background(200, 510, "galaxyBackground");
 	static Background shopBackground = new Background(750, 0, "ShopBackground", 1, 1);
-	
+	static Background2 statsBackground = new Background2(195, 0, "StatsBackground");
 	
 	static itemFrame frame1 = new itemFrame(757, 50, "upgradeFrameOld");
 	static itemFrame frame2 = new itemFrame(937, 50, "frameCropped");
@@ -112,6 +112,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	boolean cookieUpgrade2Bool = false;
 	boolean cookieUpgrade3Bool = false;
 	boolean cookieUpgrade4Bool = false;
+	boolean statsPage = true;
 	
 	ArrayList<Building> farms;
 	ArrayList<Building> mines;
@@ -163,7 +164,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryBackground.paint(g);
 		colonyBackground.paint(g);
 		galaxyBackground.paint(g);
-
+		statsBackground.paint(g);
+		
 		shopBackground.paint(g);
 		frame1.paint(g); 
 		frame2.paint(g);
@@ -289,8 +291,18 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(elapsedSeconds == 1) {
 			numCookies += (int) updateCPS();
 			startTime = System.currentTimeMillis();
+		
 		}
+	
+		if(statsPage ){
+			g.setColor(Color.black);
+			g.drawRect(200,62, 400, 300);
+			g.fillRect(200, 62, 400, 300);
+		}
+		
+		
 	}
+	
 	
 	public Frame() {
 		JFrame f = new JFrame("Cookie Clicker");
@@ -370,6 +382,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		}
 		return cps;
 	}
+	
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
