@@ -66,7 +66,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//"upgrade" buttons
 	ShopButtons cursorUpgrade = new ShopButtons(743, 50, "Cursor_1");
 	ShopButtons cursorUpgrade2 = new ShopButtons(788, 50, "Cursor_2");
-	UpgradeButtons cursorUpgrade3 = new UpgradeButtons(930, 190, "10cursor");
+	UpgradeButtons cpsUpgrade = new UpgradeButtons(930, 190, "10cursor");
 	
 	ShopButtons farmUpgrade = new ShopButtons(834, 50, "hoe_1");
 	ShopButtons farmUpgrade2 = new ShopButtons(877, 50, "hoe_2");
@@ -95,7 +95,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	boolean cursorUpgradeBool = false;
 	boolean cursorUpgrade2Bool = false;
-	boolean cursorUpgrade3Bool = false;
+	boolean cpsUpgradeBool = false;
 	boolean farmUpgradeBool = false;
 	boolean farmUpgrade2Bool = false;
 	boolean mineUpgradeBool = false;
@@ -112,6 +112,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	boolean cookieUpgrade2Bool = false;
 	boolean cookieUpgrade3Bool = false;
 	boolean cookieUpgrade4Bool = false;
+	boolean buildingUpgradeBool = false;
 	
 	ArrayList<Building> farms;
 	ArrayList<Building> mines;
@@ -208,7 +209,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryUpgrade.paint(g);
 		countryUpgrade2.paint(g);
 		buildingUpgrade.paint(g);
-		cursorUpgrade3.paint(g);
+		cpsUpgrade.paint(g);
 		
 		g.drawRect(785, farmShopY, 180, buttonHeight);
 		g.drawRect(785, mineShopY, 180, buttonHeight);
@@ -281,6 +282,71 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.fillRect(750, 0, 250, 50);
 		g.setColor(Color.CYAN);
 		g.drawString("SHOP", 825, 35);
+		
+		g.setColor(Color.GRAY);
+		if(cursorUpgradeBool) {
+			g.fillRect(762, 55, 36, 36);
+		}
+		if(cursorUpgrade2Bool) {
+			g.fillRect(807, 55, 36, 36);
+		}
+		if(farmUpgradeBool) {
+			g.fillRect(852, 55, 36, 36);
+		}
+		if(farmUpgrade2Bool) {
+			g.fillRect(897, 55, 36, 36);
+		}
+		if(mineUpgradeBool) {
+			g.fillRect(942, 55, 36, 36);
+		}
+		
+		if(mineUpgrade2Bool) {
+			g.fillRect(762, 105, 36, 36);
+		}
+		if(factoryUpgradeBool) {
+			g.fillRect(807, 105, 36, 36);
+		}
+		if(factoryUpgrade2Bool) {
+			g.fillRect(852, 105, 36, 36);
+		}
+		if(countryUpgradeBool) {
+			g.fillRect(897, 105, 36, 36);
+		}
+		if(countryUpgrade2Bool) {
+			g.fillRect(942, 105, 36, 36);
+		}
+		
+		if(colonyUpgradeBool) {
+			g.fillRect(762, 150, 36, 36);
+		}
+		if(colonyUpgrade2Bool) {
+			g.fillRect(807, 150, 36, 36);
+		}
+		if(galaxyUpgradeBool) {
+			g.fillRect(852, 150, 36, 36);
+		}
+		if(galaxyUpgrade2Bool) {
+			g.fillRect(897, 150, 36, 36);
+		}
+		if(cookieUpgradeBool) {
+			g.fillRect(942, 148, 36, 36);
+		}
+		
+		if(cookieUpgrade2Bool) {
+			g.fillRect(762, 194, 36, 36);
+		}
+		if(cookieUpgrade3Bool) {
+			g.fillRect(807, 194, 36, 36);
+		}
+		if(cookieUpgrade4Bool) {
+			g.fillRect(852, 194, 36, 36);
+		}
+		if(buildingUpgradeBool) {
+			g.fillRect(897, 194, 36, 36);
+		}
+		if(cpsUpgradeBool) {
+			g.fillRect(942, 194, 36, 36);
+		}
 		
 		
 		
@@ -368,6 +434,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		for(int i = 0; i < galaxies.size(); i++) {
 			cps += (galaxyCPS*galaxies.size());
 		}
+		if(cookieUpgradeBool) {cps *= 1.1;}
+		if(cookieUpgrade2Bool) {cps *= 1.1;}
+		if(cookieUpgrade3Bool) {cps *= 1.1;}
+		if(cookieUpgrade4Bool) {cps *= 1.1;}
+		if(cpsUpgradeBool) {cps *= 1.1;}
 		return cps;
 	}
 
@@ -480,13 +551,119 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cursorCPS *= 2;
 		}
 		
-		if(x >= 765 && x <= 801 && y >= 80 && y <= 115 && !cursorUpgrade2Bool && numCookies >= 1500) {
+		if(x >= 810 && x <= 845 && y >= 80 && y <= 115 && !cursorUpgrade2Bool && numCookies >= 1500) {
 			cursorUpgrade2Bool = true;
 			numCookies -= 1500;
-			cursorCPS *= 40;
+			cursorCPS *= 5;
 		}
 		
+		if(x >= 855 && x <= 890 && y >= 80 && y <= 115 && !farmUpgradeBool && numCookies >= 200) {
+			farmUpgradeBool = true;
+			numCookies -= 200;
+			farmCPS *= 2;
+		}
 		
+		if(x >= 900 && x <= 935 && y >= 80 && y <= 115 && !farmUpgrade2Bool && numCookies >= 3000) {
+			farmUpgrade2Bool = true;
+			numCookies -= 3000;
+			farmCPS *= 5;
+		}
+		
+		if(x >= 945 && x <= 980 && y >= 80 && y <= 115 && !mineUpgradeBool && numCookies >= 5000) {
+			mineUpgradeBool = true;
+			numCookies -= 5000;
+			mineCPS *= 2;
+		}
+		
+		if(x >= 765 && x <= 800 && y >= 130 && y <= 165 && !mineUpgrade2Bool && numCookies >= 7500) {
+			mineUpgrade2Bool = true;
+			numCookies -= 7500;
+			mineCPS *= 5;
+		}
+		
+		if(x >= 810 && x <= 845 && y >= 130 && y <= 165 && !factoryUpgradeBool && numCookies >= 10000) {
+			factoryUpgradeBool = true;
+			numCookies -= 10000;
+			factoryCPS *= 2;
+		}
+		
+		if(x >= 855 && x <= 890 && y >= 130 && y <= 165 && !factoryUpgrade2Bool && numCookies >= 15000) {
+			factoryUpgrade2Bool = true;
+			numCookies -= 10000;
+			factoryCPS *= 5;
+		}
+		
+		if(x >= 900 && x <= 935 && y >= 130 && y <= 165 && !countryUpgradeBool && numCookies >= 55000) {
+			countryUpgradeBool = true;
+			numCookies -= 55000;
+			countryCPS *= 2;
+		}
+		
+		if(x >= 945 && x <= 980 && y >= 130 && y <= 165 && !countryUpgrade2Bool && numCookies >= 75000) {
+			countryUpgrade2Bool = true;
+			numCookies -= 75000;
+			countryCPS *= 5;
+		}
+		
+		if(x >= 765 && x <= 800 && y >= 175 && y <= 210 && !colonyUpgradeBool && numCookies >= 175000) {
+			colonyUpgradeBool = true;
+			numCookies -= 175000;
+			colonyCPS *= 2;
+		}
+		
+		if(x >= 810 && x <= 845 && y >= 175 && y <= 210 && !colonyUpgrade2Bool && numCookies >= 300000) {
+			colonyUpgrade2Bool = true;
+			numCookies -= 300000;
+			colonyCPS *= 5;
+		}
+		
+		if(x >= 855 && x <= 890 && y >= 175 && y <= 210 && !galaxyUpgradeBool && numCookies >= 3000000) {
+			galaxyUpgradeBool = true;
+			numCookies -= 3000000;
+			galaxyCPS *= 2;
+		}
+		
+		if(x >= 900 && x <= 935 && y >= 175 && y <= 210 && !galaxyUpgrade2Bool && numCookies >= 5000000) {
+			galaxyUpgrade2Bool = true;
+			numCookies -= 5000000;
+			galaxyCPS *= 5;
+		}
+		
+		if(x >= 945 && x <= 980 && y >= 175 && y <= 210 && !cookieUpgradeBool && numCookies >= 25) {
+			cookieUpgradeBool = true;
+			numCookies -= 25;
+		}
+		
+		if(x >= 765 && x <= 800 && y >= 220 && y <= 255 && !cookieUpgrade2Bool && numCookies >= 50) {
+			cookieUpgrade2Bool = true;
+			numCookies -= 50;
+		}
+		
+		if(x >= 810 && x <= 845 && y >= 220 && y <= 255 && !cookieUpgrade3Bool && numCookies >= 1000) {
+			cookieUpgrade3Bool = true;
+			numCookies -= 1000;
+		}
+		
+		if(x >= 855 && x <= 890 && y >= 220 && y <= 255 && !cookieUpgrade4Bool && numCookies >= 5000) {
+			cookieUpgrade4Bool = true;
+			numCookies -= 5000;
+		}
+		
+		if(x >= 900 && x <= 935 && y >= 220 && y <= 255 && !cookieUpgradeBool && numCookies >= 50000000) {
+			buildingUpgradeBool = true;
+			numCookies -= 50000000;
+			farmCPS *= 1.1;
+			mineCPS *= 1.1;
+			factoryCPS *= 1.1;
+			countryCPS *= 1.1;
+			colonyCPS *= 1.1;
+			galaxyCPS *= 1.1;
+		}
+		
+		if(x >= 945 && x <= 980 && y >= 220 && y <= 255 && !cpsUpgradeBool && numCookies >= 15000) {
+			cpsUpgradeBool = true;
+			numCookies -= 1500;
+		}
 		
 		if(x >= easterEgg.getX() && x <= easterEgg.getX()+10) {
 			if(y >= easterEgg.getY()+20 && y <= easterEgg.getY()+40) {
