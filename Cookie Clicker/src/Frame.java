@@ -464,13 +464,21 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cursorCPS *= 2;
 		}
 		
+		if(x >= 765 && x <= 801 && y >= 80 && y <= 115 && !cursorUpgrade2Bool && numCookies >= 1500) {
+			cursorUpgrade2Bool = true;
+			numCookies -= 1500;
+			cursorCPS *= 40;
+		}
+		
+		
+		
 		if(x >= easterEgg.getX() && x <= easterEgg.getX()+10) {
 			if(y >= easterEgg.getY()+20 && y <= easterEgg.getY()+40) {
 				numSecClicked++;
 				if(numSecClicked >= 5) {
 					numCookies += 100000;
 				}
-			}
+			}  
 		}
 		
 		
