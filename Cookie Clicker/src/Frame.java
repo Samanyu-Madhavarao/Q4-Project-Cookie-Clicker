@@ -113,7 +113,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	boolean cookieUpgrade3Bool = false;
 	boolean cookieUpgrade4Bool = false;
 
-	boolean statsPage = true;
+	boolean statsPage = false;
 
 	boolean buildingUpgradeBool = false;
 
@@ -139,7 +139,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	private int minePrice;
 	private int factoryPrice;
 	private int countryPrice;
-	private int colonyPrice;  //rghrahr
+	private int colonyPrice;  
 	private int galaxyPrice;
 	
 	//building positions
@@ -153,6 +153,34 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	//cookie trackers
 	private int numCookies;
 	long startTime = System.currentTimeMillis();
+	
+	//tooltips booleans
+	boolean cursorUpgradeHover = false;
+	boolean cursorUpgrade2Hover = false;
+	boolean cpsUpgradeHover = false;
+	boolean farmUpgradeHover = false;
+	boolean farmUpgrade2Hover = false;
+	boolean mineUpgradeHover = false;
+	boolean mineUpgrade2Hover = false;
+	boolean factoryUpgradeHover = false;
+	boolean factoryUpgrade2Hover = false;
+	boolean colonyUpgradeHover = false;
+	boolean colonyUpgrade2Hover = false;
+	boolean countryUpgradeHover = false;
+	boolean countryUpgrade2Hover = false;
+	boolean galaxyUpgradeHover = false;
+	boolean galaxyUpgrade2Hover = false;
+	boolean cookieUpgradeHover = false;
+	boolean cookieUpgrade2Hover = false;
+	boolean cookieUpgrade3Hover = false;
+	boolean cookieUpgrade4Hover = false;
+	
+	boolean farmHover = false;
+	boolean mineHover = false;
+	boolean factoryHover = false;
+	boolean countryHover = false;
+	boolean colonyHover = false;
+	boolean galaxyHover = false;
 
 	//secret
 	Secret easterEgg = new Secret(500, 350);
@@ -195,24 +223,66 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryShop.paint(g);
 		colonyShop.paint(g);
 		galaxyShop.paint(g);
+		
+		g.setColor(Color.GREEN);
+		g.fillRect(762, 55, 36, 36);
 		cursorUpgrade.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(807, 55, 36, 36);
 		cursorUpgrade2.paint(g);
+		
+		g.setColor(Color.GREEN);
+		g.fillRect(852, 55, 36, 36);
 		farmUpgrade.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(897, 55, 36, 36);
 		farmUpgrade2.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(942, 55, 36, 36);
 		mineUpgrade.paint(g);
+		
+		g.setColor(new Color(255,100,255));
+		g.fillRect(762, 105, 36, 36);
 		mineUpgrade2.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(807, 105, 36, 36);
 		factoryUpgrade.paint(g);
+		
+		g.setColor(new Color(255,100,255));
+		g.fillRect(852, 105, 36, 36);
 		factoryUpgrade2.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(897, 105, 36, 36);
+		countryUpgrade.paint(g);
+		
+		g.setColor(new Color(255,100,255));
+		g.fillRect(942, 105, 36, 36);
+		countryUpgrade2.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(762, 150, 36, 36);
 		colonyUpgrade.paint(g);
+		
+		g.setColor(new Color(255,100,255));
+		g.fillRect(807, 150, 36, 36);
 		colonyUpgrade2.paint(g);
+		
+		g.setColor(new Color(255,100,255));
+		g.fillRect(852, 150, 36, 36);
 		galaxyUpgrade.paint(g);
+		
+		g.setColor(Color.YELLOW);
+		g.fillRect(897, 150, 36, 36);
 		galaxyUpgrade2.paint(g);
 		cookieUpgrade1.paint(g);
 		cookieUpgrade2.paint(g);
 		cookieUpgrade3.paint(g);
 		cookieUpgrade4.paint(g);
-		countryUpgrade.paint(g);
-		countryUpgrade2.paint(g);
 		buildingUpgrade.paint(g);
 		cpsUpgrade.paint(g);
 		
@@ -370,14 +440,26 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			startTime = System.currentTimeMillis();
 		
 		}
-	
-		if(statsPage ){
+		
+		g.setColor(Color.GRAY);
+		g.fillRect(210, 12, 85, 40);
+		g.setColor(Color.BLACK);
+		g.drawString("STATS", 212, 40);
+		
+		if(statsPage){
 			g.setColor(Color.black);
 			g.drawRect(200,62, 400, 300);
 			g.fillRect(200, 62, 550, 300);
+			g.setColor(Color.red);
+			g.drawLine(725, 70, 745, 90);
+			g.drawLine(745, 70, 725, 90);
+			
+			
 		}
 		
-		
+		if(farmHover) {
+			g.drawRect(0,0,200,200);
+		}
 	}
 	
 	
@@ -458,8 +540,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cps += (galaxyCPS*galaxies.size());
 		}
 		if(cookieUpgradeBool) {cps *= 1.1;}
-		if(cookieUpgrade2Bool) {cps *= 1.1;}
-		if(cookieUpgrade3Bool) {cps *= 1.1;}
+		if(cookieUpgrade2Bool) {cps *= 1.15;}
+		if(cookieUpgrade3Bool) {cps *= 1.25;}
 		if(cookieUpgrade4Bool) {cps *= 1.1;}
 		if(cpsUpgradeBool) {cps *= 1.1;}
 		return cps;
@@ -494,13 +576,22 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+		int x = e.getX();
+		int y = e.getY();
+		if(x >= 210 && x <= 300 && y >= 40 && y <= 78 && statsPage == false) {
+			statsPage = true;
+		}
 		
+		if(x >= 725 && x <= 745 && y >= 100 && y <= 120 && statsPage) {
+			statsPage = false;
+		}
 	}
+	
+	
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -689,6 +780,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cpsUpgradeBool = true;
 			numCookies -= 1500;
 		}
+		
+		
 		
 		if(x >= easterEgg.getX() && x <= easterEgg.getX()+10) {
 			if(y >= easterEgg.getY()+20 && y <= easterEgg.getY()+40) {
