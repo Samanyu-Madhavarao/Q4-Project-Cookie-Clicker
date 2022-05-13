@@ -274,10 +274,18 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		}
 		
 		g.setColor(Color.CYAN);
-		g.setFont(new Font("Comic Sans MS", Font.BOLD, 23));
+		int textSize = 23;
+		if(numCookies >= 1000000) {
+			textSize = 17;
+		}else if(numCookies >= 100000000) {
+			textSize = 12;
+		}
+		g.setFont(new Font("Comic Sans MS", Font.BOLD, textSize));
 		g.drawString("Cookies:" + numCookies, 15, 125);
 		g.drawString("CPS:" + (int) updateCPS(), 15, 160);
 		
+		
+		g.setFont(new Font("Comic Sans MS", Font.BOLD, 23));
 		g.setColor(Color.blue);
 		g.fillRect(750, 0, 250, 50);
 		g.setColor(Color.CYAN);
@@ -649,7 +657,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			numCookies -= 5000;
 		}
 		
-		if(x >= 900 && x <= 935 && y >= 220 && y <= 255 && !cookieUpgradeBool && numCookies >= 50000000) {
+		if(x >= 900 && x <= 935 && y >= 220 && y <= 255 && !buildingUpgradeBool && numCookies >= 50000000) {
 			buildingUpgradeBool = true;
 			numCookies -= 50000000;
 			farmCPS *= 1.1;
