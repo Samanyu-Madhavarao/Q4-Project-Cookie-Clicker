@@ -366,7 +366,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(statsPage ){
 			g.setColor(Color.black);
 			g.drawRect(200,62, 400, 300);
-			g.fillRect(200, 62, 400, 300);
+			g.fillRect(200, 62, 550, 300);
 		}
 		
 		
