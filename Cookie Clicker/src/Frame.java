@@ -55,8 +55,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	//shop positions
 	int buttonWidth = 180;
-	int buttonHeight = 50;
-	int farmShopY = 250;
+	int buttonHeight = 60;
+	int farmShopY = 235;
 	int mineShopY = farmShopY + buttonHeight;
 	int factoryShopY = mineShopY + buttonHeight;
 	int countryShopY = factoryShopY + buttonHeight;
@@ -121,10 +121,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	boolean cookieUpgrade3Bool = false;
 	boolean cookieUpgrade4Bool = false;
 
-	boolean statsPage = true;
+	boolean statsPage = false;
 
 	boolean buildingUpgradeBool = false;
 
+	int commonPrice = 10;
+	int rarePrice = 100;
+	int epicPrice = 5000;
+	int legendaryPrice = 10000000;
 	
 	ArrayList<Building> farms;
 	ArrayList<Building> mines;
@@ -147,7 +151,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	private int minePrice;
 	private int factoryPrice;
 	private int countryPrice;
-	private int colonyPrice;  //rghrahr
+	private int colonyPrice;  
 	private int galaxyPrice;
 	
 	//building positions
@@ -162,6 +166,34 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	private int numCookies;
 	private int maxCookies;
 	long startTime = System.currentTimeMillis();
+	
+	//tooltips booleans
+	boolean cursorUpgradeHover = false;
+	boolean cursorUpgrade2Hover = false;
+	boolean cpsUpgradeHover = false;
+	boolean farmUpgradeHover = false;
+	boolean farmUpgrade2Hover = false;
+	boolean mineUpgradeHover = false;
+	boolean mineUpgrade2Hover = false;
+	boolean factoryUpgradeHover = false;
+	boolean factoryUpgrade2Hover = false;
+	boolean colonyUpgradeHover = false;
+	boolean colonyUpgrade2Hover = false;
+	boolean countryUpgradeHover = false;
+	boolean countryUpgrade2Hover = false;
+	boolean galaxyUpgradeHover = false;
+	boolean galaxyUpgrade2Hover = false;
+	boolean cookieUpgradeHover = false;
+	boolean cookieUpgrade2Hover = false;
+	boolean cookieUpgrade3Hover = false;
+	boolean cookieUpgrade4Hover = false;
+	
+	boolean farmHover = false;
+	boolean mineHover = false;
+	boolean factoryHover = false;
+	boolean countryHover = false;
+	boolean colonyHover = false;
+	boolean galaxyHover = false;
 
 	//secret
 	Secret easterEgg = new Secret(500, 350);
@@ -204,27 +236,86 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		countryShop.paint(g);
 		colonyShop.paint(g);
 		galaxyShop.paint(g);
+		
+		g.setColor(Color.GREEN);
+		g.fillRect(762, 55, 36, 36);
 		cursorUpgrade.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(807, 55, 36, 36);
 		cursorUpgrade2.paint(g);
+		
+		g.setColor(Color.GREEN);
+		g.fillRect(852, 55, 36, 36);
 		farmUpgrade.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(897, 55, 36, 36);
 		farmUpgrade2.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(942, 55, 36, 36);
 		mineUpgrade.paint(g);
+		
+		g.setColor(new Color(255,100,255));
+		g.fillRect(762, 105, 36, 36);
 		mineUpgrade2.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(807, 105, 36, 36);
 		factoryUpgrade.paint(g);
+		
+		g.setColor(new Color(255,100,255));
+		g.fillRect(852, 105, 36, 36);
 		factoryUpgrade2.paint(g);
-		colonyUpgrade.paint(g);
-		colonyUpgrade2.paint(g);
-		galaxyUpgrade.paint(g);
-		galaxyUpgrade2.paint(g);
-		cookieUpgrade1.paint(g);
-		cookieUpgrade2.paint(g);
-		cookieUpgrade3.paint(g);
-		cookieUpgrade4.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(897, 105, 36, 36);
 		countryUpgrade.paint(g);
+		
+		g.setColor(new Color(255,100,255));
+		g.fillRect(942, 105, 36, 36);
 		countryUpgrade2.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(762, 150, 36, 36);
+		colonyUpgrade.paint(g);
+		
+		g.setColor(new Color(255,100,255));
+		g.fillRect(807, 150, 36, 36);
+		colonyUpgrade2.paint(g);
+		
+		g.setColor(new Color(255,100,255));
+		g.fillRect(852, 150, 36, 36);
+		galaxyUpgrade.paint(g);
+		
+		g.setColor(Color.YELLOW);
+		g.fillRect(897, 150, 36, 36);
+		galaxyUpgrade2.paint(g);
+		
+		g.setColor(Color.GREEN);
+		g.fillRect(942, 148, 36, 36);
+		cookieUpgrade1.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(762, 194, 36, 36);
+		cookieUpgrade2.paint(g);
+		
+		g.setColor(new Color(255,100,255));
+		g.fillRect(807, 194, 36, 36);
+		cookieUpgrade3.paint(g);
+		
+		g.setColor(Color.YELLOW);
+		g.fillRect(852, 194, 36, 36);
+		cookieUpgrade4.paint(g);
+		
+		g.fillRect(897, 194, 36, 36);
 		buildingUpgrade.paint(g);
+		
+		g.fillRect(942, 193, 36, 36);
 		cpsUpgrade.paint(g);
 		
+		g.setColor(Color.BLACK);
 		g.drawRect(785, farmShopY, 180, buttonHeight);
 		g.drawRect(785, mineShopY, 180, buttonHeight);
 		g.drawRect(785, factoryShopY, 180, buttonHeight);
@@ -232,12 +323,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.drawRect(785, colonyShopY, 180, buttonHeight);
 		g.drawRect(785, galaxyShopY, 180, buttonHeight);
 		
-		g.drawString("Price: "+farmPrice, 735, farmShopY);
-		g.drawString("Price: "+minePrice, 735, mineShopY);
-		g.drawString("Price: "+factoryPrice, 735, factoryShopY);
-		g.drawString("Price: "+countryPrice, 735, countryShopY);
-		g.drawString("Price: "+colonyPrice, 735, colonyShopY);
-		g.drawString("Price: "+galaxyPrice, 735, galaxyShopY);
+		g.drawString("Price: "+farmPrice, 790, mineShopY);
+		g.drawString("Price: "+minePrice, 790, factoryShopY);
+		g.drawString("Price: "+factoryPrice, 790, countryShopY);
+		g.drawString("Price: "+countryPrice, 790, colonyShopY);
+		g.drawString("Price: "+colonyPrice, 790, galaxyShopY);
+		g.drawString("Price: "+galaxyPrice, 790, galaxyShopY+60);
 		
 		easterEgg.paint(g);
 		
@@ -288,10 +379,18 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		}
 		
 		g.setColor(Color.CYAN);
-		g.setFont(new Font("Comic Sans MS", Font.BOLD, 23));
+		int textSize = 23;
+		if(numCookies >= 1000000) {
+			textSize = 17;
+		}else if(numCookies >= 100000000) {
+			textSize = 12;
+		}
+		g.setFont(new Font("Comic Sans MS", Font.BOLD, textSize));
 		g.drawString("Cookies:" + numCookies, 15, 125);
 		g.drawString("CPS:" + (int) updateCPS(), 15, 160);
 		
+		
+		g.setFont(new Font("Comic Sans MS", Font.BOLD, 23));
 		g.setColor(Color.blue);
 		g.fillRect(750, 0, 250, 50);
 		g.setColor(Color.CYAN);
@@ -372,6 +471,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		}
 		
+
+    
+    g.setColor(Color.GRAY);
+		g.fillRect(210, 12, 85, 40);
+		g.setColor(Color.BLACK);
+		g.drawString("STATS", 212, 40);
+    
 		if(statsPage ){
 			g.setColor(Color.white);
 			g.drawRect(200,62, 400, 300);
@@ -399,13 +505,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			g.fillRect(530, 260, 35, 35);
 			g.setColor(Color.YELLOW);
 			g.fillRect(530, 325, 35, 35);
-			
+			g.setColor(Color.red);
+			g.drawLine(725, 70, 745, 90);
+			g.drawLine(745, 70, 725, 90);
 		}
 		
 		
 		if(numCookies > maxCookies) {
 			maxCookies = numCookies;
 		}
+
+    
+			
+			
+		
 	}
 	
 	
@@ -429,7 +542,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		farms = new ArrayList<Building>();
 		mines = new ArrayList<Building>();
-		factories = new ArrayList<Building>();
+		factories = new ArrayList<Building>();   
 		countries = new ArrayList<Building>();
 		colonies = new ArrayList<Building>();
 		galaxies = new ArrayList<Building>();
@@ -441,7 +554,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		colonyCPS = 100; 
 		galaxyCPS = 1000;
 		
-		cursorCPS = 1;
+		cursorCPS = 1;    
 		farmPrice = 15;
 		minePrice = 100; 
 		factoryPrice = 1000;
@@ -487,8 +600,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cps += (galaxyCPS*galaxies.size());
 		}
 		if(cookieUpgradeBool) {cps *= 1.1;}
-		if(cookieUpgrade2Bool) {cps *= 1.1;}
-		if(cookieUpgrade3Bool) {cps *= 1.1;}
+		if(cookieUpgrade2Bool) {cps *= 1.15;}
+		if(cookieUpgrade3Bool) {cps *= 1.25;}
 		if(cookieUpgrade4Bool) {cps *= 1.1;}
 		if(cpsUpgradeBool) {cps *= 1.1;}
 		return cps;
@@ -545,13 +658,22 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+		int x = e.getX();
+		int y = e.getY();
+		if(x >= 210 && x <= 300 && y >= 40 && y <= 78 && statsPage == false) {
+			statsPage = true;
+		}
 		
+		if(x >= 725 && x <= 745 && y >= 100 && y <= 120 && statsPage) {
+			statsPage = false;
+		}
 	}
+	
+	
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -621,113 +743,113 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			galaxyXMin += 75; galaxyXMax += 75;
 		}
 		
-		if(x >= 765 && x <= 801 && y >= 80 && y <= 115 && !cursorUpgradeBool && numCookies >= 7) {
+		if(x >= 765 && x <= 801 && y >= 80 && y <= 115 && !cursorUpgradeBool && numCookies >= commonPrice) {
 			cursorUpgradeBool = true;
-			numCookies -= 7;
+			numCookies -= commonPrice;
 			cursorCPS *= 2;
 		}
 		
-		if(x >= 810 && x <= 845 && y >= 80 && y <= 115 && !cursorUpgrade2Bool && numCookies >= 1500) {
+		if(x >= 810 && x <= 845 && y >= 80 && y <= 115 && !cursorUpgrade2Bool && numCookies >= rarePrice) {
 			cursorUpgrade2Bool = true;
-			numCookies -= 1500;
+			numCookies -= rarePrice;
 			cursorCPS *= 5;
 		}
 		
-		if(x >= 855 && x <= 890 && y >= 80 && y <= 115 && !farmUpgradeBool && numCookies >= 200) {
+		if(x >= 855 && x <= 890 && y >= 80 && y <= 115 && !farmUpgradeBool && numCookies >= commonPrice) {
 			farmUpgradeBool = true;
-			numCookies -= 200;
+			numCookies -= commonPrice;
 			farmCPS *= 2;
 		}
 		
-		if(x >= 900 && x <= 935 && y >= 80 && y <= 115 && !farmUpgrade2Bool && numCookies >= 3000) {
+		if(x >= 900 && x <= 935 && y >= 80 && y <= 115 && !farmUpgrade2Bool && numCookies >= rarePrice) {
 			farmUpgrade2Bool = true;
-			numCookies -= 3000;
+			numCookies -= rarePrice;
 			farmCPS *= 5;
 		}
 		
-		if(x >= 945 && x <= 980 && y >= 80 && y <= 115 && !mineUpgradeBool && numCookies >= 5000) {
+		if(x >= 945 && x <= 980 && y >= 80 && y <= 115 && !mineUpgradeBool && numCookies >= rarePrice) {
 			mineUpgradeBool = true;
-			numCookies -= 5000;
+			numCookies -= rarePrice;
 			mineCPS *= 2;
 		}
 		
-		if(x >= 765 && x <= 800 && y >= 130 && y <= 165 && !mineUpgrade2Bool && numCookies >= 7500) {
+		if(x >= 765 && x <= 800 && y >= 130 && y <= 165 && !mineUpgrade2Bool && numCookies >= epicPrice) {
 			mineUpgrade2Bool = true;
-			numCookies -= 7500;
+			numCookies -= epicPrice;
 			mineCPS *= 5;
 		}
 		
-		if(x >= 810 && x <= 845 && y >= 130 && y <= 165 && !factoryUpgradeBool && numCookies >= 10000) {
+		if(x >= 810 && x <= 845 && y >= 130 && y <= 165 && !factoryUpgradeBool && numCookies >= rarePrice) {
 			factoryUpgradeBool = true;
-			numCookies -= 10000;
+			numCookies -= rarePrice;
 			factoryCPS *= 2;
 		}
 		
-		if(x >= 855 && x <= 890 && y >= 130 && y <= 165 && !factoryUpgrade2Bool && numCookies >= 15000) {
+		if(x >= 855 && x <= 890 && y >= 130 && y <= 165 && !factoryUpgrade2Bool && numCookies >= epicPrice) {
 			factoryUpgrade2Bool = true;
-			numCookies -= 10000;
+			numCookies -= epicPrice;
 			factoryCPS *= 5;
 		}
 		
-		if(x >= 900 && x <= 935 && y >= 130 && y <= 165 && !countryUpgradeBool && numCookies >= 55000) {
+		if(x >= 900 && x <= 935 && y >= 130 && y <= 165 && !countryUpgradeBool && numCookies >= rarePrice) {
 			countryUpgradeBool = true;
 			numCookies -= 55000;
 			countryCPS *= 2;
 		}
 		
-		if(x >= 945 && x <= 980 && y >= 130 && y <= 165 && !countryUpgrade2Bool && numCookies >= 75000) {
+		if(x >= 945 && x <= 980 && y >= 130 && y <= 165 && !countryUpgrade2Bool && numCookies >= epicPrice) {
 			countryUpgrade2Bool = true;
-			numCookies -= 75000;
+			numCookies -= epicPrice;
 			countryCPS *= 5;
 		}
 		
-		if(x >= 765 && x <= 800 && y >= 175 && y <= 210 && !colonyUpgradeBool && numCookies >= 175000) {
+		if(x >= 765 && x <= 800 && y >= 175 && y <= 210 && !colonyUpgradeBool && numCookies >= rarePrice) {
 			colonyUpgradeBool = true;
-			numCookies -= 175000;
+			numCookies -= rarePrice;
 			colonyCPS *= 2;
 		}
 		
-		if(x >= 810 && x <= 845 && y >= 175 && y <= 210 && !colonyUpgrade2Bool && numCookies >= 300000) {
+		if(x >= 810 && x <= 845 && y >= 175 && y <= 210 && !colonyUpgrade2Bool && numCookies >= epicPrice) {
 			colonyUpgrade2Bool = true;
-			numCookies -= 300000;
+			numCookies -= epicPrice;
 			colonyCPS *= 5;
 		}
 		
-		if(x >= 855 && x <= 890 && y >= 175 && y <= 210 && !galaxyUpgradeBool && numCookies >= 3000000) {
+		if(x >= 855 && x <= 890 && y >= 175 && y <= 210 && !galaxyUpgradeBool && numCookies >= epicPrice) {
 			galaxyUpgradeBool = true;
-			numCookies -= 3000000;
+			numCookies -= epicPrice;
 			galaxyCPS *= 2;
 		}
 		
-		if(x >= 900 && x <= 935 && y >= 175 && y <= 210 && !galaxyUpgrade2Bool && numCookies >= 5000000) {
+		if(x >= 900 && x <= 935 && y >= 175 && y <= 210 && !galaxyUpgrade2Bool && numCookies >= legendaryPrice) {
 			galaxyUpgrade2Bool = true;
-			numCookies -= 5000000;
+			numCookies -= legendaryPrice;
 			galaxyCPS *= 5;
 		}
 		
-		if(x >= 945 && x <= 980 && y >= 175 && y <= 210 && !cookieUpgradeBool && numCookies >= 25) {
+		if(x >= 945 && x <= 980 && y >= 175 && y <= 210 && !cookieUpgradeBool && numCookies >= commonPrice) {
 			cookieUpgradeBool = true;
-			numCookies -= 25;
+			numCookies -= commonPrice;
 		}
 		
-		if(x >= 765 && x <= 800 && y >= 220 && y <= 255 && !cookieUpgrade2Bool && numCookies >= 50) {
+		if(x >= 765 && x <= 800 && y >= 220 && y <= 255 && !cookieUpgrade2Bool && numCookies >= rarePrice) {
 			cookieUpgrade2Bool = true;
-			numCookies -= 50;
+			numCookies -= rarePrice;
 		}
 		
-		if(x >= 810 && x <= 845 && y >= 220 && y <= 255 && !cookieUpgrade3Bool && numCookies >= 1000) {
+		if(x >= 810 && x <= 845 && y >= 220 && y <= 255 && !cookieUpgrade3Bool && numCookies >= epicPrice) {
 			cookieUpgrade3Bool = true;
-			numCookies -= 1000;
+			numCookies -= epicPrice;
 		}
 		
-		if(x >= 855 && x <= 890 && y >= 220 && y <= 255 && !cookieUpgrade4Bool && numCookies >= 5000) {
+		if(x >= 855 && x <= 890 && y >= 220 && y <= 255 && !cookieUpgrade4Bool && numCookies >= legendaryPrice) {
 			cookieUpgrade4Bool = true;
-			numCookies -= 5000;
+			numCookies -= legendaryPrice;
 		}
 		
-		if(x >= 900 && x <= 935 && y >= 220 && y <= 255 && !cookieUpgradeBool && numCookies >= 50000000) {
+		if(x >= 900 && x <= 935 && y >= 220 && y <= 255 && !buildingUpgradeBool && numCookies >= legendaryPrice) {
 			buildingUpgradeBool = true;
-			numCookies -= 50000000;
+			numCookies -= legendaryPrice;
 			farmCPS *= 1.1;
 			mineCPS *= 1.1;
 			factoryCPS *= 1.1;
@@ -736,10 +858,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			galaxyCPS *= 1.1;
 		}
 		
-		if(x >= 945 && x <= 980 && y >= 220 && y <= 255 && !cpsUpgradeBool && numCookies >= 15000) {
+		if(x >= 945 && x <= 980 && y >= 220 && y <= 255 && !cpsUpgradeBool && numCookies >= legendaryPrice) {
 			cpsUpgradeBool = true;
-			numCookies -= 1500;
+			numCookies -= legendaryPrice;
 		}
+		
+		
 		
 		if(x >= easterEgg.getX() && x <= easterEgg.getX()+10) {
 			if(y >= easterEgg.getY()+20 && y <= easterEgg.getY()+40) {
