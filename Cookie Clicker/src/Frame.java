@@ -18,6 +18,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.util.Scanner; // Import the Scanner class to read text files
+
+
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
 	//cookie objects
@@ -44,6 +49,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	//achievements
 	private int numAchievements;
+	
+	 static //arraylist
+	 ArrayList<String> test = new ArrayList<String>();
 	
 	//shop positions
 	int buttonWidth = 180;
@@ -156,6 +164,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	 
 	//cookie trackers
 	private int numCookies;
+	private int maxCookies;
 	long startTime = System.currentTimeMillis();
 	
 	//tooltips booleans
@@ -462,25 +471,54 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		}
 		
-		g.setColor(Color.GRAY);
+
+    
+    g.setColor(Color.GRAY);
 		g.fillRect(210, 12, 85, 40);
 		g.setColor(Color.BLACK);
 		g.drawString("STATS", 212, 40);
-		
-		if(statsPage){
-			g.setColor(Color.black);
+    
+		if(statsPage ){
+			g.setColor(Color.white);
 			g.drawRect(200,62, 400, 300);
-			g.fillRect(200, 62, 550, 300);
+			g.fillRect(200, 62, 550, 340);
+			g.setColor(Color.black);
+			g.drawString("Farms:" + farms.size(), 210, 100);
+			g.drawString("Mines:" + mines.size(), 210, 135);
+			g.drawString("Factories:" + factories.size(), 210, 170);
+			g.drawString("Countries:" + countries.size(), 210, 205);
+			g.drawString("Colonies:" + colonies.size(), 210, 240);
+			g.drawString("Galaxies:" + galaxies.size(), 210, 275);
+			int totalBuildings = farms.size() + mines.size() + factories.size() + countries.size() + colonies.size() + galaxies.size();
+			g.drawString("Total Buildings:" + totalBuildings, 210, 310);
+			g.drawString("Max Cookies:" + maxCookies, 210, 345);
+			g.drawString("Price Guide", 550, 100);
+			g.drawString("= " + "common", 590, 155);
+			g.drawString("= " + "rare", 590, 220);
+			g.drawString("= " + "epic", 590, 285);
+			g.drawString("= " + "legendary", 590, 350);
+			g.setColor(Color.GREEN);
+			g.fillRect(530, 130, 35, 35);
+			g.setColor(Color.blue);
+			g.fillRect(530, 195, 35, 35);
+			g.setColor(new Color(255, 100, 255));
+			g.fillRect(530, 260, 35, 35);
+			g.setColor(Color.YELLOW);
+			g.fillRect(530, 325, 35, 35);
 			g.setColor(Color.red);
 			g.drawLine(725, 70, 745, 90);
 			g.drawLine(745, 70, 725, 90);
-			
-			
 		}
 		
-		if(farmHover) {
-			g.drawRect(0,0,200,200);
+		
+		if(numCookies > maxCookies) {
+			maxCookies = numCookies;
 		}
+
+    
+			
+			
+		
 	}
 	
 	
@@ -525,6 +563,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		galaxyPrice = 1000000; 
 		
 		numCookies = 0;
+		
 		
 		farmXMin = 200; farmXMax = 240;
 		farmYMin = 70; farmYMax = 100;
@@ -574,6 +613,28 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		// TODO Auto-generated method stub
 		Frame f = new Frame();
 
+		
+			   
+			    try {
+			      File myObj = new File("quotes.txt");
+			      Scanner myReader = new Scanner(myObj);
+			      while (myReader.hasNextLine()) {
+			        String data = myReader.nextLine();
+			        test.add(data);
+			        System.out.print(data);
+			      }
+			      myReader.close();
+			    } catch (FileNotFoundException e) {
+			      System.out.println("An error occurred.");
+			      e.printStackTrace();
+			    }
+			  
+			
+	
+		
+		
+		
+		
 	}
 
 	@Override
