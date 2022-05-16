@@ -47,8 +47,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	//shop positions
 	int buttonWidth = 180;
-	int buttonHeight = 50;
-	int farmShopY = 250;
+	int buttonHeight = 60;
+	int farmShopY = 235;
 	int mineShopY = farmShopY + buttonHeight;
 	int factoryShopY = mineShopY + buttonHeight;
 	int countryShopY = factoryShopY + buttonHeight;
@@ -117,6 +117,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 	boolean buildingUpgradeBool = false;
 
+	int commonPrice = 10;
+	int bluePrice = 100;
+	int epicPrice = 5000;
+	int legendaryPrice = 10000000;
 	
 	ArrayList<Building> farms;
 	ArrayList<Building> mines;
@@ -279,13 +283,30 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.setColor(Color.YELLOW);
 		g.fillRect(897, 150, 36, 36);
 		galaxyUpgrade2.paint(g);
+		
+		g.setColor(Color.GREEN);
+		g.fillRect(942, 148, 36, 36);
 		cookieUpgrade1.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(762, 194, 36, 36);
 		cookieUpgrade2.paint(g);
+		
+		g.setColor(new Color(255,100,255));
+		g.fillRect(807, 194, 36, 36);
 		cookieUpgrade3.paint(g);
+		
+		g.setColor(Color.YELLOW);
+		g.fillRect(852, 194, 36, 36);
 		cookieUpgrade4.paint(g);
+		
+		g.fillRect(897, 194, 36, 36);
 		buildingUpgrade.paint(g);
+		
+		g.fillRect(942, 193, 36, 36);
 		cpsUpgrade.paint(g);
 		
+		g.setColor(Color.BLACK);
 		g.drawRect(785, farmShopY, 180, buttonHeight);
 		g.drawRect(785, mineShopY, 180, buttonHeight);
 		g.drawRect(785, factoryShopY, 180, buttonHeight);
@@ -293,12 +314,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.drawRect(785, colonyShopY, 180, buttonHeight);
 		g.drawRect(785, galaxyShopY, 180, buttonHeight);
 		
-		g.drawString("Price: "+farmPrice, 735, farmShopY);
-		g.drawString("Price: "+minePrice, 735, mineShopY);
-		g.drawString("Price: "+factoryPrice, 735, factoryShopY);
-		g.drawString("Price: "+countryPrice, 735, countryShopY);
-		g.drawString("Price: "+colonyPrice, 735, colonyShopY);
-		g.drawString("Price: "+galaxyPrice, 735, galaxyShopY);
+		g.drawString("Price: "+farmPrice, 790, mineShopY);
+		g.drawString("Price: "+minePrice, 790, factoryShopY);
+		g.drawString("Price: "+factoryPrice, 790, countryShopY);
+		g.drawString("Price: "+countryPrice, 790, colonyShopY);
+		g.drawString("Price: "+colonyPrice, 790, galaxyShopY);
+		g.drawString("Price: "+galaxyPrice, 790, galaxyShopY+60);
 		
 		easterEgg.paint(g);
 		
