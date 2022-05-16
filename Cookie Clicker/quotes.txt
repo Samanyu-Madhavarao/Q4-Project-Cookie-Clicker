@@ -1,5 +1,6 @@
-﻿“Click the amogus visor”
-“Do not click the amogus visor”
+﻿“Click the amogus”
+“Do not click the amogus”
+"Do not type amogus"
 “Sometimes when I close my eyes, I can't see”
 “Did you sabotage O2? ‘Cause you are taking my breath away.”
 “Are you an imposter? ‘Cause I think you just vented to my heart”
