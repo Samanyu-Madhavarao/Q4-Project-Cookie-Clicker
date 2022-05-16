@@ -375,7 +375,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(statsPage ){
 			g.setColor(Color.white);
 			g.drawRect(200,62, 400, 300);
-			g.fillRect(200, 62, 550, 300);
+			g.fillRect(200, 62, 550, 340);
 			g.setColor(Color.black);
 			g.drawString("Farms:" + farms.size(), 210, 100);
 			g.drawString("Mines:" + mines.size(), 210, 135);
@@ -389,12 +389,16 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			g.drawString("Price Guide", 550, 100);
 			g.drawString("= " + "common", 590, 155);
 			g.drawString("= " + "rare", 590, 220);
-			g.drawString("= " + "epic", 590, 280);
+			g.drawString("= " + "epic", 590, 285);
+			g.drawString("= " + "legendary", 590, 350);
 			g.setColor(Color.GREEN);
 			g.fillRect(530, 130, 35, 35);
 			g.setColor(Color.blue);
 			g.fillRect(530, 195, 35, 35);
-			
+			g.setColor(new Color(255, 100, 255));
+			g.fillRect(530, 260, 35, 35);
+			g.setColor(Color.YELLOW);
+			g.fillRect(530, 325, 35, 35);
 			
 		}
 		
