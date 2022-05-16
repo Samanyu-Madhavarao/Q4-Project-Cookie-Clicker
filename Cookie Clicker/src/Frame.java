@@ -118,7 +118,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	boolean buildingUpgradeBool = false;
 
 	int commonPrice = 10;
-	int bluePrice = 100;
+	int rarePrice = 100;
 	int epicPrice = 5000;
 	int legendaryPrice = 10000000;
 	
@@ -682,113 +682,113 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			galaxyXMin += 75; galaxyXMax += 75;
 		}
 		
-		if(x >= 765 && x <= 801 && y >= 80 && y <= 115 && !cursorUpgradeBool && numCookies >= 7) {
+		if(x >= 765 && x <= 801 && y >= 80 && y <= 115 && !cursorUpgradeBool && numCookies >= commonPrice) {
 			cursorUpgradeBool = true;
-			numCookies -= 7;
+			numCookies -= commonPrice;
 			cursorCPS *= 2;
 		}
 		
-		if(x >= 810 && x <= 845 && y >= 80 && y <= 115 && !cursorUpgrade2Bool && numCookies >= 1500) {
+		if(x >= 810 && x <= 845 && y >= 80 && y <= 115 && !cursorUpgrade2Bool && numCookies >= rarePrice) {
 			cursorUpgrade2Bool = true;
-			numCookies -= 1500;
+			numCookies -= rarePrice;
 			cursorCPS *= 5;
 		}
 		
-		if(x >= 855 && x <= 890 && y >= 80 && y <= 115 && !farmUpgradeBool && numCookies >= 200) {
+		if(x >= 855 && x <= 890 && y >= 80 && y <= 115 && !farmUpgradeBool && numCookies >= commonPrice) {
 			farmUpgradeBool = true;
-			numCookies -= 200;
+			numCookies -= commonPrice;
 			farmCPS *= 2;
 		}
 		
-		if(x >= 900 && x <= 935 && y >= 80 && y <= 115 && !farmUpgrade2Bool && numCookies >= 3000) {
+		if(x >= 900 && x <= 935 && y >= 80 && y <= 115 && !farmUpgrade2Bool && numCookies >= rarePrice) {
 			farmUpgrade2Bool = true;
-			numCookies -= 3000;
+			numCookies -= rarePrice;
 			farmCPS *= 5;
 		}
 		
-		if(x >= 945 && x <= 980 && y >= 80 && y <= 115 && !mineUpgradeBool && numCookies >= 5000) {
+		if(x >= 945 && x <= 980 && y >= 80 && y <= 115 && !mineUpgradeBool && numCookies >= rarePrice) {
 			mineUpgradeBool = true;
-			numCookies -= 5000;
+			numCookies -= rarePrice;
 			mineCPS *= 2;
 		}
 		
-		if(x >= 765 && x <= 800 && y >= 130 && y <= 165 && !mineUpgrade2Bool && numCookies >= 7500) {
+		if(x >= 765 && x <= 800 && y >= 130 && y <= 165 && !mineUpgrade2Bool && numCookies >= epicPrice) {
 			mineUpgrade2Bool = true;
-			numCookies -= 7500;
+			numCookies -= epicPrice;
 			mineCPS *= 5;
 		}
 		
-		if(x >= 810 && x <= 845 && y >= 130 && y <= 165 && !factoryUpgradeBool && numCookies >= 10000) {
+		if(x >= 810 && x <= 845 && y >= 130 && y <= 165 && !factoryUpgradeBool && numCookies >= rarePrice) {
 			factoryUpgradeBool = true;
-			numCookies -= 10000;
+			numCookies -= rarePrice;
 			factoryCPS *= 2;
 		}
 		
-		if(x >= 855 && x <= 890 && y >= 130 && y <= 165 && !factoryUpgrade2Bool && numCookies >= 15000) {
+		if(x >= 855 && x <= 890 && y >= 130 && y <= 165 && !factoryUpgrade2Bool && numCookies >= epicPrice) {
 			factoryUpgrade2Bool = true;
-			numCookies -= 10000;
+			numCookies -= epicPrice;
 			factoryCPS *= 5;
 		}
 		
-		if(x >= 900 && x <= 935 && y >= 130 && y <= 165 && !countryUpgradeBool && numCookies >= 55000) {
+		if(x >= 900 && x <= 935 && y >= 130 && y <= 165 && !countryUpgradeBool && numCookies >= rarePrice) {
 			countryUpgradeBool = true;
 			numCookies -= 55000;
 			countryCPS *= 2;
 		}
 		
-		if(x >= 945 && x <= 980 && y >= 130 && y <= 165 && !countryUpgrade2Bool && numCookies >= 75000) {
+		if(x >= 945 && x <= 980 && y >= 130 && y <= 165 && !countryUpgrade2Bool && numCookies >= epicPrice) {
 			countryUpgrade2Bool = true;
-			numCookies -= 75000;
+			numCookies -= epicPrice;
 			countryCPS *= 5;
 		}
 		
-		if(x >= 765 && x <= 800 && y >= 175 && y <= 210 && !colonyUpgradeBool && numCookies >= 175000) {
+		if(x >= 765 && x <= 800 && y >= 175 && y <= 210 && !colonyUpgradeBool && numCookies >= rarePrice) {
 			colonyUpgradeBool = true;
-			numCookies -= 175000;
+			numCookies -= rarePrice;
 			colonyCPS *= 2;
 		}
 		
-		if(x >= 810 && x <= 845 && y >= 175 && y <= 210 && !colonyUpgrade2Bool && numCookies >= 300000) {
+		if(x >= 810 && x <= 845 && y >= 175 && y <= 210 && !colonyUpgrade2Bool && numCookies >= epicPrice) {
 			colonyUpgrade2Bool = true;
-			numCookies -= 300000;
+			numCookies -= epicPrice;
 			colonyCPS *= 5;
 		}
 		
-		if(x >= 855 && x <= 890 && y >= 175 && y <= 210 && !galaxyUpgradeBool && numCookies >= 3000000) {
+		if(x >= 855 && x <= 890 && y >= 175 && y <= 210 && !galaxyUpgradeBool && numCookies >= epicPrice) {
 			galaxyUpgradeBool = true;
-			numCookies -= 3000000;
+			numCookies -= epicPrice;
 			galaxyCPS *= 2;
 		}
 		
-		if(x >= 900 && x <= 935 && y >= 175 && y <= 210 && !galaxyUpgrade2Bool && numCookies >= 5000000) {
+		if(x >= 900 && x <= 935 && y >= 175 && y <= 210 && !galaxyUpgrade2Bool && numCookies >= legendaryPrice) {
 			galaxyUpgrade2Bool = true;
-			numCookies -= 5000000;
+			numCookies -= legendaryPrice;
 			galaxyCPS *= 5;
 		}
 		
-		if(x >= 945 && x <= 980 && y >= 175 && y <= 210 && !cookieUpgradeBool && numCookies >= 25) {
+		if(x >= 945 && x <= 980 && y >= 175 && y <= 210 && !cookieUpgradeBool && numCookies >= commonPrice) {
 			cookieUpgradeBool = true;
-			numCookies -= 25;
+			numCookies -= commonPrice;
 		}
 		
-		if(x >= 765 && x <= 800 && y >= 220 && y <= 255 && !cookieUpgrade2Bool && numCookies >= 50) {
+		if(x >= 765 && x <= 800 && y >= 220 && y <= 255 && !cookieUpgrade2Bool && numCookies >= rarePrice) {
 			cookieUpgrade2Bool = true;
-			numCookies -= 50;
+			numCookies -= rarePrice;
 		}
 		
-		if(x >= 810 && x <= 845 && y >= 220 && y <= 255 && !cookieUpgrade3Bool && numCookies >= 1000) {
+		if(x >= 810 && x <= 845 && y >= 220 && y <= 255 && !cookieUpgrade3Bool && numCookies >= epicPrice) {
 			cookieUpgrade3Bool = true;
-			numCookies -= 1000;
+			numCookies -= epicPrice;
 		}
 		
-		if(x >= 855 && x <= 890 && y >= 220 && y <= 255 && !cookieUpgrade4Bool && numCookies >= 5000) {
+		if(x >= 855 && x <= 890 && y >= 220 && y <= 255 && !cookieUpgrade4Bool && numCookies >= legendaryPrice) {
 			cookieUpgrade4Bool = true;
-			numCookies -= 5000;
+			numCookies -= legendaryPrice;
 		}
 		
-		if(x >= 900 && x <= 935 && y >= 220 && y <= 255 && !buildingUpgradeBool && numCookies >= 50000000) {
+		if(x >= 900 && x <= 935 && y >= 220 && y <= 255 && !buildingUpgradeBool && numCookies >= legendaryPrice) {
 			buildingUpgradeBool = true;
-			numCookies -= 50000000;
+			numCookies -= legendaryPrice;
 			farmCPS *= 1.1;
 			mineCPS *= 1.1;
 			factoryCPS *= 1.1;
@@ -797,9 +797,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			galaxyCPS *= 1.1;
 		}
 		
-		if(x >= 945 && x <= 980 && y >= 220 && y <= 255 && !cpsUpgradeBool && numCookies >= 15000) {
+		if(x >= 945 && x <= 980 && y >= 220 && y <= 255 && !cpsUpgradeBool && numCookies >= legendaryPrice) {
 			cpsUpgradeBool = true;
-			numCookies -= 1500;
+			numCookies -= legendaryPrice;
 		}
 		
 		
