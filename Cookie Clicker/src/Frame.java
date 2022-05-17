@@ -20,6 +20,8 @@ import javax.swing.Timer;
 
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner; // Import the Scanner class to read text files
 
 
@@ -180,6 +182,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	boolean typeAmogus = false;
 	boolean allUpgrades = false;
 	boolean trollAchievement = false;
+	
+	ArrayList<String> quotes;
+	int randInt;
+	long startTime2 = System.currentTimeMillis();
 
 	//secret
 	Secret easterEgg = new Secret(500, 350);
@@ -356,13 +362,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 		}
 		
-		if(numAchievements >= 2) {
+		if(numAchievements >= 0 && numAchievements < 2) {
+			milk.changePicture("imgs/Milk1.gif");
+		}else if(numAchievements >= 2 && numAchievements < 5) {
 			milk.changePicture("imgs/Milk2.gif");
-		}
-		if(numAchievements >= 5) {
+		}else if(numAchievements >= 5 && numAchievements < 9) {
 			milk.changePicture("imgs/Milk3.gif");
-		}
-		if(numAchievements == 10) {
+		}else {
 			milk.changePicture("imgs/Milk4.gif");
 		}
 		
@@ -376,7 +382,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.setFont(new Font("Comic Sans MS", Font.BOLD, textSize));
 		g.drawString("Cookies:" + numCookies, 15, 125);
 		g.drawString("CPS:" + (int) updateCPS(), 15, 160);
-		
 		
 		g.setFont(new Font("Comic Sans MS", Font.BOLD, 23));
 		g.setColor(Color.blue);
@@ -459,45 +464,47 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		}
 		
-		if(numCookies >= 100) {
+		if(numCookies >= 100 && !hundredCookies) {
 			hundredCookies = true;
 			numAchievements++;
 		}
-		if(numCookies >= 1000000) {
+		if(numCookies >= 1000000 && !milCookies) {
 			milCookies = true;
 			numAchievements++;
 		}
-		if(updateCPS() >= 10000) {
+		if(updateCPS() >= 10000 && !tenKCPS) {
 			tenKCPS = true;
 			numAchievements++;
 		}
-		if(factories.size() >= 10 && countries.size() >= 5) {
+		if(factories.size() >= 10 && countries.size() >= 5 && !childLabor) {
 			childLabor = true;
 			numAchievements++;
 		}
-		if(farms.size() >= 5 && mines.size() >= 5 && factories.size() >= 5 && countries.size() >= 5) {
+		if(farms.size() >= 5 && mines.size() >= 5 && factories.size() >= 5 && countries.size() >= 5
+			&& !worldControl) {
 			worldControl = true;
 			numAchievements++;
 		}
 		if(farms.size() >= 10 && mines.size() >= 10 && factories.size() >= 10 && countries.size() >= 10
-			&& colonies.size() >= 10 && galaxies.size() >= 10) {
+			&& colonies.size() >= 10 && galaxies.size() >= 10 && !cookieGod) {
 			cookieGod = true;
 			numAchievements++;
 		}
-		if(numSecClicked >= 5) {
+		if(numSecClicked >= 5 && !amogusFound) {
 			amogusFound = true;
 			numAchievements++;
 		}
-		if(amogus >= 6) {
+		if(amogus >= 6 && !typeAmogus) {
 			typeAmogus = true;
 			numAchievements++;
 		}
-		if(numUpgrades >= 20) {
+		if(numUpgrades >= 20 && !allUpgrades) {
 			allUpgrades = true;
 			numAchievements++;
 		}
-		if(numAchievements >= 9) {
+		if(numCookies < 0 && !trollAchievement) {
 			trollAchievement = true;
+			numAchievements++;
 		}
 		
     
@@ -505,8 +512,18 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.fillRect(210, 12, 85, 40);
 		g.setColor(Color.BLACK);
 		g.drawString("STATS", 212, 40);
+		
+		
+		long quoteTime = System.currentTimeMillis() - startTime2;
+		long quoteSeconds = quoteTime / 1000;
+		if(quoteSeconds == 30) {
+			randInt = (int) Math.floor(Math.random() * (quotes.size()-1));
+			startTime2 = System.currentTimeMillis();
+		}
+		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 12));
+		g.drawString(quotes.get(randInt), 310, 40);
     
-		if(statsPage ){
+		if(statsPage){
 			g.setColor(Color.GRAY);
 			g.drawRect(200,62, 400, 300);
 			g.fillRect(200, 62, 550, 340);
@@ -544,7 +561,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		}
 
     
-			
 			
 		
 	}
@@ -592,6 +608,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		numCookies = 0;
 		
+		numAchievements = 0;
 		
 		farmXMin = 200; farmXMax = 240;
 		farmYMin = 70; farmYMax = 100;
@@ -605,6 +622,23 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		colonyYMin = 425; colonyYMax = 455;
 		galaxyXMin = 200; galaxyXMax = 240;
 		galaxyYMin = 515; galaxyYMax = 550;
+		
+		quotes = new ArrayList<String>();
+		quotes.add("“Click the amogus”");
+		quotes.add("“Do not type amogus”");
+		quotes.add("“Do not click the amogus”");
+		quotes.add("“Sometimes when I close my eyes, I can't see”");
+		quotes.add("“Did you sabotage O2? ‘Cause you are taking my breath away.”");
+		quotes.add("“Are you an imposter? ‘Cause I think you just vented to my heart”");
+		quotes.add("“Nobody wants your cookies”");
+		quotes.add("“Health advisors concerned with the massive consumption of cookies”");
+		quotes.add("“United States army preparing for invasion of your enslaved countries”");
+		quotes.add("“New studies show that slave labor is the cheapest”");
+		quotes.add("“The world is running out of resources for your cookies”");
+		quotes.add("“Your cookies are famous in the community”");
+		
+		randInt = (int) Math.floor(Math.random()*(quotes.size()-1));
+		
 	}
 	
 	public int updateCPS() {
@@ -641,29 +675,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		// TODO Auto-generated method stub
 		Frame f = new Frame();
 
-		
-			   
-			    try {
-			      File myObj = new File("quotes.txt");
-			      Scanner myReader = new Scanner(myObj);
-			      while (myReader.hasNextLine()) {
-			        String data = myReader.nextLine();
-			        test.add(data);
-			        System.out.print(data);
-			      }
-			      myReader.close();
-			    } catch (FileNotFoundException e) {
-			      System.out.println("An error occurred.");
-			      e.printStackTrace();
-			    }
-			  
-			
-	
-		
-		
-		
-		
 	}
+	
 
 	@Override
 	public void keyPressed(KeyEvent e) {
