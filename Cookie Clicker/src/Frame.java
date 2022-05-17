@@ -44,6 +44,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static itemFrame frame4 = new itemFrame(937, 100, "frameCropped");
 	static itemFrame frame5 = new itemFrame(937, 143, "frameCropped");
 	static itemFrame frame6 = new itemFrame(757, 189, "newRow");
+	static itemFrame frame7 = new itemFrame(450, 430, "newRow");
+	static itemFrame frame8 = new itemFrame(270, 430, "newRow");
+	static itemFrame frame9 = new itemFrame(630, 430, "frameCropped");
 	
 	//cookie background objects
 	Cookie cookie;
@@ -140,6 +143,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ArrayList<Building> countries; 
 	ArrayList<Building> colonies;
 	ArrayList<Building> galaxies;
+	
+	//achivements
+	
+	Building tenCPS = new Building(265, 430, "10CPS");
+	Building tenkCPS = new Building(310, 430, "10000+CPS");
+	Building millionCookies = new Building(360, 430, "1MilCookies");
+	Building ChildLabor = new Building(493, 430, "Factory_Blood");
+	Building TypeAmogus = new Building(447, 430, "TypeAmogus");
+	Building AmogusCookie = new Building(403, 430, "AmogusCookie");
+	Building WorldControl = new Building(540, 430, "WorldControl");
+	Building AllUpgrades = new Building(583, 430, "AllUpgrades");
+	Building CookieGod = new Building(627, 430, "CookieGod");
+	Building TrollAchivement = new Building(627, 470, "CursedKing");
+	
 	
 	//building cps
 	private int cursorCPS = 0;
@@ -526,7 +543,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(statsPage){
 			g.setColor(Color.GRAY);
 			g.drawRect(200,62, 400, 300);
-			g.fillRect(200, 62, 550, 340);
+			g.fillRect(200, 62, 550, 500);
 			g.setColor(Color.black);
 			g.drawString("Farms:" + farms.size(), 210, 100);
 			g.drawString("Mines:" + mines.size(), 210, 135);
@@ -542,6 +559,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			g.drawString("= " + rarePrice, 590, 220);
 			g.drawString("= " + epicPrice, 590, 285);
 			g.drawString("= " + legendaryPrice, 590, 350);
+			g.drawString("Achievements", 265, 400);
 			g.setColor(Color.GREEN);
 			g.fillRect(530, 130, 35, 35);
 			g.setColor(Color.blue);
@@ -553,6 +571,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			g.setColor(Color.red);
 			g.drawLine(725, 70, 745, 90);
 			g.drawLine(745, 70, 725, 90);
+			frame7.paint(g);
+			frame8.paint(g);
+			frame9.paint(g);
+			TypeAmogus.paint(g);
+			ChildLabor.paint(g);
+			WorldControl.paint(g);
+			CookieGod.paint(g);
+			AmogusCookie.paint(g);
+			AllUpgrades.paint(g);
+			tenCPS.paint(g);
+			tenkCPS.paint(g);
+			millionCookies.paint(g);
+			TrollAchivement.paint(g);
+			
 		}
 		
 		
@@ -624,18 +656,18 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		galaxyYMin = 515; galaxyYMax = 550;
 		
 		quotes = new ArrayList<String>();
-		quotes.add("“Click the amogus”");
-		quotes.add("“Do not type amogus”");
-		quotes.add("“Do not click the amogus”");
-		quotes.add("“Sometimes when I close my eyes, I can't see”");
-		quotes.add("“Did you sabotage O2? ‘Cause you are taking my breath away.”");
-		quotes.add("“Are you an imposter? ‘Cause I think you just vented to my heart”");
-		quotes.add("“Nobody wants your cookies”");
-		quotes.add("“Health advisors concerned with the massive consumption of cookies”");
-		quotes.add("“United States army preparing for invasion of your enslaved countries”");
-		quotes.add("“New studies show that slave labor is the cheapest”");
-		quotes.add("“The world is running out of resources for your cookies”");
-		quotes.add("“Your cookies are famous in the community”");
+		quotes.add("Â“Click the amogusÂ”");
+		quotes.add("Â“Do not type amogusÂ”");
+		quotes.add("Â“Do not click the amogusÂ”");
+		quotes.add("Â“Sometimes when I close my eyes, I can't seeÂ”");
+		quotes.add("Â“Did you sabotage O2? Â‘Cause you are taking my breath away.Â”");
+		quotes.add("Â“Are you an imposter? Â‘Cause I think you just vented to my heartÂ”");
+		quotes.add("Â“Nobody wants your cookiesÂ”");
+		quotes.add("Â“Health advisors concerned with the massive consumption of cookiesÂ”");
+		quotes.add("Â“United States army preparing for invasion of your enslaved countriesÂ”");
+		quotes.add("Â“New studies show that slave labor is the cheapestÂ”");
+		quotes.add("Â“The world is running out of resources for your cookiesÂ”");
+		quotes.add("Â“Your cookies are famous in the communityÂ”");
 		
 		randInt = (int) Math.floor(Math.random()*(quotes.size()-1));
 		
