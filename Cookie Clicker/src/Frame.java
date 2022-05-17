@@ -495,7 +495,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.setColor(Color.BLACK);
 		g.drawString("STATS", 212, 40);
     
-		if(statsPage == false){
+		if(statsPage ){
 			g.setColor(Color.white);
 			g.drawRect(200,62, 400, 300);
 			g.fillRect(200, 62, 550, 500);
@@ -514,6 +514,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			g.drawString("= " + rarePrice, 590, 220);
 			g.drawString("= " + epicPrice, 590, 285);
 			g.drawString("= " + legendaryPrice, 590, 350);
+			g.drawString("Achievements", 265, 400);
 			g.setColor(Color.GREEN);
 			g.fillRect(530, 130, 35, 35);
 			g.setColor(Color.blue);
