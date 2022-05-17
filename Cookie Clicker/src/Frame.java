@@ -20,6 +20,8 @@ import javax.swing.Timer;
 
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner; // Import the Scanner class to read text files
 
 
@@ -123,6 +125,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	boolean cookieUpgrade2Bool = false;
 	boolean cookieUpgrade3Bool = false;
 	boolean cookieUpgrade4Bool = false;
+	
+	int numUpgrades = 0;
 
 	boolean statsPage = false;
 
@@ -184,37 +188,26 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	private int maxCookies;
 	long startTime = System.currentTimeMillis();
 	
-	//tooltips booleans
-	boolean cursorUpgradeHover = false;
-	boolean cursorUpgrade2Hover = false;
-	boolean cpsUpgradeHover = false;
-	boolean farmUpgradeHover = false;
-	boolean farmUpgrade2Hover = false;
-	boolean mineUpgradeHover = false;
-	boolean mineUpgrade2Hover = false;
-	boolean factoryUpgradeHover = false;
-	boolean factoryUpgrade2Hover = false;
-	boolean colonyUpgradeHover = false;
-	boolean colonyUpgrade2Hover = false;
-	boolean countryUpgradeHover = false;
-	boolean countryUpgrade2Hover = false;
-	boolean galaxyUpgradeHover = false;
-	boolean galaxyUpgrade2Hover = false;
-	boolean cookieUpgradeHover = false;
-	boolean cookieUpgrade2Hover = false;
-	boolean cookieUpgrade3Hover = false;
-	boolean cookieUpgrade4Hover = false;
+	//Achievements
+	boolean hundredCookies = false;
+	boolean milCookies = false;
+	boolean childLabor = false;
+	boolean worldControl = false;
+	boolean tenKCPS = false;
+	boolean cookieGod = false;
+	boolean amogusFound = false;
+	boolean typeAmogus = false;
+	boolean allUpgrades = false;
+	boolean trollAchievement = false;
 	
-	boolean farmHover = false;
-	boolean mineHover = false;
-	boolean factoryHover = false;
-	boolean countryHover = false;
-	boolean colonyHover = false;
-	boolean galaxyHover = false;
+	ArrayList<String> quotes;
+	int randInt;
+	long startTime2 = System.currentTimeMillis();
 
 	//secret
 	Secret easterEgg = new Secret(500, 350);
 	int numSecClicked = 0;
+	int amogus = 0;
 	
 
 	public void paint(Graphics g) {
@@ -340,6 +333,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.drawRect(785, colonyShopY, 180, buttonHeight);
 		g.drawRect(785, galaxyShopY, 180, buttonHeight);
 		
+		g.setColor(Color.WHITE);
 		g.drawString("Price: "+farmPrice, 790, mineShopY);
 		g.drawString("Price: "+minePrice, 790, factoryShopY);
 		g.drawString("Price: "+factoryPrice, 790, countryShopY);
@@ -385,13 +379,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 		}
 		
-		if(numAchievements >= 5) {
+		if(numAchievements >= 0 && numAchievements < 2) {
+			milk.changePicture("imgs/Milk1.gif");
+		}else if(numAchievements >= 2 && numAchievements < 5) {
 			milk.changePicture("imgs/Milk2.gif");
-		}
-		if(numAchievements >= 10) {
+		}else if(numAchievements >= 5 && numAchievements < 9) {
 			milk.changePicture("imgs/Milk3.gif");
-		}
-		if(numAchievements == 20) {
+		}else {
 			milk.changePicture("imgs/Milk4.gif");
 		}
 		
@@ -405,7 +399,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.setFont(new Font("Comic Sans MS", Font.BOLD, textSize));
 		g.drawString("Cookies:" + numCookies, 15, 125);
 		g.drawString("CPS:" + (int) updateCPS(), 15, 160);
-		
 		
 		g.setFont(new Font("Comic Sans MS", Font.BOLD, 23));
 		g.setColor(Color.blue);
@@ -488,15 +481,67 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		}
 		
-
+		if(numCookies >= 100 && !hundredCookies) {
+			hundredCookies = true;
+			numAchievements++;
+		}
+		if(numCookies >= 1000000 && !milCookies) {
+			milCookies = true;
+			numAchievements++;
+		}
+		if(updateCPS() >= 10000 && !tenKCPS) {
+			tenKCPS = true;
+			numAchievements++;
+		}
+		if(factories.size() >= 10 && countries.size() >= 5 && !childLabor) {
+			childLabor = true;
+			numAchievements++;
+		}
+		if(farms.size() >= 5 && mines.size() >= 5 && factories.size() >= 5 && countries.size() >= 5
+			&& !worldControl) {
+			worldControl = true;
+			numAchievements++;
+		}
+		if(farms.size() >= 10 && mines.size() >= 10 && factories.size() >= 10 && countries.size() >= 10
+			&& colonies.size() >= 10 && galaxies.size() >= 10 && !cookieGod) {
+			cookieGod = true;
+			numAchievements++;
+		}
+		if(numSecClicked >= 5 && !amogusFound) {
+			amogusFound = true;
+			numAchievements++;
+		}
+		if(amogus >= 6 && !typeAmogus) {
+			typeAmogus = true;
+			numAchievements++;
+		}
+		if(numUpgrades >= 20 && !allUpgrades) {
+			allUpgrades = true;
+			numAchievements++;
+		}
+		if(numCookies < 0 && !trollAchievement) {
+			trollAchievement = true;
+			numAchievements++;
+		}
+		
     
-    g.setColor(Color.GRAY);
+		g.setColor(Color.GRAY);
 		g.fillRect(210, 12, 85, 40);
 		g.setColor(Color.BLACK);
 		g.drawString("STATS", 212, 40);
+		
+		
+		long quoteTime = System.currentTimeMillis() - startTime2;
+		long quoteSeconds = quoteTime / 1000;
+		if(quoteSeconds == 30) {
+			randInt = (int) Math.floor(Math.random() * (quotes.size()-1));
+			startTime2 = System.currentTimeMillis();
+		}
+		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 12));
+		g.drawString(quotes.get(randInt), 310, 40);
     
-		if(statsPage ){
-			g.setColor(Color.white);
+		if(statsPage){
+			g.setColor(Color.GRAY);
 			g.drawRect(200,62, 400, 300);
 			g.fillRect(200, 62, 550, 500);
 			g.setColor(Color.black);
@@ -549,7 +594,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
     
 			
-			
 		
 	}
 	
@@ -596,6 +640,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		numCookies = 0;
 		
+		numAchievements = 0;
 		
 		farmXMin = 200; farmXMax = 240;
 		farmYMin = 70; farmYMax = 100;
@@ -609,6 +654,23 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		colonyYMin = 425; colonyYMax = 455;
 		galaxyXMin = 200; galaxyXMax = 240;
 		galaxyYMin = 515; galaxyYMax = 550;
+		
+		quotes = new ArrayList<String>();
+		quotes.add("Click the amogus");
+		quotes.add("Do not type amogus");
+		quotes.add("Do not click the amogus");
+		quotes.add("Sometimes when I close my eyes, I can't see");
+		quotes.add("Did you sabotage O2? Cause you are taking my breath away.");
+		quotes.add("Are you an imposter? Cause I think you just vented to my heart");
+		quotes.add("Nobody wants your cookies");
+		quotes.add("Health advisors concerned with the massive consumption of cookies");
+		quotes.add("United States army preparing for invasion of your enslaved countries");
+		quotes.add("New studies show that slave labor is the cheapest");
+		quotes.add("The world is running out of resources for your cookies");
+		quotes.add("Your cookies are famous in the community");
+		
+		randInt = (int) Math.floor(Math.random()*(quotes.size()-1));
+		
 	}
 	
 	public int updateCPS() {
@@ -645,34 +707,31 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		// TODO Auto-generated method stub
 		Frame f = new Frame();
 
-		
-			   
-			    try {
-			      File myObj = new File("quotes.txt");
-			      Scanner myReader = new Scanner(myObj);
-			      while (myReader.hasNextLine()) {
-			        String data = myReader.nextLine();
-			        test.add(data);
-			        System.out.print(data);
-			      }
-			      myReader.close();
-			    } catch (FileNotFoundException e) {
-			      System.out.println("An error occurred.");
-			      e.printStackTrace();
-			    }
-			  
-			
-	
-		
-		
-		
-		
 	}
+	
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.out.println(e.getKeyCode());
+		if(e.getKeyCode() == 65 && amogus == 0) {
+			amogus++;
+		}
+		if(e.getKeyCode() == 77 && amogus == 1) {
+			amogus++;
+		}
+		if(e.getKeyCode() == 79 && amogus == 2) {
+			amogus++;
+		}
+		if(e.getKeyCode() == 71 && amogus == 3) {
+			amogus++;
+		}
+		if(e.getKeyCode() == 85 && amogus == 4) {
+			amogus++;
+		}
+		if(e.getKeyCode() == 83 && amogus == 5) {
+			amogus++;
+		}
 	}
 
 	@Override
@@ -779,104 +838,122 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cursorUpgradeBool = true;
 			numCookies -= commonPrice;
 			cursorCPS *= 2;
+			numUpgrades++;
 		}
 		
 		if(x >= 810 && x <= 845 && y >= 80 && y <= 115 && !cursorUpgrade2Bool && numCookies >= rarePrice) {
 			cursorUpgrade2Bool = true;
 			numCookies -= rarePrice;
 			cursorCPS *= 5;
+			numUpgrades++;
 		}
 		
 		if(x >= 855 && x <= 890 && y >= 80 && y <= 115 && !farmUpgradeBool && numCookies >= commonPrice) {
 			farmUpgradeBool = true;
 			numCookies -= commonPrice;
 			farmCPS *= 2;
+			numUpgrades++;
 		}
 		
 		if(x >= 900 && x <= 935 && y >= 80 && y <= 115 && !farmUpgrade2Bool && numCookies >= rarePrice) {
 			farmUpgrade2Bool = true;
 			numCookies -= rarePrice;
 			farmCPS *= 5;
+			numUpgrades++;
 		}
 		
 		if(x >= 945 && x <= 980 && y >= 80 && y <= 115 && !mineUpgradeBool && numCookies >= rarePrice) {
 			mineUpgradeBool = true;
 			numCookies -= rarePrice;
 			mineCPS *= 2;
+			numUpgrades++;
 		}
 		
 		if(x >= 765 && x <= 800 && y >= 130 && y <= 165 && !mineUpgrade2Bool && numCookies >= epicPrice) {
 			mineUpgrade2Bool = true;
 			numCookies -= epicPrice;
 			mineCPS *= 5;
+			numUpgrades++;
 		}
 		
 		if(x >= 810 && x <= 845 && y >= 130 && y <= 165 && !factoryUpgradeBool && numCookies >= rarePrice) {
 			factoryUpgradeBool = true;
 			numCookies -= rarePrice;
 			factoryCPS *= 2;
+			numUpgrades++;
 		}
 		
 		if(x >= 855 && x <= 890 && y >= 130 && y <= 165 && !factoryUpgrade2Bool && numCookies >= epicPrice) {
 			factoryUpgrade2Bool = true;
 			numCookies -= epicPrice;
 			factoryCPS *= 5;
+			numUpgrades++;
 		}
 		
 		if(x >= 900 && x <= 935 && y >= 130 && y <= 165 && !countryUpgradeBool && numCookies >= rarePrice) {
 			countryUpgradeBool = true;
 			numCookies -= 55000;
 			countryCPS *= 2;
+			numUpgrades++;
 		}
 		
 		if(x >= 945 && x <= 980 && y >= 130 && y <= 165 && !countryUpgrade2Bool && numCookies >= epicPrice) {
 			countryUpgrade2Bool = true;
 			numCookies -= epicPrice;
 			countryCPS *= 5;
+			numUpgrades++;
 		}
 		
 		if(x >= 765 && x <= 800 && y >= 175 && y <= 210 && !colonyUpgradeBool && numCookies >= rarePrice) {
 			colonyUpgradeBool = true;
 			numCookies -= rarePrice;
 			colonyCPS *= 2;
+			numUpgrades++;
 		}
 		
 		if(x >= 810 && x <= 845 && y >= 175 && y <= 210 && !colonyUpgrade2Bool && numCookies >= epicPrice) {
 			colonyUpgrade2Bool = true;
 			numCookies -= epicPrice;
 			colonyCPS *= 5;
+			numUpgrades++;
 		}
 		
 		if(x >= 855 && x <= 890 && y >= 175 && y <= 210 && !galaxyUpgradeBool && numCookies >= epicPrice) {
 			galaxyUpgradeBool = true;
 			numCookies -= epicPrice;
 			galaxyCPS *= 2;
+			numUpgrades++;
 		}
 		
 		if(x >= 900 && x <= 935 && y >= 175 && y <= 210 && !galaxyUpgrade2Bool && numCookies >= legendaryPrice) {
 			galaxyUpgrade2Bool = true;
 			numCookies -= legendaryPrice;
 			galaxyCPS *= 5;
+			numUpgrades++;
 		}
 		
 		if(x >= 945 && x <= 980 && y >= 175 && y <= 210 && !cookieUpgradeBool && numCookies >= commonPrice) {
 			cookieUpgradeBool = true;
 			numCookies -= commonPrice;
+			numUpgrades++;
 		}
 		
 		if(x >= 765 && x <= 800 && y >= 220 && y <= 255 && !cookieUpgrade2Bool && numCookies >= rarePrice) {
 			cookieUpgrade2Bool = true;
 			numCookies -= rarePrice;
+			numUpgrades++;
 		}
 		
 		if(x >= 810 && x <= 845 && y >= 220 && y <= 255 && !cookieUpgrade3Bool && numCookies >= epicPrice) {
 			cookieUpgrade3Bool = true;
 			numCookies -= epicPrice;
+			numUpgrades++;
 		}
 		
 		if(x >= 855 && x <= 890 && y >= 220 && y <= 255 && !cookieUpgrade4Bool && numCookies >= legendaryPrice) {
 			cookieUpgrade4Bool = true;
 			numCookies -= legendaryPrice;
+			numUpgrades++;
 		}
 		
 		if(x >= 900 && x <= 935 && y >= 220 && y <= 255 && !buildingUpgradeBool && numCookies >= legendaryPrice) {
@@ -888,11 +965,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			countryCPS *= 1.1;
 			colonyCPS *= 1.1;
 			galaxyCPS *= 1.1;
+			numUpgrades++;
 		}
 		
 		if(x >= 945 && x <= 980 && y >= 220 && y <= 255 && !cpsUpgradeBool && numCookies >= legendaryPrice) {
 			cpsUpgradeBool = true;
 			numCookies -= legendaryPrice;
+			numUpgrades++;
 		}
 		
 		
@@ -901,7 +980,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			if(y >= easterEgg.getY()+20 && y <= easterEgg.getY()+40) {
 				numSecClicked++;
 				if(numSecClicked >= 5) {
-					numCookies += 100000;
+					if(amogus >= 6) {
+						numCookies += 1000000;
+					}else {
+						numCookies += 100000;
+					}
 				}
 			}  
 		}
