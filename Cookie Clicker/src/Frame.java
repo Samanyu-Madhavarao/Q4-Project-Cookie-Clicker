@@ -42,6 +42,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	static itemFrame frame4 = new itemFrame(937, 100, "frameCropped");
 	static itemFrame frame5 = new itemFrame(937, 143, "frameCropped");
 	static itemFrame frame6 = new itemFrame(757, 189, "newRow");
+	static itemFrame frame7 = new itemFrame(450, 430, "newRow");
+	static itemFrame frame8 = new itemFrame(270, 430, "newRow");
+	static itemFrame frame9 = new itemFrame(630, 430, "frameCropped");
 	
 	//cookie background objects
 	Cookie cookie;
@@ -136,6 +139,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	ArrayList<Building> countries; 
 	ArrayList<Building> colonies;
 	ArrayList<Building> galaxies;
+	
+	//achivements
+	
+	Building tenCPS = new Building(265, 430, "10CPS");
+	Building tenkCPS = new Building(310, 430, "10000+CPS");
+	Building millionCookies = new Building(360, 430, "1MilCookies");
+	Building ChildLabor = new Building(493, 430, "Factory_Blood");
+	Building TypeAmogus = new Building(447, 430, "TypeAmogus");
+	Building AmogusCookie = new Building(403, 430, "AmogusCookie");
+	Building WorldControl = new Building(540, 430, "WorldControl");
+	Building AllUpgrades = new Building(583, 430, "AllUpgrades");
+	Building CookieGod = new Building(627, 430, "CookieGod");
+	Building TrollAchivement = new Building(627, 470, "CursedKing");
+	
 	
 	//building cps
 	private int cursorCPS = 0;
@@ -478,7 +495,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.setColor(Color.BLACK);
 		g.drawString("STATS", 212, 40);
     
-		if(statsPage ){
+		if(statsPage == false){
 			g.setColor(Color.white);
 			g.drawRect(200,62, 400, 300);
 			g.fillRect(200, 62, 550, 500);
@@ -508,6 +525,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			g.setColor(Color.red);
 			g.drawLine(725, 70, 745, 90);
 			g.drawLine(745, 70, 725, 90);
+			frame7.paint(g);
+			frame8.paint(g);
+			frame9.paint(g);
+			TypeAmogus.paint(g);
+			ChildLabor.paint(g);
+			WorldControl.paint(g);
+			CookieGod.paint(g);
+			AmogusCookie.paint(g);
+			AllUpgrades.paint(g);
+			tenCPS.paint(g);
+			tenkCPS.paint(g);
+			millionCookies.paint(g);
+			TrollAchivement.paint(g);
+			
 		}
 		
 		
