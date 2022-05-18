@@ -858,7 +858,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 900 && x <= 935 && y >= 80 && y <= 115 && !farmUpgrade2Bool && numCookies >= rarePrice) {
 			farmUpgrade2Bool = true;
 			numCookies -= rarePrice;
-			farmCPS *= 5;
+			farmCPS *= 5; 
 			numUpgrades++;
 		}
 		
