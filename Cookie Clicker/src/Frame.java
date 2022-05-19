@@ -637,7 +637,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		
 		if(numCookies > maxCookies) {
-			maxCookies = numCookies;
+			maxCookies = numCookies; 
 		}
 
 		if(numCookies == 20000000) {
