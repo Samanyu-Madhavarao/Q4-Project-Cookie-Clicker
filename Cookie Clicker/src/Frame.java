@@ -645,7 +645,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cycles.add(temp);
 			cycleX += 35;
 			if(cycleX >= 180) {
-				cycleX = 15;
+				cycleX = 15;  
 				cycleY += 35;
 			}
 			numCycles++;
