@@ -501,7 +501,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		}
 		if(buildingUpgradeBool) {
 			g.fillRect(897, 194, 36, 36);
-		}
+		} 
 		if(cpsUpgradeBool) {
 			g.fillRect(942, 194, 36, 36);
 		}
