@@ -639,7 +639,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(numCookies > maxCookies) {
 			maxCookies = numCookies; 
 		}
-
+ 
 		if(numCookies == 20000000) {
 			Building temp = new Building(cycleX, cycleY, "GoldenCookie"); 
 			cycles.add(temp);
