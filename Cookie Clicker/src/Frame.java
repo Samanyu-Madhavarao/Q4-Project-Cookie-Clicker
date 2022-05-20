@@ -640,7 +640,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			maxCookies = numCookies; 
 		}
  
-		if(numCookies == 20000000) {
+		if(numCookies == 1000000000) {
 			Building temp = new Building(cycleX, cycleY, "GoldenCookie"); 
 			cycles.add(temp);
 			cycleX += 35;
@@ -649,7 +649,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 				cycleY += 35;
 			}
 			numCycles++;
-			numCookies = 19999999;
+			numCookies = -1000000;
 		}
 			
 		
@@ -696,7 +696,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		colonyPrice = 125000;
 		galaxyPrice = 1000000; 
 		
-		numCookies = 19999999;
+		numCookies = 0;
 		numCycles = 0;
 		numAchievements = 0;
 		
@@ -759,6 +759,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(cookieUpgrade3Bool) {cps *= 1.25;}
 		if(cookieUpgrade4Bool) {cps *= 1.1;}
 		if(cpsUpgradeBool) {cps *= 1.1;}
+		if(numCycles != 0) {
+			cps *= (cycles.size() * 15);
+		}
 		return cps;
 	}
 	
@@ -898,7 +901,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 765 && x <= 801 && y >= 80 && y <= 115 && !cursorUpgradeBool && numCookies >= commonPrice) {
 			cursorUpgradeBool = true;
 			numCookies -= commonPrice;
-			commonPrice *= 5;
+			commonPrice *= 10;
 			cursorCPS *= 2;
 			numUpgrades++;
 		}
@@ -906,7 +909,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 810 && x <= 845 && y >= 80 && y <= 115 && !cursorUpgrade2Bool && numCookies >= rarePrice) {
 			cursorUpgrade2Bool = true;
 			numCookies -= rarePrice;
-			rarePrice *= 5;
+			rarePrice *= 7;
 			cursorCPS *= 5;
 			numUpgrades++;
 		}
@@ -914,7 +917,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 855 && x <= 890 && y >= 80 && y <= 115 && !farmUpgradeBool && numCookies >= commonPrice) {
 			farmUpgradeBool = true;
 			numCookies -= commonPrice;
-			commonPrice *= 5;
+			commonPrice *= 10;
 			farmCPS *= 2;
 			numUpgrades++;
 		}
@@ -922,7 +925,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 900 && x <= 935 && y >= 80 && y <= 115 && !farmUpgrade2Bool && numCookies >= rarePrice) {
 			farmUpgrade2Bool = true;
 			numCookies -= rarePrice;
-			rarePrice *= 5;
+			rarePrice *= 7;
 			farmCPS *= 5;
 			numUpgrades++;
 		}
@@ -930,7 +933,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 945 && x <= 980 && y >= 80 && y <= 115 && !mineUpgradeBool && numCookies >= rarePrice) {
 			mineUpgradeBool = true;
 			numCookies -= rarePrice;
-			rarePrice *= 5;
+			rarePrice *= 7;
 			mineCPS *= 2;
 			numUpgrades++;
 		}
@@ -946,7 +949,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 810 && x <= 845 && y >= 130 && y <= 165 && !factoryUpgradeBool && numCookies >= rarePrice) {
 			factoryUpgradeBool = true;
 			numCookies -= rarePrice;
-			rarePrice *= 5;
+			rarePrice *= 7;
 			factoryCPS *= 2;
 			numUpgrades++;
 		}
@@ -962,7 +965,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 900 && x <= 935 && y >= 130 && y <= 165 && !countryUpgradeBool && numCookies >= rarePrice) {
 			countryUpgradeBool = true;
 			numCookies -= 55000;
-			rarePrice *= 5;
+			rarePrice *= 7;
 			countryCPS *= 2;
 			numUpgrades++;
 		}
@@ -978,7 +981,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 765 && x <= 800 && y >= 175 && y <= 210 && !colonyUpgradeBool && numCookies >= rarePrice) {
 			colonyUpgradeBool = true;
 			numCookies -= rarePrice;
-			rarePrice *= 5;
+			rarePrice *= 7;
 			colonyCPS *= 2;
 			numUpgrades++;
 		}
@@ -1010,14 +1013,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 945 && x <= 980 && y >= 175 && y <= 210 && !cookieUpgradeBool && numCookies >= commonPrice) {
 			cookieUpgradeBool = true;
 			numCookies -= commonPrice;
-			commonPrice *= 5;
+			commonPrice *= 10;
 			numUpgrades++;
 		}
 		
 		if(x >= 765 && x <= 800 && y >= 220 && y <= 255 && !cookieUpgrade2Bool && numCookies >= rarePrice) {
 			cookieUpgrade2Bool = true;
 			numCookies -= rarePrice;
-			rarePrice *= 5;
+			rarePrice *= 7;
 			numUpgrades++;
 		}
 		
