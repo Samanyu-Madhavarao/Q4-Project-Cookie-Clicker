@@ -210,6 +210,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 
 	//secret
 	Secret easterEgg = new Secret(500, 350);
+	Secret secret2 = new Secret(450, 550);
 	int numSecClicked = 0;
 	int amogus = 0;
 	
@@ -346,6 +347,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.drawString("Price: "+galaxyPrice, 790, galaxyShopY+60);
 		
 		easterEgg.paint(g);
+		secret2.paint(g);
 		
 		for(int i = 0; i < farms.size(); i++) {
 			if(farms.get(i).getX() < 700) {
@@ -640,7 +642,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			maxCookies = numCookies; 
 		}
  
-		if(numCookies == 1000000000) {
+		if(numCookies >= 1000000000) {
 			Building temp = new Building(cycleX, cycleY, "GoldenCookie"); 
 			cycles.add(temp);
 			cycleX += 35;
@@ -681,12 +683,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		colonies = new ArrayList<Building>();
 		galaxies = new ArrayList<Building>();
 		
-		farmCPS = 1;
-		mineCPS = 5;
-		factoryCPS = 25;
-		countryCPS = 50;
-		colonyCPS = 100; 
-		galaxyCPS = 1000;
+		farmCPS = 2;
+		mineCPS = 25;
+		factoryCPS = 750;
+		countryCPS = 500;
+		colonyCPS = 2500; 
+		galaxyCPS = 50000;
 		
 		cursorCPS = 1;    
 		farmPrice = 15;
@@ -736,31 +738,19 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	public int updateCPS() {
 		int cps = 0;
-		for(int i = 0; i < farms.size(); i++) {
-			cps += (farmCPS*farms.size());
-		}
-		for(int i = 0; i < mines.size(); i++) {
-			cps += (mineCPS*mines.size());
-		}
-		for(int i = 0; i < factories.size(); i++) {
-			cps += (factoryCPS*factories.size());
-		}
-		for(int i = 0; i < countries.size(); i++) {
-			cps += (countryCPS*countries.size());
-		}
-		for(int i = 0; i < colonies.size(); i++) {
-			cps += (colonyCPS*colonies.size());
-		}
-		for(int i = 0; i < galaxies.size(); i++) {
-			cps += (galaxyCPS*galaxies.size());
-		}
-		if(cookieUpgradeBool) {cps *= 1.1;}
-		if(cookieUpgrade2Bool) {cps *= 1.15;}
-		if(cookieUpgrade3Bool) {cps *= 1.25;}
-		if(cookieUpgrade4Bool) {cps *= 1.1;}
+		cps += (farmCPS*farms.size());
+		cps += (mineCPS*mines.size());
+		cps += (factoryCPS*factories.size());
+		cps += (countryCPS*countries.size());
+		cps += (colonyCPS*colonies.size());
+		cps += (galaxyCPS*galaxies.size());
+		if(cookieUpgradeBool) {cps *= 1.15;}
+		if(cookieUpgrade2Bool) {cps *= 1.5;}
+		if(cookieUpgrade3Bool) {cps *= 2;}
+		if(cookieUpgrade4Bool) {cps *= 5;}
 		if(cpsUpgradeBool) {cps *= 1.1;}
 		if(numCycles != 0) {
-			cps *= (cycles.size() * 15);
+			cps *= (cycles.size() * 2);
 		}
 		return cps;
 	}
@@ -902,7 +892,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cursorUpgradeBool = true;
 			numCookies -= commonPrice;
 			commonPrice *= 10;
-			cursorCPS *= 2;
+			cursorCPS *= 5;
 			numUpgrades++;
 		}
 		
@@ -910,7 +900,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cursorUpgrade2Bool = true;
 			numCookies -= rarePrice;
 			rarePrice *= 7;
-			cursorCPS *= 5;
+			cursorCPS *= 10;
 			numUpgrades++;
 		}
 		
@@ -1005,7 +995,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 900 && x <= 935 && y >= 175 && y <= 210 && !galaxyUpgrade2Bool && numCookies >= legendaryPrice) {
 			galaxyUpgrade2Bool = true;
 			numCookies -= legendaryPrice;
-			legendaryPrice *= 3;
+			legendaryPrice *= 2;
 			galaxyCPS *= 5;
 			numUpgrades++;
 		}
@@ -1034,14 +1024,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 855 && x <= 890 && y >= 220 && y <= 255 && !cookieUpgrade4Bool && numCookies >= legendaryPrice) {
 			cookieUpgrade4Bool = true;
 			numCookies -= legendaryPrice;
-			legendaryPrice *= 3;
+			legendaryPrice *= 2;
 			numUpgrades++;
 		}
 		
 		if(x >= 900 && x <= 935 && y >= 220 && y <= 255 && !buildingUpgradeBool && numCookies >= legendaryPrice) {
 			buildingUpgradeBool = true;
 			numCookies -= legendaryPrice;
-			legendaryPrice *= 3;
+			legendaryPrice *= 2;
 			farmCPS *= 1.1;
 			mineCPS *= 1.1;
 			factoryCPS *= 1.1;
@@ -1054,7 +1044,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x >= 945 && x <= 980 && y >= 220 && y <= 255 && !cpsUpgradeBool && numCookies >= legendaryPrice) {
 			cpsUpgradeBool = true;
 			numCookies -= legendaryPrice;
-			legendaryPrice *= 3;
+			cursorCPS *= 10000;
+			legendaryPrice *= 2;
 			numUpgrades++;
 		}
 		
