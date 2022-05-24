@@ -8,14 +8,14 @@ There are multiple methods given to the player to increase the amount of cookies
 - Buying upgrades that increase the efficiency of buildings and your cursor
 - One "secret" that rewards lots of cookies
 ### Table of Contents
-1. [The Cookie](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/new/master?readme=1#the-cookie)
-2. [CPS](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/new/master?readme=1#cps)
+1. The Cookie
+2. CPS
 3. Buildings
 4. Upgrades
-5. The Display
-6. Achievements
-7. Milk
-8. The Stats Page
+5. Achievements
+6. Milk
+7. The Stats Page
+8. Quotes
 9. Ascending
 10. Easter Egg
 ## The Cookie
@@ -30,4 +30,52 @@ CPS stands for **Cookies Per Second**, and represents the sum of all passive upg
 - Buy buildings
 - Buy Upgrades
 - Ascend
-- Unlock more achievements
+
+## Buildings
+Buildings are the best way to earn cookies in the game. There are six archetypes of buildings, with each one being better than the last. Those buildings are:
+1. Farm ![Farm](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/Farm.png)
+2. Mine ![Mine](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/Mine.png)
+3. Factory ![Factory](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/factory.png)
+4. Country ![Country](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/Country.png)
+5. Colony ![Colony](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/Colony.png)
+6. Galaxy ![Galaxy](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/Galaxy.png)
+
+To purchase a building, go to the shop, found on the right side, and click the button that corresponds to the building that you want to buy. Once you buy a building, the price of that building will increase, meaning that your next purchase will be more expensive. Once you own a building, it will generate a fixed amount of cookies every second, but it can be increased by purchasing upgrades.
+
+![Building Shop](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/BuildingShop.PNG)
+
+The buildings that you own will be displayed on the center of the game. Each building archetype has a random x and y value generated, and the x will increase by a random amount until it surpasses the background. Once that happens, you can still purchase more buildings, but they will not be displayed. To see all of the buidlings you own, open the stats page.
+
+![Building Display](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/BuildingDisplay.PNG)
+
+## Upgrades
+Upgrades are another purchasable item that provide various different upgrades to either buildings, your cursor, or overall CPS. Each upgrade has a rarity (**common (green), rare (blue), epic (purple), and legendary (yellow)**) that determines the price of that upgrade. You can only purchase one of each upgrade, and buying it will increase the price of all other items of the same rarity. There are currently 20 upgrades:
+![Row1](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/UpgradeRow1.PNG)
+- Cursor Upgrade 1
+- Cursor Upgrade 2
+- Farm Upgrade 1
+- Farm Upgrade 2
+- Mine Upgrade 1
+
+![Row 2](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/UpgradeRow2.PNG)
+- Mine Upgrade 2
+- Factory Upgrade 1
+- Factory Upgrade 2
+- Country Upgrade 1
+- Country Upgrade 2
+
+![Row 3](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/UpgradeRow3.PNG)
+- Colony Upgrade 1
+- Colony Upgrade 2
+- Galaxy Upgrade 1
+- Galaxy Upgrade 2
+- CPS Upgrade 1
+
+![Row 4](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/UpgradeRow4.PNG)
+- CPS Upgrade 2
+- CPS Upgrade 3
+- CPS Upgrade 4
+- Building Upgrade
+- CPS Upgrade 5
+
+You can find the prices on the stats page.
