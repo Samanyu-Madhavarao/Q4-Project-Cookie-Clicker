@@ -99,4 +99,64 @@ There are eleven achievements that can be unlocked in Wafer Whacker. The require
 ![Secret Part 2](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/TypeAmogus.png)
 - **Easter Egg: Part 2** - Find the second part of the easter egg
 
-![Child Labor](
+![Child Labor](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/Factory_Blood.png)
+- **Child Labor** - Own 10 factories and 5 countries
+
+![World Countrol](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/WorldControl.png)
+- **World Control** - Own 10 of all earth based buildings
+
+![All Upgrades](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/AllUpgrades.png)
+- **All Upgrades** - Unlock all avalible upgrades
+
+![Cookie God](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/CookieGod.png)
+- **Cookie God** - Own 10 of every building
+
+![King](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/CursedKing.png)
+- **King** - Obtain negative cookies (Trust me, its possible)
+
+All of your achivements will be tracked through the stats page, and a golden background will be placed behind the achivements that you have unlocked so far.
+
+## Milk
+Milk is located below the main cookie that the player clicks, and will change color based on the amount of achivements the player has unlocked. 
+
+![Regular Milk](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/Milk1.gif)
+- **Regular Milk** - 0-2 Achivements unlocked
+
+![Chocolate Milk](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/Milk2.gif)
+- **Chocolate Milk** - 5-7 Achivements unlocked
+
+![Blood Milk](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/Milk3.gif)
+- **Blood Milk** - 8-10 Achivements unlocked
+
+![Galaxy Milk](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/Milk4.gif)
+- **Galaxy Milk** - All achivements unlocked
+
+## The Stats Page
+The stats page is opened via a button on the upper right hand side above buildings. Upon clicking, various information like the pricing of buildings, total buildings owned, max cookies and achivements are all located on this window. 
+
+When opened looks like this:
+
+![Stats Page](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/StatsPage.PNG)
+
+
+## Quotes
+Quotes are located right next to the stats button above buildings, and change every 15 seconds to a new quote. There are 15 quotes total and the quote featured will change every 15 seconds. Some quotes featured are helpful to the player, and some are just for the purpose of the game.
+- "Click the amogus"
+- "Do not type amogus" 
+- "Do not click the amogus"
+- "Sometimes when I close my eyes, I can't see"
+- "Did you sabotage O2? 'Cause you are taking my breath away."
+
+## Ascending 
+You are able to ascend in Biscuit Beater if you reach a specific amount of cookies, which is 20 billion cookies achieved. If you ever get to this point, you will be rewarded with a 15% increase in cookies per second in total each time you reach this amount of cookies. You will be rewarded a golden wookie in the upper left hand corner each time you ascend, and this keeps track of the percentage decrease per ascension.
+
+![Golden Cookie](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/GoldenCookie.png)
+- **Golden Cookie** - Represents the amount of ascensions the player has achieved
+
+
+## Easter Eggs
+There are various easter eggs throughout this game, but the main one is probably the among us character which is visible around the country section of buildings. Upon clicking this among us, the player will receive 100,000 cookies per click. If the word "amogus" is typed at any time, this amount awarded will be upgraded to 1,000,000 cookies per click. However, there is another among us character near the galaxy section that will do nothing when clicked, which is just to trick the player. 
+
+![The Imposter](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/amongus.png)
+- **The Imposter** - The character that you can click for extra cookies
+##
