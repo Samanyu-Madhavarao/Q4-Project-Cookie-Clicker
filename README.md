@@ -50,6 +50,7 @@ The buildings that you own will be displayed on the center of the game. Each bui
 
 ## Upgrades
 Upgrades are another purchasable item that provide various different upgrades to either buildings, your cursor, or overall CPS. Each upgrade has a rarity (**common (green), rare (blue), epic (purple), and legendary (yellow)**) that determines the price of that upgrade. You can only purchase one of each upgrade, and buying it will increase the price of all other items of the same rarity. There are currently 20 upgrades:
+
 ![Row1](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/UpgradeRow1.PNG)
 - Cursor Upgrade 1
 - Cursor Upgrade 2
@@ -79,3 +80,23 @@ Upgrades are another purchasable item that provide various different upgrades to
 - CPS Upgrade 5
 
 You can find the prices on the stats page.
+
+## Achievements
+There are eleven achievements that can be unlocked in Wafer Whacker. The requirements to unlock these achievements are hidden, but they are all fairly simple.
+
+![10 CPS](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/10CPS.png)
+- **10 CPS** - Reach a CPS of 10
+
+![10000 CPS](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/10000%2BCPS.png)
+- **10000 CPS** - Reach a CPS of 10000
+
+![Million Cookies](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/1MilCookies.png)
+- **1 Million Cookies** - Reach 1 million cookies
+
+![Secret Part 1](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/AmogusCookie.png)
+- **Easter Egg: Part 1** - Find the first part of the secret hidden in the game
+
+![Secret Part 2](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/TypeAmogus.png)
+- **Easter Egg: Part 2** - Find the second part of the easter egg
+
+![Child Labor](
