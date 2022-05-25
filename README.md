@@ -140,7 +140,7 @@ When opened looks like this:
 
 
 ## Quotes
-Quotes are located right next to the stats button above buildings, and change every 15 seconds to a new quote. There are 15 quotes total and the quote featured will change every 15 seconds. Some quotes featured are helpful to the player, and some are just for the purpose of the game.
+Quotes are located right next to the stats button above buildings, and display one quote at a time. There are 15 quotes total, and the quote featured will change every 15 seconds. Some quotes featured are helpful to the player, and some are just for the purpose of the game.
 - "Click the amogus"
 - "Do not type amogus" 
 - "Do not click the amogus"
