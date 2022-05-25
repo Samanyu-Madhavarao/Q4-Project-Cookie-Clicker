@@ -132,7 +132,7 @@ Milk is located below the main cookie that the player clicks, and will change co
 - **Galaxy Milk** - All achivements unlocked
 
 ## The Stats Page
-The stats page is opened via a button on the upper right hand side above buildings. Upon clicking, various information like the pricing of buildings, total buildings owned, max cookies and achivements are all located on this window. 
+The stats page is opened via a button on the upper right hand side above buildings. Upon clicking, various information like the pricing of buildings, total buildings owned, max cookies and achivements are all shown. 
 
 When opened looks like this:
 
