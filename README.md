@@ -148,7 +148,7 @@ Quotes are located right next to the stats button above buildings, and display o
 - "Did you sabotage O2? 'Cause you are taking my breath away."
 
 ## Ascending 
-You are able to ascend in Biscuit Beater if you reach a specific amount of cookies, which is 20 billion cookies achieved. If you ever get to this point, you will be rewarded with a 15% increase in cookies per second in total each time you reach this amount of cookies. You will be rewarded a golden wookie in the upper left hand corner each time you ascend, and this keeps track of the percentage decrease per ascension.
+You are able to ascend in Biscuit Beater if you reach a specific amount of cookies, which is 20 billion cookies achieved. If you ever get to this point, you will be rewarded with a 50% decrease in cookies per second in total each time you reach this amount of cookies. You will be rewarded a golden wookie in the upper left hand corner each time you ascend, and this keeps track of the percentage decrease per ascension.
 
 ![Golden Cookie](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/GoldenCookie.png)
 - **Golden Cookie** - Represents the amount of ascensions the player has achieved
@@ -159,4 +159,4 @@ There are various easter eggs throughout this game, but the main one is probably
 
 ![The Imposter](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/amongus.png)
 - **The Imposter** - The character that you can click for extra cookies
-##
+
