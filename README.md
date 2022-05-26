@@ -20,6 +20,8 @@ There are multiple methods given to the player to increase the amount of cookies
 10. Easter Egg
 ## The Cookie
 
+![Cookie](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/MainCookie.png)
+
 The large cookie on the left is the most important part of the game. The mechanic behind it is very simple. Clicking it will increase you cookie count
 by 1. Purchasing the first two upgrades will increase the amount you get from one click to 5 and then 50. Like most buttons, this was done by checking 
 if the mouse is held within the coordinates of the cookie sprite to shrink it, and its size is increased when the mouse is released.
