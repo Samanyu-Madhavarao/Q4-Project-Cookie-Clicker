@@ -8,7 +8,7 @@ There are multiple methods given to the player to increase the amount of cookies
 - Buying upgrades that increase the efficiency of buildings and your cursor
 - One "secret" that rewards lots of cookies
 ### Table of Contents
-1. The Cookie
+1. [The Cookie](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/README.md#the-cookie)
 2. CPS
 3. Buildings
 4. Upgrades
