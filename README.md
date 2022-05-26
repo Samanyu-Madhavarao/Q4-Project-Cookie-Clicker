@@ -9,15 +9,15 @@ There are multiple methods given to the player to increase the amount of cookies
 - One "secret" that rewards lots of cookies
 ### Table of Contents
 1. [The Cookie](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/README.md#the-cookie)
-2. CPS
-3. Buildings
-4. Upgrades
-5. Achievements
-6. Milk
-7. The Stats Page
-8. Quotes
-9. Ascending
-10. Easter Egg
+2. [CPS](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker#cps)
+3. [Buildings](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker#buildings)
+4. [Upgrades](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker#upgrades)
+5. [Achievements](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker#achievements)
+6. [Milk](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker#milk)
+7. [The Stats Page](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker#the-stats-page)
+8. [Quotes](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker#quotes)
+9. [Ascending](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker#ascending)
+10. [Easter Egg](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker#easter-eggs)
 ## The Cookie
 
 ![Cookie](https://github.com/Samanyu-Madhavarao/Q4-Project-Cookie-Clicker/blob/master/Cookie%20Clicker/src/imgs/MainCookie.png)
