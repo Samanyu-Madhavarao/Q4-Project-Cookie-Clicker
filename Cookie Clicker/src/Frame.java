@@ -171,8 +171,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	private int minePrice;
 	private int factoryPrice;
 	private int countryPrice;
-	private int colonyPrice;  
+	private int colonyPrice;   
 	private int galaxyPrice;
+	
 	
 	//building positions
 	int farmXMin, farmXMax, farmYMin, farmYMax;
@@ -183,9 +184,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	int galaxyXMin, galaxyXMax, galaxyYMin, galaxyYMax;
 	 
 	//cookie trackers
-	private int numCookies;
+	private int numCookies;   
 	private int maxCookies;
-	private int numCycles;
+	private int numCycles;       
 	int cycleX = 15;
 	int cycleY = 15;
 	ArrayList<Building> cycles = new ArrayList<Building>();
@@ -209,7 +210,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	long startTime2 = System.currentTimeMillis();
 
 	//secret
-	Secret easterEgg = new Secret(500, 350);
+	Secret secret = new Secret(500, 350);
 	Secret secret2 = new Secret(450, 550);
 	int numSecClicked = 0;
 	int amogus = 0;
@@ -244,13 +245,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		cookie.paint(g); 
 		milk.paint(g);
-		
-		farmShop.paint(g);
-		mineShop.paint(g);
-		factoryShop.paint(g);
-		countryShop.paint(g);
-		colonyShop.paint(g);
-		galaxyShop.paint(g);
 		
 		g.setColor(Color.GREEN);
 		g.fillRect(762, 55, 36, 36);
@@ -330,6 +324,54 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.fillRect(942, 193, 36, 36);
 		cpsUpgrade.paint(g);
 		
+		if(numCookies >= farmPrice) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillRect(785, farmShopY, 180, buttonHeight);
+		farmShop.paint(g);
+		
+		if(numCookies >= minePrice) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillRect(785, mineShopY, 180, buttonHeight);
+		mineShop.paint(g);
+		
+		if(numCookies >= factoryPrice) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillRect(785, factoryShopY, 180, buttonHeight);
+		factoryShop.paint(g);
+		
+		if(numCookies >= countryPrice) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillRect(785, countryShopY, 180, buttonHeight);
+		countryShop.paint(g);
+		
+		if(numCookies >= colonyPrice) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillRect(785, colonyShopY, 180, buttonHeight);
+		colonyShop.paint(g);
+		
+		if(numCookies >= galaxyPrice) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillRect(785, galaxyShopY, 180, buttonHeight);
+		galaxyShop.paint(g);
+		
 		g.setColor(Color.BLACK);
 		g.drawRect(785, farmShopY, 180, buttonHeight);
 		g.drawRect(785, mineShopY, 180, buttonHeight);
@@ -346,7 +388,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.drawString("Price: "+colonyPrice, 790, galaxyShopY);
 		g.drawString("Price: "+galaxyPrice, 790, galaxyShopY+60);
 		
-		easterEgg.paint(g);
+		secret.paint(g);
 		secret2.paint(g);
 		
 		for(int i = 0; i < farms.size(); i++) {
@@ -387,37 +429,37 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		switch(numAchievements) {
 			case 0:
-				milk.changePicture("imgs/Milk1.gif");
+				milk.setLevel(1);
 				break;
 			case 1:
-				milk.changePicture("imgs/Milk1.gif");
+				milk.setLevel(1);
 				break;
 			case 2:
-				milk.changePicture("imgs/Milk2.gif");
+				milk.setLevel(2);
 				break;
 			case 3:
-				milk.changePicture("imgs/Milk2.gif");
+				milk.setLevel(2);
 				break;
 			case 4:
-				milk.changePicture("imgs/Milk2.gif");
+				milk.setLevel(2);
 				break;
 			case 5:
-				milk.changePicture("imgs/Milk3.gif");
+				milk.setLevel(3);
 				break;
 			case 6:
-				milk.changePicture("imgs/Milk3.gif");
+				milk.setLevel(3);
 				break;
 			case 7:
-				milk.changePicture("imgs/Milk3.gif");
+				milk.setLevel(3);
 				break;
 			case 8:
-				milk.changePicture("imgs/Milk3.gif");
+				milk.setLevel(3);
 				break;
 			case 9:
-				milk.changePicture("imgs/Milk3.gif");
+				milk.setLevel(3);
 				break;
 			default:
-				milk.changePicture("imgs/Milk4.gif");
+				milk.setLevel(4);
 		}
 		
 		
@@ -432,6 +474,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		g.setFont(new Font("Comic Sans MS", Font.BOLD, textSize));
 		g.drawString("Cookies:" + numCookies, 15, 125);
 		g.drawString("CPS:" + (int) updateCPS(), 15, 160);
+		g.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+		g.drawString("Next Ascension: ", 15, 375);
+		g.drawString((((numCycles+1)*100000000)-numCookies) + " Cookies", 15, 400);
 		
 		for(int i = 0; i < cycles.size(); i++) {
 			cycles.get(i).paint(g);
@@ -535,7 +580,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			childLabor = true;
 			numAchievements++;
 		}
-		if(farms.size() >= 5 && mines.size() >= 5 && factories.size() >= 5 && countries.size() >= 5
+		if(farms.size() >= 10 && mines.size() >= 10 && factories.size() >= 10 && countries.size() >= 10
 			&& !worldControl) {
 			worldControl = true;
 			numAchievements++;
@@ -642,7 +687,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			maxCookies = numCookies; 
 		}
  
-		if(numCookies >= 1000000000) {
+		if(numCookies >= ((numCycles+1)*100000000)) {
 			Building temp = new Building(cycleX, cycleY, "GoldenCookie"); 
 			cycles.add(temp);
 			cycleX += 35;
@@ -659,7 +704,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	
 	public Frame() {
-		JFrame f = new JFrame("Cookie Clicker");
+		JFrame f = new JFrame("Confection Clakcer");
 		f.setSize(new Dimension(995, 629));
 		f.setBackground(Color.blue);
 		f.add(this); 
@@ -684,17 +729,17 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		galaxies = new ArrayList<Building>();
 		
 		farmCPS = 2;
-		mineCPS = 25;
-		factoryCPS = 750;
-		countryCPS = 500;
-		colonyCPS = 2500; 
-		galaxyCPS = 50000;
+		mineCPS = 5;
+		factoryCPS = 50;
+		countryCPS = 250;
+		colonyCPS = 1000; 
+		galaxyCPS = 5000;
+		cursorCPS = 1;   
 		
-		cursorCPS = 1;    
-		farmPrice = 15;
-		minePrice = 100; 
+		farmPrice = 30;
+		minePrice = 300; 
 		factoryPrice = 1000;
-		countryPrice = 45000;
+		countryPrice = 7500;
 		colonyPrice = 125000;
 		galaxyPrice = 1000000; 
 		
@@ -716,20 +761,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		galaxyYMin = 515; galaxyYMax = 550;
 		
 		quotes = new ArrayList<String>();
-		quotes.add("“Click the amogus”");
+		quotes.add("“Click the floating amogus 5 times”");
 		quotes.add("“Do not type amogus”");
-		quotes.add("“Do not click the amogus”");
+		quotes.add("“Do not click the floating amogus 5 times”");
 		quotes.add("“Sometimes when I close my eyes, I can't see”");
 		quotes.add("“Did you sabotage O2? ‘Cause you are taking my breath away.”");
 		quotes.add("“Are you an imposter? ‘Cause I think you just vented to my heart”");
 		quotes.add("“Nobody wants your cookies”");
-		quotes.add("“Health advisors concerned with the massive consumption of cookies”");
+		quotes.add("“Health advisors concerned with the massive consumption of confections”");
 		quotes.add("“United States army preparing for invasion of your enslaved countries”");
 		quotes.add("“New studies show that slave labor is the cheapest”");
-		quotes.add("“The world is running out of resources for your cookies”");
-		quotes.add("“Your cookies are famous in the community”");
-		quotes.add("“The final achievement is to get negative cookies”");
-		quotes.add("“Reaching 2 Billion sets you to -1000000”");
+		quotes.add("“The world is running out of resources for your confections”");
+		quotes.add("“Your cooki- confections are famous in the community”");
+		quotes.add("“The final achievement is to get negative confections”");
+		quotes.add("“Ascending sets you to -1000000 wafers”");
 		quotes.add("“Check stats for upgrade prices”");
 		
 		randInt = (int) Math.floor(Math.random()*(quotes.size()-1));
@@ -749,8 +794,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(cookieUpgrade3Bool) {cps *= 2;}
 		if(cookieUpgrade4Bool) {cps *= 5;}
 		if(cpsUpgradeBool) {cps *= 1.1;}
+		cps *= (milk.getLevel()*0.5);
 		if(numCycles != 0) {
-			cps *= (cycles.size() * 2);
+			for(int i = 0; i < numCycles; i++) {
+				cps *= 0.5;
+			}
 		}
 		return cps;
 	}
@@ -786,6 +834,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(e.getKeyCode() == 83 && amogus == 5) {
 			amogus++;
 		}
+		
 	}
 
 	@Override
@@ -836,13 +885,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			numCookies += cursorCPS;
 			cookie.clicked1();
 		}
-		if(x > 785 && x < 965 && y > farmShopY+25 && y < mineShopY+25 && numCookies >= farmPrice) {
+		if(x > 785 && x < 965 && y > farmShopY+25 && y < mineShopY+25 && numCookies >= farmPrice) {		
 			int farmX = (int) Math.floor(Math.random() * (farmXMax - farmXMin) + farmXMin);
 			int farmY = (int) Math.floor(Math.random() * (farmYMax - farmYMin) + farmYMin);
 			Building temp = new Building(farmX, farmY, "Farm");
 			farms.add(temp);
-			farmShop.clicked1();
 			farmXMin += 60; farmXMax += 60;
+			farmShop.clicked1();
 		}
 		if(x > 785 && x < 965 && y > mineShopY+25 && y < factoryShopY+25 && numCookies >= minePrice) {
 			int mineX = (int) Math.floor(Math.random() * (mineXMax - mineXMin) + mineXMin);
@@ -892,7 +941,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cursorUpgradeBool = true;
 			numCookies -= commonPrice;
 			commonPrice *= 10;
-			cursorCPS *= 5;
+			cursorCPS *= 3;
 			numUpgrades++;
 		}
 		
@@ -900,7 +949,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			cursorUpgrade2Bool = true;
 			numCookies -= rarePrice;
 			rarePrice *= 7;
-			cursorCPS *= 10;
+			cursorCPS *= 5;
 			numUpgrades++;
 		}
 		
@@ -996,7 +1045,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			galaxyUpgrade2Bool = true;
 			numCookies -= legendaryPrice;
 			legendaryPrice *= 2;
-			galaxyCPS *= 5;
+			galaxyCPS *= 10;
 			numUpgrades++;
 		}
 		
@@ -1051,17 +1100,30 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		
 		
-		if(x >= easterEgg.getX() && x <= easterEgg.getX()+10) {
-			if(y >= easterEgg.getY()+20 && y <= easterEgg.getY()+40) {
+		if(x >= secret.getX() && x <= secret.getX()+10) {
+			if(y >= secret.getY()+20 && y <= secret.getY()+40) {
 				numSecClicked++;
 				if(numSecClicked >= 5) {
 					if(amogus >= 6) {
 						numCookies += 1000000;
-					}else {
+					}else{
 						numCookies += 100000;
 					}
 				}
 			}  
+		}
+		
+		if(x >= secret2.getX() && x <= secret2.getX()+10) {
+			if(y >= secret2.getY()+20 && y <= secret2.getY()+40) {
+				numSecClicked++;
+				if(numSecClicked >= 5) {
+					if(amogus >= 6) {
+						numCookies -= 50000000;
+					}else {
+						numCookies -= 500000;
+					}
+				}
+			}
 		}
 		
 		
@@ -1079,32 +1141,33 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(x > 785 && x < 965 && y > farmShopY+25 && y < mineShopY+25 && numCookies >= farmPrice) {
 			farmShop.clicked2();
 			numCookies -= farmPrice;
-			farmPrice *= 1.35;
+			farmPrice *= 1.5;
+			
 		}
 		if(x > 785 && x < 965 && y > mineShopY+25 && y < factoryShopY+25 && numCookies >= minePrice) {
 			mineShop.clicked2();
 			numCookies -= minePrice;
-			minePrice *= 1.35;
+			minePrice *= 1.5;
 		}
 		if(x > 785 && x < 965 && y > factoryShopY+25 && y < countryShopY+25 && numCookies >= factoryPrice) {
 			factoryShop.clicked2();
 			numCookies -= factoryPrice;
-			factoryPrice *= 1.35;
+			factoryPrice *= 1.5;
 		}
 		if(x > 785 && x < 965 && y > countryShopY+25 && y < colonyShopY+25 && numCookies >= countryPrice) {
 			countryShop.clicked2();
 			numCookies -= countryPrice;
-			countryPrice *= 1.35;
+			countryPrice *= 1.5;
 		}
 		if(x > 785 && x < 965 && y > colonyShopY+25 && y < galaxyShopY+25 && numCookies >= colonyPrice) {
 			colonyShop.clicked2();
 			numCookies -= colonyPrice;
-			colonyPrice *= 1.35;
+			colonyPrice *= 1.5;
 		}
 		if(x > 785 && x < 965 && y > galaxyShopY+25 && y < galaxyShopY+buttonHeight+25 && numCookies >= galaxyPrice) {
 			galaxyShop.clicked2();
 			numCookies -= galaxyPrice;
-			galaxyPrice *= 1.35;
+			galaxyPrice *= 1.5;
 		}
 	}
 
